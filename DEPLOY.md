@@ -48,3 +48,5 @@ Si vous avez besoin de variables d'environnement (comme l'URL du Google Script),
 - Vercel déploiera automatiquement à chaque push sur la branche principale
 - Les preview deployments sont créés pour chaque pull request
 
+
+
