@@ -11,9 +11,9 @@ const ABOUT_URL = "/qui-suis-je"; // URL for "Qui suis-je?" page
 const NADIA_HERO_IMAGE = "/nadia.jpg";
 const STOCK_LEARNING_ONLINE = "/assets/stock-learning-online.jpg";
 const STOCK_RESULTS = "/assets/stock-results.jpg";
-const STOCK_PRICING = "/assets/stock-pricing.jpg";
 const EVENT_BACKGROUND = "/assets/event-background.jpg"; // Event/Conference background image
 const COMMUNITY_EVENT_IMAGE = "/A7V03753.JPG"; // Community workshop photo
+const WHY_ELAN_IMAGE = "/A7V04780.JPG"; // Why choose ELAN BC section image
 
 const App: React.FC = () => {
   // Form state
@@ -27,6 +27,19 @@ const App: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  
+  // WhatsApp link
+  const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=212606212122&text&type=phone_number&app_absent=0";
+  
+  // Payment RIB information (à compléter avec vos vraies informations)
+  const PAYMENT_RIB = {
+    bankName: "Nom de la banque",
+    accountName: "Nom du compte",
+    accountNumber: "XXXX XXXX XXXX XXXX",
+    iban: "MAXXXXXXXXXXXXXX",
+    swift: "XXXXXXXXXX"
+  };
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -138,15 +151,14 @@ const App: React.FC = () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       // Assume success (we can't read response with this approach but it works)
-      setSuccessMessage('Merci ! Tes informations ont bien été envoyées. Nous te contacterons très vite.');
       setErrorMessage(null);
       
       // Reset form state
-      setFormData({
-        fullName: '',
-        phone: '',
-        email: '',
-        address: '',
+        setFormData({
+          fullName: '',
+          phone: '',
+          email: '',
+          address: '',
         packChoice: ''
       });
       
@@ -154,6 +166,9 @@ const App: React.FC = () => {
       if (form) {
         form.reset();
       }
+      
+      // Show payment modal instead of success message
+      setShowPaymentModal(true);
     } catch (error) {
       // Network failure or other error
       console.error('Network or fetch error:', error);
@@ -251,14 +266,16 @@ const App: React.FC = () => {
                 <span className="font-bold">BUSINESS COMMUNITY</span>
               </motion.h1>
 
-              {/* Subheadline */}
+              {/* Subheadline - Mise en évidence */}
               <motion.p
-                className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#6B8FA3] font-medium mb-6 sm:mb-8"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#6B8FA3] font-bold mb-6 sm:mb-8 leading-tight tracking-wide"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               >
+                <span className="bg-gradient-to-r from-[#6B8FA3] to-[#5B7A9A] bg-clip-text text-transparent">
                 Business clair, actions concrètes, résultats assurés.
+                </span>
               </motion.p>
 
               {/* Supporting Paragraph */}
@@ -268,7 +285,7 @@ const App: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
               >
-                Passe de l'incertitude à la clarté… et de la clarté à la croissance. Avec ELAN BUSINESS COMMUNITY (ELAN BC), tu suis un chemin guidé, simple et structuré pour créer, développer et scaler un projet rentable, même si tu te sens perdu(e) aujourd'hui.
+                <span className="font-bold text-[#6B8FA3]">Passe de l'incertitude à la clarté… et de la clarté à la croissance.</span> Avec ELAN BUSINESS COMMUNITY (ELAN BC), tu suis un chemin guidé, simple et structuré pour créer, développer et scaler un projet rentable, même si tu te sens perdu(e) aujourd'hui.
               </motion.p>
 
               {/* Qui suis-je? Link */}
@@ -308,9 +325,12 @@ const App: React.FC = () => {
                   />
                   {/* Nadia Info */}
                   <div className="space-y-1">
-                    <h3 className="text-lg font-semibold text-[#1A2B2F]">Nadia Lakzir</h3>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-[#1A2B2F]">Nadia</h3>
+                    <p className="text-sm text-[#5B7A9A] mb-1">
+                      Fondatrice de ELAN BUSINESS COMMUNITY
+                    </p>
                     <p className="text-sm text-[#5B7A9A] mb-0">
-                      Fondatrice de ELAN BUSINESS COMMUNITY (ELAN BC) • Coach business & mindset
+                      Coach business & Vente - Mindset
                     </p>
                   </div>
                 </div>
@@ -325,7 +345,7 @@ const App: React.FC = () => {
               >
                 <button className="relative w-full aspect-video rounded-2xl bg-gradient-to-br from-[#E6E0F0] to-[#F5F5F0] border border-[#B8D4E0] overflow-hidden flex flex-col items-center justify-center group hover:border-[#6B8FA3] transition-all duration-300">
                   {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors duration-300">
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/20 transition-colors duration-300">
                     <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#6B8FA3] rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:shadow-[#6B8FA3]/40 transition-all duration-300">
                       <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
@@ -354,7 +374,7 @@ const App: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Rejoindre ELAN BC maintenant
+                  Rejoindre ELAN maintenant
                 </motion.button>
                 <motion.button
                   className="w-full px-6 sm:px-8 py-3 h-11 border-2 border-[#6B8FA3] text-[#6B8FA3] bg-transparent text-sm sm:text-base font-semibold rounded-full hover:bg-[#6B8FA3]/10 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#6B8FA3] focus:ring-offset-2 focus:ring-offset-white"
@@ -396,7 +416,7 @@ const App: React.FC = () => {
                 </div>
               </motion.div>
             </motion.div>
-          </div>
+              </div>
 
           {/* Desktop: Video + CTA at bottom center */}
           <motion.div
@@ -405,34 +425,34 @@ const App: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
           >
-            {/* Video Thumbnail - Web Style */}
+              {/* Video Thumbnail - Web Style */}
             <motion.button
               className="relative w-full aspect-video rounded-2xl bg-gradient-to-br from-[#E6E0F0] to-[#F5F5F0] border-2 border-[#B8D4E0] overflow-hidden flex flex-col items-center justify-center group hover:border-[#6B8FA3] hover:shadow-2xl transition-all duration-300"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              {/* Background Pattern Overlay */}
+                {/* Background Pattern Overlay */}
               <div className="absolute inset-0 bg-white/30"></div>
-              {/* Play Button Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-black/30 to-black/50 group-hover:from-black/40 group-hover:to-black/60 transition-all duration-300">
+                {/* Play Button Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-black/30 to-black/50 group-hover:from-black/40 group-hover:to-black/60 transition-all duration-300">
                 <div className="w-24 h-24 bg-[#6B8FA3] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300 ring-4 ring-[#6B8FA3]/20 group-hover:ring-[#6B8FA3]/40">
-                  <svg className="w-12 h-12 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                  </svg>
+                    <svg className="w-12 h-12 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                    </svg>
+                  </div>
                 </div>
-              </div>
-              {/* Caption */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                <p className="text-sm text-white font-medium text-center">
-                  Regarder la vidéo de présentation (2 min)
-                </p>
-              </div>
+                {/* Caption */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p className="text-sm text-white font-medium text-center">
+                    Regarder la vidéo de présentation (2 min)
+                  </p>
+                </div>
             </motion.button>
 
             {/* Desktop: CTA Buttons (Centered under video) */}
             <div className="flex flex-col gap-3 w-full pt-4">
               <motion.button
-                onClick={scrollToForm}
+                  onClick={scrollToForm}
                 className="w-full px-6 py-3 h-11 bg-[#6B8FA3] text-white text-sm font-semibold rounded-full hover:bg-[#5B7A9A] hover:shadow-lg hover:shadow-[#6B8FA3]/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#6B8FA3] focus:ring-offset-2 focus:ring-offset-white"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
@@ -444,9 +464,9 @@ const App: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Découvrir les parcours
+                  Découvrir les parcours
               </motion.button>
-            </div>
+              </div>
           </motion.div>
         </div>
       </section>
@@ -628,6 +648,113 @@ const App: React.FC = () => {
         </div>
       </motion.section>
 
+      {/* Payment Modal */}
+      {showPaymentModal && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setShowPaymentModal(false)}
+        >
+          <motion.div
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-8 relative"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setShowPaymentModal(false)}
+              className="absolute top-4 right-4 text-[#8A9BA8] hover:text-[#1A2B2F] transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Modal Content */}
+            <div className="space-y-6">
+              {/* Header */}
+              <div className="text-center">
+                <motion.div
+                  className="w-16 h-16 bg-[#3CCF91]/20 rounded-full flex items-center justify-center mx-auto mb-4"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  <svg className="w-8 h-8 text-[#3CCF91]" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                </motion.div>
+                <h3 className="text-2xl font-bold text-[#1A2B2F] mb-2">
+                  Formulaire envoyé avec succès !
+                </h3>
+                <p className="text-sm text-[#5B7A9A]">
+                  Merci ! Voici les informations de paiement pour finaliser votre inscription.
+                </p>
+              </div>
+
+              {/* Payment Information */}
+              <div className="bg-gradient-to-br from-[#E6E0F0] to-[#F5F5F0] rounded-xl p-5 border border-[#E6E0F0]">
+                <h4 className="text-lg font-semibold text-[#1A2B2F] mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-[#6B8FA3]" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                    <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
+                  </svg>
+                  Coordonnées bancaires (RIB)
+                </h4>
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#5B7A9A] font-medium">Banque :</span>
+                    <span className="text-[#1A2B2F] font-semibold">{PAYMENT_RIB.bankName}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#5B7A9A] font-medium">Titulaire :</span>
+                    <span className="text-[#1A2B2F] font-semibold">{PAYMENT_RIB.accountName}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#5B7A9A] font-medium">Numéro de compte :</span>
+                    <span className="text-[#1A2B2F] font-semibold font-mono">{PAYMENT_RIB.accountNumber}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#5B7A9A] font-medium">IBAN :</span>
+                    <span className="text-[#1A2B2F] font-semibold font-mono text-xs">{PAYMENT_RIB.iban}</span>
+                  </div>
+                  {PAYMENT_RIB.swift && (
+                    <div className="flex justify-between items-center">
+                      <span className="text-[#5B7A9A] font-medium">SWIFT :</span>
+                      <span className="text-[#1A2B2F] font-semibold font-mono">{PAYMENT_RIB.swift}</span>
+              </div>
+            )}
+                </div>
+              </div>
+
+              {/* WhatsApp Button */}
+              <motion.a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-3 bg-[#25D366] text-white px-6 py-4 rounded-full font-semibold text-base hover:bg-[#20BA5A] shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                <span>Contacter via WhatsApp</span>
+              </motion.a>
+
+              {/* Info Text */}
+              <p className="text-xs text-center text-[#8A9BA8]">
+                Après le paiement, contactez-nous sur WhatsApp pour confirmer votre inscription.
+                </p>
+              </div>
+          </motion.div>
+        </motion.div>
+      )}
+
       {/* Why ELAN BC Section */}
       <motion.section
         className="py-12 sm:py-16 md:py-20 lg:py-32 px-4 sm:px-5 bg-gradient-to-br from-[#F5F5F0] to-white overflow-hidden"
@@ -647,19 +774,19 @@ const App: React.FC = () => {
             Pourquoi choisir ELAN BUSINESS COMMUNITY (ELAN BC) ?
           </motion.h2>
           
-          <div className="flex flex-col md:grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center mt-8 sm:mt-12 md:mt-16">
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-stretch mt-8 sm:mt-12 md:mt-16">
             {/* Left - Image (Mobile: stacked above) */}
             <motion.div
-              className="w-full order-2 md:order-1"
+              className="w-full order-2 md:order-1 flex md:h-full"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <motion.img
-                src={NADIA_HERO_IMAGE}
+                src={WHY_ELAN_IMAGE}
                 alt="Nadia Lakzir accompagnant la communauté ELAN BC"
-                className="w-full rounded-2xl object-cover mb-4 md:mb-0 h-auto"
+                className="w-full rounded-2xl object-cover mb-4 md:mb-0 md:h-full min-h-[300px] sm:min-h-[350px] md:min-h-0"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               />
@@ -667,7 +794,7 @@ const App: React.FC = () => {
 
             {/* Right - Text & Bullet Points */}
             <motion.div
-              className="space-y-4 sm:space-y-6 w-full order-1 md:order-2"
+              className="space-y-4 sm:space-y-6 w-full order-1 md:order-2 md:flex md:flex-col"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -682,12 +809,12 @@ const App: React.FC = () => {
 
               {/* Bullet Points */}
               <div className="space-y-4 sm:space-y-6 mt-6">
-                {[
-                  "Méthode structurée et progressive",
-                  "Ressources centralisées en un seul endroit",
-                  "Application immédiate des concepts",
-                  "Guidance à chaque étape"
-                ].map((item, index) => (
+              {[
+                "Méthode structurée et progressive",
+                "Ressources centralisées en un seul endroit",
+                "Application immédiate des concepts",
+                "Guidance à chaque étape"
+              ].map((item, index) => (
                   <motion.div
                     key={index}
                     className="flex items-start gap-3 sm:gap-4"
@@ -696,15 +823,15 @@ const App: React.FC = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                   >
-                    <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 mt-0.5 sm:mt-1">
+                  <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 mt-0.5 sm:mt-1">
                       <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#6B8FA3]" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                    </div>
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                  </div>
                     <p className="text-sm sm:text-base md:text-lg text-[#5B7A9A] flex-1 mb-0">{item}</p>
                   </motion.div>
-                ))}
-              </div>
+              ))}
+            </div>
             </motion.div>
           </div>
         </div>
@@ -819,7 +946,7 @@ const App: React.FC = () => {
                 </li>
               </ul>
             </motion.div>
-          </div>
+            </div>
 
           {/* Results Image */}
           <motion.div
@@ -837,7 +964,7 @@ const App: React.FC = () => {
               transition={{ duration: 0.3 }}
             />
           </motion.div>
-        </div>
+          </div>
       </motion.section>
 
       {/* 3 Parcours Section */}
@@ -983,8 +1110,8 @@ const App: React.FC = () => {
                 </li>
               </ul>
             </motion.div>
+            </div>
           </div>
-        </div>
       </motion.section>
 
       {/* Pricing Section */}
@@ -1005,23 +1132,6 @@ const App: React.FC = () => {
           >
             Plans tarifaires ELAN BUSINESS COMMUNITY (ELAN BC)
           </motion.h2>
-
-          {/* Pricing Image */}
-          <motion.div
-            className="mb-8 sm:mb-12 md:mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <motion.img
-              src={STOCK_PRICING}
-              alt="Plans tarifaires ELAN BC"
-              className="w-full rounded-2xl object-cover mb-4"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            />
-          </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {/* Mensuel */}
@@ -1067,7 +1177,18 @@ const App: React.FC = () => {
               <div className="mb-4 sm:mb-6">
                 <span className="text-3xl sm:text-4xl font-bold text-[#6B8FA3]">900 DH</span>
               </div>
-              <p className="text-sm sm:text-base text-[#5B7A9A] mb-6 sm:mb-8">+ 30 min de coaching perso pendant Black Friday</p>
+              <p className="text-sm sm:text-base text-[#5B7A9A] mb-3 sm:mb-4">Accès complet à la communauté et aux formations</p>
+              
+              {/* Black Friday Promotion Badge */}
+              <div className="mb-6 sm:mb-8 p-3 sm:p-4 bg-gradient-to-r from-[#dc2626] to-[#991b1b] rounded-lg border-2 border-[#fca5a5] shadow-md">
+                <div className="flex items-center gap-2 mb-2">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-[10px] sm:text-xs font-bold text-white uppercase tracking-wider">Black Friday</span>
+                </div>
+                <p className="text-xs sm:text-sm font-semibold text-white leading-tight">+ 30 min de coaching perso offert</p>
+              </div>
               <motion.button
                 onClick={scrollToForm}
                 className="w-full px-4 sm:px-6 py-3 h-11 bg-[#6B8FA3] text-white text-sm sm:text-base font-semibold rounded-full hover:bg-[#5B7A9A] hover:shadow-lg hover:shadow-[#6B8FA3]/30 transition-all duration-300"
@@ -1092,7 +1213,18 @@ const App: React.FC = () => {
               <div className="mb-4 sm:mb-6">
                 <span className="text-3xl sm:text-4xl font-bold text-[#6B8FA3]">1650 DH</span>
               </div>
-              <p className="text-sm sm:text-base text-[#5B7A9A] mb-6 sm:mb-8">+ 45 min de coaching perso pendant Black Friday</p>
+              <p className="text-sm sm:text-base text-[#5B7A9A] mb-3 sm:mb-4">Accès complet à la communauté et aux formations</p>
+              
+              {/* Black Friday Promotion Badge */}
+              <div className="mb-6 sm:mb-8 p-3 sm:p-4 bg-gradient-to-r from-[#dc2626] to-[#991b1b] rounded-lg border-2 border-[#fca5a5] shadow-md">
+                <div className="flex items-center gap-2 mb-2">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-[10px] sm:text-xs font-bold text-white uppercase tracking-wider">Black Friday</span>
+                </div>
+                <p className="text-xs sm:text-sm font-semibold text-white leading-tight">+ 45 min de coaching perso offert</p>
+              </div>
               <motion.button
                 onClick={scrollToForm}
                 className="w-full px-4 sm:px-6 py-3 h-11 bg-[#6B8FA3] text-white text-sm sm:text-base font-semibold rounded-full hover:bg-[#5B7A9A] hover:shadow-lg hover:shadow-[#6B8FA3]/30 transition-all duration-300"
@@ -1117,7 +1249,18 @@ const App: React.FC = () => {
               <div className="mb-4 sm:mb-6">
                 <span className="text-3xl sm:text-4xl font-bold text-[#6B8FA3]">3000 DH</span>
               </div>
-              <p className="text-sm sm:text-base text-[#5B7A9A] mb-6 sm:mb-8">+ 1h de coaching perso pendant Black Friday</p>
+              <p className="text-sm sm:text-base text-[#5B7A9A] mb-3 sm:mb-4">Accès complet à la communauté et aux formations</p>
+              
+              {/* Black Friday Promotion Badge */}
+              <div className="mb-6 sm:mb-8 p-3 sm:p-4 bg-gradient-to-r from-[#dc2626] to-[#991b1b] rounded-lg border-2 border-[#fca5a5] shadow-md">
+                <div className="flex items-center gap-2 mb-2">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-[10px] sm:text-xs font-bold text-white uppercase tracking-wider">Black Friday</span>
+                </div>
+                <p className="text-xs sm:text-sm font-semibold text-white leading-tight">+ 1h de coaching perso offert</p>
+              </div>
               <motion.button
                 onClick={scrollToForm}
                 className="w-full px-4 sm:px-6 py-3 h-11 bg-[#6B8FA3] text-white text-sm sm:text-base font-semibold rounded-full hover:bg-[#5B7A9A] hover:shadow-lg hover:shadow-[#6B8FA3]/30 transition-all duration-300"
@@ -1127,8 +1270,8 @@ const App: React.FC = () => {
                 Choisir ce plan
               </motion.button>
             </motion.div>
+            </div>
           </div>
-        </div>
       </motion.section>
 
       {/* Community Section */}
@@ -1167,32 +1310,32 @@ const App: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 sm:mb-8 text-[#1A2B2F] leading-tight">
-                Une communauté d'entrepreneurs engagés
-              </h2>
+            Une communauté d'entrepreneurs engagés
+          </h2>
               <p className="text-sm sm:text-base md:text-lg text-[#5B7A9A] leading-relaxed mb-8 sm:mb-12 px-2 md:px-0">
                 Rejoins une communauté dynamique d'entrepreneurs qui partagent les mêmes objectifs que toi. Entraide, motivation, sessions live et échanges enrichissants t'attendent pour t'accompagner dans ta croissance avec ELAN BC.
-              </p>
+          </p>
 
-              {/* Avatar Placeholders */}
-              <div className="w-full overflow-x-auto pb-2">
+          {/* Avatar Placeholders */}
+          <div className="w-full overflow-x-auto pb-2">
                 <div className="flex justify-center md:justify-start items-center gap-3 sm:gap-4 min-w-max px-4 sm:px-0">
-                  {['AB', 'CD', 'EF', 'GH', 'IJ', 'KL'].map((initials, index) => (
+              {['AB', 'CD', 'EF', 'GH', 'IJ', 'KL'].map((initials, index) => (
                     <motion.div
-                      key={index}
+                  key={index}
                       className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white border-2 border-[#B8D4E0] flex items-center justify-center text-[#5B7A9A] font-semibold text-sm sm:text-base md:text-lg flex-shrink-0"
                       initial={{ opacity: 0, scale: 0 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
                       whileHover={{ scale: 1.1, borderColor: "#6B8FA3" }}
-                    >
-                      {initials}
+                >
+                  {initials}
                     </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+              ))}
+            </div>
           </div>
+            </motion.div>
+        </div>
         </div>
       </motion.section>
 
