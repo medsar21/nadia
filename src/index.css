@@ -29,7 +29,7 @@
 }
 
 body {
-  font-family: 'Inter', 'Poppins', system-ui, sans-serif;
+  font-family: 'Montserrat', system-ui, sans-serif;
   background: linear-gradient(135deg, var(--elan-surface-secondary) 0%, var(--elan-surface) 50%, var(--elan-bg-main) 100%);
   color: var(--elan-text-primary);
   min-height: 100vh;
