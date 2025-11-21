@@ -8,6 +8,7 @@ export default defineConfig({
   publicDir: 'public',
   build: {
     assetsDir: 'assets',
+    copyPublicDir: true,
     rollupOptions: {
       output: {
         assetFileNames: 'assets/[name].[ext]'
