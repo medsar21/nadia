@@ -776,6 +776,21 @@ const App: React.FC = () => {
                 className="w-full rounded-2xl object-cover mb-4 md:mb-0 md:h-full min-h-[300px] sm:min-h-[350px] md:min-h-0"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
+                onError={(e) => {
+                  // Fallback si l'image ne charge pas
+                  const target = e.target as HTMLImageElement;
+                  const currentSrc = target.src;
+                  // Essayer différents chemins possibles
+                  if (currentSrc.includes('/A7V04780.jpg')) {
+                    target.src = './A7V04780.jpg';
+                  } else if (currentSrc.includes('./A7V04780.jpg')) {
+                    target.src = 'A7V04780.jpg';
+                  } else {
+                    target.src = '/A7V04780.jpg';
+                  }
+                }}
+                loading="eager"
+                decoding="async"
               />
             </motion.div>
 
