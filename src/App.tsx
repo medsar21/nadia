@@ -8,13 +8,23 @@ const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyp4hpmEnS_r3
 
 // Constants for images and links
 const ABOUT_URL = "/qui-suis-je"; // URL for "Qui suis-je?" page
-const NADIA_HERO_IMAGE = "/MEITU_20250501_145005910.png";
-const EVENT_BACKGROUND = "/A7V04780.jpg"; // Event/Conference background image
-const WHY_ELAN_IMAGE = "/A7V04780.jpg"; // Why choose ELAN BC section image
-const NEW_IMAGE_1 = "/cover.png"; // Results section image
-const NEW_IMAGE_2 = "/MEITU_20250501_145005910.png"; // Parcours section image
-const NEW_IMAGE_3 = "/MEITU_20250529_101135791.jpg"; // Community section image
-const FINAL_CTA_IMAGE = "/A7V03753.JPG"; // Final CTA section image
+
+// Helper function to get correct image path for Vercel
+// Vercel serves files from public/ at the root, so we use absolute paths
+const getImagePath = (filename: string): string => {
+  // Remove leading slash if present to avoid double slashes
+  const cleanFilename = filename.startsWith('/') ? filename.slice(1) : filename;
+  // Always use absolute path from root
+  return `/${cleanFilename}`;
+};
+
+const NADIA_HERO_IMAGE = getImagePath("MEITU_20250501_145005910.png");
+const EVENT_BACKGROUND = getImagePath("A7V04780.jpg"); // Event/Conference background image
+const WHY_ELAN_IMAGE = getImagePath("A7V04780.jpg"); // Why choose ELAN BC section image
+const NEW_IMAGE_1 = getImagePath("cover.png"); // Results section image
+const NEW_IMAGE_2 = getImagePath("MEITU_20250501_145005910.png"); // Parcours section image
+const NEW_IMAGE_3 = getImagePath("MEITU_20250529_101135791.jpg"); // Community section image
+const FINAL_CTA_IMAGE = getImagePath("A7V03753.JPG"); // Final CTA section image
 
 const App: React.FC = () => {
   // Form state
