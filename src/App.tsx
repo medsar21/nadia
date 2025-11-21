@@ -345,7 +345,7 @@ const App: React.FC = () => {
                   {/* Nadia Portrait */}
                   <motion.img
                     src={NADIA_HERO_IMAGE}
-                    alt="Nadia Lakzir - Coach business mindset marketing vente"
+                    alt="Nadia Lakzir - Coach Business : Mindset -Marketing -Vente"
                     className="w-full rounded-lg object-cover aspect-square mb-3"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
@@ -354,7 +354,7 @@ const App: React.FC = () => {
                   <div className="space-y-1">
                     <h3 className="text-2xl sm:text-3xl font-bold text-[#1A2B2F]">Nadia</h3>
                     <p className="text-sm text-[#2C3E50] mb-0">
-                      Coach business mindset marketing vente
+                      Coach Business : Mindset -Marketing -Vente
                     </p>
                   </div>
                 </div>
@@ -429,7 +429,7 @@ const App: React.FC = () => {
                 <div className="space-y-1">
                   <h3 className="text-lg font-semibold text-[#1A2B2F]">Nadia Lakzir</h3>
                   <p className="text-sm text-[#2C3E50] mb-0">
-                    Coach business mindset marketing vente
+                    Coach Business : Mindset -Marketing -Vente
                   </p>
                 </div>
               </motion.div>
@@ -1245,6 +1245,9 @@ const App: React.FC = () => {
                   885 DH
                 </motion.span>
                 <span className="text-sm sm:text-base font-semibold text-[#1A2B2F] ml-2">live</span>
+                <div className="mt-2 text-sm sm:text-base text-[#2C3E50] transition-colors duration-150 group-hover:text-[#34495E]">
+                  <span className="font-semibold">295 DH</span> / mois
+                </div>
               </div>
               <p className="text-sm sm:text-base text-[#2C3E50] mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-[#34495E]">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
               <div className="flex-1"></div>
@@ -1282,6 +1285,9 @@ const App: React.FC = () => {
                   1650 DH
                 </motion.span>
                 <span className="text-sm sm:text-base font-semibold text-[#1A2B2F] ml-2">live</span>
+                <div className="mt-2 text-sm sm:text-base text-[#2C3E50] transition-colors duration-150 group-hover:text-[#34495E]">
+                  <span className="font-semibold">275 DH</span> / mois
+                </div>
               </div>
               <p className="text-sm sm:text-base text-[#2C3E50] mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-[#34495E]">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
               <div className="flex-1"></div>
@@ -1318,6 +1324,9 @@ const App: React.FC = () => {
                 >
                   3000 DH
                 </motion.span>
+                <div className="mt-2 text-sm sm:text-base text-[#2C3E50] transition-colors duration-150 group-hover:text-[#34495E]">
+                  <span className="font-semibold">250 DH</span> / mois
+                </div>
               </div>
               <p className="text-sm sm:text-base text-[#2C3E50] mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-[#34495E]">Accès complet à la communauté et aux formations</p>
               <p className="text-sm sm:text-base text-[#1A2B2F] font-semibold mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-[#2C3E50]">45 min de coaching individuel (Pour diagnostic de ton projet)</p>
