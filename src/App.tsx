@@ -97,7 +97,7 @@ const App: React.FC = () => {
       return;
     }
     if (!formData.packChoice) {
-      setErrorMessage('Veuillez sélectionner un pack.');
+      setErrorMessage('Veuillez sélectionner un plan.');
       return;
     }
 
@@ -296,26 +296,19 @@ const App: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
               >
-                <span className="font-bold text-[#1A2B2F]">Passe de l'incertitude à la clarté… et de la clarté à la croissance.</span> Avec ELAN BUSINESS COMMUNITY (ELAN BC), tu suis un chemin guidé, simple et structuré pour créer, développer et scaler un projet rentable, même si tu te sens perdu(e) aujourd'hui.
+                <span className="font-bold text-[#1A2B2F]">Passe de l'incertitude à la clarté… et de la clarté à la croissance.</span>
+                <br />
+                Avec ELAN BUSINESS, tu suis un chemin guidé, simple et structuré pour créer, développer et scaler un projet rentable, même si tu te sens perdu(e) aujourd'hui.
+                <br />
+                <a 
+                  href="https://nadialakzir.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#1A2B2F] underline hover:text-[#2C3E50] transition-colors duration-150 hover:border-b-2 hover:border-[#1A2B2F] font-medium"
+                >
+                  Découvrir mon parcours
+                </a>
               </motion.p>
-
-              {/* Qui suis-je? Link */}
-              <motion.div
-                className="pt-2 sm:pt-4"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-              >
-                <p className="text-sm sm:text-base text-[#2C3E50] mb-4 sm:mb-6">
-                  Envie de savoir qui est Nadia Lakzir ?{' '}
-                  <a 
-                    href={ABOUT_URL}
-                    className="text-[#1A2B2F] underline hover:text-[#1A2B2F] transition-colors duration-300 hover:border-b-2 hover:border-[#1A2B2F] font-medium"
-                  >
-                    Découvrir mon parcours
-                  </a>
-                </p>
-              </motion.div>
 
               {/* Mobile: Nadia Card */}
               <motion.div
@@ -325,11 +318,11 @@ const App: React.FC = () => {
                 transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
               >
                 {/* Nadia Card */}
-                <div className="bg-white border border-[#E6E0F0] rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-lg hover:border-[#1A2B2F] transition-all duration-300">
+                <div className="bg-white border border-[#E6E0F0] rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-lg hover:border-[#1A2B2F] transition-all duration-150">
                   {/* Nadia Portrait */}
                   <motion.img
                     src={NADIA_HERO_IMAGE}
-                    alt="Nadia Lakzir - Fondatrice de ELAN BUSINESS COMMUNITY (ELAN BC)"
+                    alt="Nadia Lakzir - Coach business mindset marketing vente"
                     className="w-full rounded-lg object-cover aspect-square mb-3"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
@@ -337,11 +330,8 @@ const App: React.FC = () => {
                   {/* Nadia Info */}
                   <div className="space-y-1">
                     <h3 className="text-2xl sm:text-3xl font-bold text-[#1A2B2F]">Nadia</h3>
-                    <p className="text-sm text-[#2C3E50] mb-1">
-                      Fondatrice de ELAN BUSINESS COMMUNITY
-                    </p>
                     <p className="text-sm text-[#2C3E50] mb-0">
-                      Coach business & Vente - Mindset
+                      Coach business mindset marketing vente
                     </p>
                   </div>
                 </div>
@@ -375,14 +365,14 @@ const App: React.FC = () => {
               >
                 <motion.button
                   onClick={scrollToForm}
-                  className="w-full px-6 sm:px-8 py-3 h-11 bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#2C3E50] hover:to-[#1A2B2F] hover:shadow-lg hover:shadow-[#1A2B2F]/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#1A2B2F] focus:ring-offset-2 focus:ring-offset-white"
+                  className="w-full px-6 sm:px-8 py-3 h-11 bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#2C3E50] hover:to-[#1A2B2F] hover:shadow-lg hover:shadow-[#1A2B2F]/40 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#1A2B2F] focus:ring-offset-2 focus:ring-offset-white"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   Rejoindre ELAN maintenant
                 </motion.button>
                 <motion.button
-                  className="w-full px-6 sm:px-8 py-3 h-11 border-2 border-[#1A2B2F] text-[#1A2B2F] bg-transparent text-sm sm:text-base font-semibold rounded-full hover:bg-gradient-to-r hover:from-[#1A2B2F] hover:to-[#2C3E50] hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#1A2B2F] focus:ring-offset-2 focus:ring-offset-white"
+                  className="w-full px-6 sm:px-8 py-3 h-11 border-2 border-[#1A2B2F] text-[#1A2B2F] bg-transparent text-sm sm:text-base font-semibold rounded-full hover:bg-gradient-to-r hover:from-[#1A2B2F] hover:to-[#2C3E50] hover:text-white transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#1A2B2F] focus:ring-offset-2 focus:ring-offset-white"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -416,7 +406,7 @@ const App: React.FC = () => {
                 <div className="space-y-1">
                   <h3 className="text-lg font-semibold text-[#1A2B2F]">Nadia Lakzir</h3>
                   <p className="text-sm text-[#2C3E50] mb-0">
-                    Fondatrice de ELAN BUSINESS COMMUNITY (ELAN BC) • Coach business & mindset
+                    Coach business mindset marketing vente
                   </p>
                 </div>
               </motion.div>
@@ -432,7 +422,7 @@ const App: React.FC = () => {
           >
               {/* Video - Web Style */}
             <motion.div
-              className="relative w-full aspect-video rounded-lg overflow-hidden border-2 border-[#B8D4E0] shadow-lg hover:border-[#1A2B2F] hover:shadow-xl transition-all duration-300"
+              className="relative w-full aspect-video rounded-lg overflow-hidden border-2 border-[#B8D4E0] shadow-lg hover:border-[#1A2B2F] hover:shadow-xl transition-all duration-150"
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3 }}
             >
@@ -450,14 +440,14 @@ const App: React.FC = () => {
             <div className="flex flex-col gap-3 w-full pt-4">
               <motion.button
                   onClick={scrollToForm}
-                  className="w-full px-6 py-3 h-11 bg-gradient-to-r from-[#1A2B2F] via-[#2C3E50] to-[#34495E] text-white text-sm font-semibold rounded-full hover:from-[#2C3E50] hover:via-[#1A2B2F] hover:to-[#34495E] hover:shadow-lg hover:shadow-[#1A2B2F]/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#1A2B2F] focus:ring-offset-2 focus:ring-offset-white"
+                  className="w-full px-6 py-3 h-11 bg-gradient-to-r from-[#1A2B2F] via-[#2C3E50] to-[#34495E] text-white text-sm font-semibold rounded-full hover:from-[#2C3E50] hover:via-[#1A2B2F] hover:to-[#34495E] hover:shadow-lg hover:shadow-[#1A2B2F]/40 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#1A2B2F] focus:ring-offset-2 focus:ring-offset-white"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Rejoindre ELAN BC maintenant
               </motion.button>
               <motion.button
-                  className="w-full px-6 py-3 h-11 border-2 border-[#1A2B2F] text-[#1A2B2F] bg-transparent text-sm font-semibold rounded-full hover:bg-gradient-to-r hover:from-[#1A2B2F] hover:to-[#2C3E50] hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#1A2B2F] focus:ring-offset-2 focus:ring-offset-white"
+                  className="w-full px-6 py-3 h-11 border-2 border-[#1A2B2F] text-[#1A2B2F] bg-transparent text-sm font-semibold rounded-full hover:bg-gradient-to-r hover:from-[#1A2B2F] hover:to-[#2C3E50] hover:text-white transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#1A2B2F] focus:ring-offset-2 focus:ring-offset-white"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -489,7 +479,7 @@ const App: React.FC = () => {
               📝 Rejoindre ELAN BUSINESS COMMUNITY (ELAN BC)
             </h2>
             <p className="text-sm sm:text-base text-[#2C3E50] mb-0">
-              Laisse tes informations et notre équipe te contacte pour t'orienter vers le meilleur parcours et pack.
+              Laisse tes informations et notre équipe te contacte pour t'orienter vers le meilleur parcours et plan.
             </p>
           </motion.div>
 
@@ -581,7 +571,7 @@ const App: React.FC = () => {
               />
             </motion.div>
 
-            {/* Pack Selection */}
+            {/* Plan Selection */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -589,7 +579,7 @@ const App: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
             >
               <label htmlFor="packChoice" className="block text-sm font-medium text-[#1A2B2F]">
-                Pack choisi
+                Plan choisi
               </label>
               <select
                 id="packChoice"
@@ -599,7 +589,7 @@ const App: React.FC = () => {
                 required
                 className="w-full mt-1 rounded-lg bg-white border border-[#E6E0F0] px-3 py-2 text-sm text-[#1A2B2F] focus:outline-none focus:ring-2 focus:ring-[#1A2B2F] focus:border-[#1A2B2F] transition-all"
               >
-                <option value="">Sélectionne un pack</option>
+                <option value="">Sélectionne un plan</option>
                 <option value="Mensuel – 390 DH / mois">Mensuel – 390 DH / mois</option>
                 <option value="Trimestre – 885 DH">Trimestre – 885 DH</option>
                 <option value="Semestre – 1650 DH">Semestre – 1650 DH</option>
@@ -611,7 +601,7 @@ const App: React.FC = () => {
             <motion.button
               type="submit"
               disabled={isSubmitting}
-              className="w-full mt-4 rounded-full bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] py-3 text-sm font-semibold text-white shadow-md hover:from-[#2C3E50] hover:to-[#1A2B2F] hover:shadow-lg hover:shadow-[#1A2B2F]/40 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-[#1A2B2F] focus:ring-offset-2 focus:ring-offset-white"
+              className="w-full mt-4 rounded-full bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] py-3 text-sm font-semibold text-white shadow-md hover:from-[#2C3E50] hover:to-[#1A2B2F] hover:shadow-lg hover:shadow-[#1A2B2F]/40 transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-[#1A2B2F] focus:ring-offset-2 focus:ring-offset-white"
               whileHover={isSubmitting ? {} : { scale: 1.02 }}
               whileTap={isSubmitting ? {} : { scale: 0.98 }}
             >
@@ -733,7 +723,7 @@ const App: React.FC = () => {
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-3 bg-[#25D366] text-white px-6 py-4 rounded-full font-semibold text-base hover:bg-[#20BA5A] shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full flex items-center justify-center gap-3 bg-[#25D366] text-white px-6 py-4 rounded-full font-semibold text-base hover:bg-[#20BA5A] shadow-lg hover:shadow-xl transition-all duration-150"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -813,7 +803,7 @@ const App: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <p className="text-sm sm:text-base md:text-lg text-[#2C3E50] leading-relaxed mb-4 sm:mb-5">
-                Arrête de perdre ton temps à chercher partout : tout ce dont tu as besoin pour lancer, développer et scaler ton business est réuni au même endroit.
+                Arrête de <span className="font-bold text-[#1A2B2F]">perdre ton temps</span> à chercher partout : tout ce dont tu as besoin pour <span className="font-bold text-[#1A2B2F]">lancer</span>, <span className="font-bold text-[#1A2B2F]">développer</span> et <span className="font-bold text-[#1A2B2F]">scaler</span> ton business est réuni au même endroit.
               </p>
               <p className="text-sm sm:text-base md:text-lg text-[#2C3E50] leading-relaxed mb-4 sm:mb-5">
                 Avec ELAN BC, tu suis une méthode claire, progressive et structurée, qui t'oriente à chaque étape pour apprendre efficacement et appliquer immédiatement, sans te disperser.
@@ -857,15 +847,8 @@ const App: React.FC = () => {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
       >
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${EVENT_BACKGROUND})`,
-          }}
-        />
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-white/85 backdrop-blur-sm" />
+        {/* Background */}
+        <div className="absolute inset-0 bg-white" />
         
         <div className="relative z-10 max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto">
           <motion.h2
@@ -881,16 +864,19 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {/* Card 1 */}
             <motion.div
-              className="bg-white rounded-xl p-4 sm:p-5 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-lg"
+              className="group bg-white rounded-xl p-4 sm:p-5 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-xl transition-all duration-150 hover:bg-gradient-to-br hover:from-white hover:to-[#F5F5F0]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              whileHover={{ translateY: -4, borderColor: "#1A2B2F", boxShadow: "0 20px 25px -5px rgba(107, 143, 163, 0.15)" }}
+              whileHover={{ translateY: -6, borderColor: "#1A2B2F", boxShadow: "0 25px 50px -12px rgba(26, 43, 47, 0.2)", scale: 1.02 }}
             >
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6">
+              <motion.h3 
+                className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                whileHover={{ scale: 1.05 }}
+              >
                 Une plateforme complète de formations
-              </h3>
+              </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
@@ -905,16 +891,19 @@ const App: React.FC = () => {
 
             {/* Card 2 */}
             <motion.div
-              className="bg-white rounded-xl p-4 sm:p-5 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-lg"
+              className="group bg-white rounded-xl p-4 sm:p-5 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-xl transition-all duration-150 hover:bg-gradient-to-br hover:from-white hover:to-[#F5F5F0]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              whileHover={{ translateY: -4, borderColor: "#1A2B2F", boxShadow: "0 20px 25px -5px rgba(107, 143, 163, 0.15)" }}
+              whileHover={{ translateY: -6, borderColor: "#1A2B2F", boxShadow: "0 25px 50px -12px rgba(26, 43, 47, 0.2)", scale: 1.02 }}
             >
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6">
+              <motion.h3 
+                className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                whileHover={{ scale: 1.05 }}
+              >
                 Un accompagnement et suivi au quotidien
-              </h3>
+              </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
@@ -933,16 +922,19 @@ const App: React.FC = () => {
 
             {/* Card 3 */}
             <motion.div
-              className="bg-white rounded-xl p-4 sm:p-5 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-lg"
+              className="group bg-white rounded-xl p-4 sm:p-5 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-xl transition-all duration-150 hover:bg-gradient-to-br hover:from-white hover:to-[#F5F5F0]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ translateY: -4, borderColor: "#1A2B2F", boxShadow: "0 20px 25px -5px rgba(107, 143, 163, 0.15)" }}
+              whileHover={{ translateY: -6, borderColor: "#1A2B2F", boxShadow: "0 25px 50px -12px rgba(26, 43, 47, 0.2)", scale: 1.02 }}
             >
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6">
+              <motion.h3 
+                className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                whileHover={{ scale: 1.05 }}
+              >
                 Des résultats concrets
-              </h3>
+              </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
@@ -1018,21 +1010,27 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {/* Starter Card */}
             <motion.div
-              className="bg-white rounded-xl p-4 sm:p-5 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-lg"
+              className="group bg-white rounded-xl p-4 sm:p-5 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-xl transition-all duration-150 hover:bg-gradient-to-br hover:from-white hover:to-[#F5F5F0]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ translateY: -4, borderColor: "#1A2B2F", boxShadow: "0 20px 25px -5px rgba(107, 143, 163, 0.15)" }}
+              whileHover={{ translateY: -6, borderColor: "#1A2B2F", boxShadow: "0 25px 50px -12px rgba(26, 43, 47, 0.2)", scale: 1.02 }}
             >
               <div className="mb-4 sm:mb-6">
-                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#F5F5F0] text-[#1A2B2F] text-xs sm:text-sm uppercase tracking-wider rounded-full border border-[#E6E0F0]">
+                <motion.span 
+                  className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#F5F5F0] text-[#1A2B2F] text-xs sm:text-sm uppercase tracking-wider rounded-full border border-[#E6E0F0] transition-all duration-150 group-hover:bg-[#1A2B2F] group-hover:text-white group-hover:border-[#2C3E50] inline-block"
+                  whileHover={{ scale: 1.05 }}
+                >
                   Starter
-                </span>
+                </motion.span>
               </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6">
+              <motion.h3 
+                className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                whileHover={{ scale: 1.05 }}
+              >
                 Ceux qui démarrent
-              </h3>
+              </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
@@ -1055,21 +1053,27 @@ const App: React.FC = () => {
 
             {/* Builder Card */}
             <motion.div
-              className="bg-white rounded-xl p-4 sm:p-5 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-lg"
+              className="group bg-white rounded-xl p-4 sm:p-5 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-xl transition-all duration-150 hover:bg-gradient-to-br hover:from-white hover:to-[#F5F5F0]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              whileHover={{ translateY: -4, borderColor: "#1A2B2F", boxShadow: "0 20px 25px -5px rgba(107, 143, 163, 0.15)" }}
+              whileHover={{ translateY: -6, borderColor: "#1A2B2F", boxShadow: "0 25px 50px -12px rgba(26, 43, 47, 0.2)", scale: 1.02 }}
             >
               <div className="mb-4 sm:mb-6">
-                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#F5F5F0] text-[#1A2B2F] text-xs sm:text-sm uppercase tracking-wider rounded-full border border-[#E6E0F0]">
+                <motion.span 
+                  className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#F5F5F0] text-[#1A2B2F] text-xs sm:text-sm uppercase tracking-wider rounded-full border border-[#E6E0F0] transition-all duration-150 group-hover:bg-[#1A2B2F] group-hover:text-white group-hover:border-[#2C3E50] inline-block"
+                  whileHover={{ scale: 1.05 }}
+                >
                   Builder
-                </span>
+                </motion.span>
               </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6">
+              <motion.h3 
+                className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                whileHover={{ scale: 1.05 }}
+              >
                 Entrepreneurs déjà lancés
-              </h3>
+              </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
@@ -1092,21 +1096,27 @@ const App: React.FC = () => {
 
             {/* Scaler Card */}
             <motion.div
-              className="bg-white rounded-xl p-4 sm:p-5 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-lg"
+              className="group bg-white rounded-xl p-4 sm:p-5 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-xl transition-all duration-150 hover:bg-gradient-to-br hover:from-white hover:to-[#F5F5F0]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              whileHover={{ translateY: -4, borderColor: "#9E9FCC", boxShadow: "0 20px 25px -5px rgba(158, 159, 204, 0.15)" }}
+              whileHover={{ translateY: -6, borderColor: "#1A2B2F", boxShadow: "0 25px 50px -12px rgba(26, 43, 47, 0.2)", scale: 1.02 }}
             >
               <div className="mb-4 sm:mb-6">
-                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#F5F5F0] text-[#1A2B2F] text-xs sm:text-sm uppercase tracking-wider rounded-full border border-[#E6E0F0]">
+                <motion.span 
+                  className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#F5F5F0] text-[#1A2B2F] text-xs sm:text-sm uppercase tracking-wider rounded-full border border-[#E6E0F0] transition-all duration-150 group-hover:bg-[#1A2B2F] group-hover:text-white group-hover:border-[#2C3E50] inline-block"
+                  whileHover={{ scale: 1.05 }}
+                >
                   Scaler
-                </span>
+                </motion.span>
               </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6">
+              <motion.h3 
+                className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                whileHover={{ scale: 1.05 }}
+              >
                 Entrepreneurs établis
-              </h3>
+              </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
@@ -1149,23 +1159,33 @@ const App: React.FC = () => {
             {/* Mensuel */}
             <motion.div
               onClick={scrollToForm}
-              className="bg-white rounded-lg p-5 sm:p-6 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-lg w-full cursor-pointer flex flex-col"
+              className="group bg-white rounded-lg p-5 sm:p-6 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-xl w-full cursor-pointer flex flex-col transition-all duration-150 hover:bg-gradient-to-br hover:from-white hover:to-[#F5F5F0]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ translateY: -4, borderColor: "#1A2B2F", boxShadow: "0 20px 25px -5px rgba(107, 143, 163, 0.15)" }}
+              whileHover={{ translateY: -8, borderColor: "#1A2B2F", boxShadow: "0 25px 50px -12px rgba(26, 43, 47, 0.25)" }}
             >
-              <h3 className="text-xl sm:text-2xl font-semibold text-[#1A2B2F] mb-3 sm:mb-4">Mensuel</h3>
+              <motion.h3 
+                className="text-xl sm:text-2xl font-semibold text-[#1A2B2F] mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                whileHover={{ scale: 1.05 }}
+              >
+                Mensuel
+              </motion.h3>
               <div className="mb-4 sm:mb-6">
-                <span className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] bg-clip-text text-transparent">390 DH</span>
-                <span className="text-sm sm:text-base text-[#2C3E50]"> / mois</span>
+                <motion.span 
+                  className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] bg-clip-text text-transparent inline-block transition-all duration-150 group-hover:from-[#2C3E50] group-hover:to-[#34495E]"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  390 DH
+                </motion.span>
+                <span className="text-sm sm:text-base text-[#2C3E50] transition-colors duration-150 group-hover:text-[#34495E]"> / mois</span>
               </div>
               <div className="flex-1"></div>
               <motion.button
                 onClick={scrollToForm}
-                className="w-full px-4 sm:px-6 py-3 h-11 bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#2C3E50] hover:to-[#1A2B2F] hover:shadow-lg hover:shadow-[#1A2B2F]/40 transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
+                className="w-full px-4 sm:px-6 py-3 h-11 bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#2C3E50] hover:to-[#34495E] hover:shadow-lg hover:shadow-[#1A2B2F]/50 transition-all duration-150"
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(26, 43, 47, 0.4)" }}
                 whileTap={{ scale: 0.98 }}
               >
                 Choisir ce plan
@@ -1175,26 +1195,40 @@ const App: React.FC = () => {
             {/* Trimestre - Highlighted */}
             <motion.div
               onClick={scrollToForm}
-              className="bg-white rounded-lg p-5 sm:p-6 md:p-8 border-2 border-[#1A2B2F] shadow-lg shadow-[#1A2B2F]/20 relative w-full cursor-pointer flex flex-col"
+              className="group bg-white rounded-lg p-5 sm:p-6 md:p-8 border-2 border-[#1A2B2F] shadow-lg shadow-[#1A2B2F]/20 relative w-full cursor-pointer flex flex-col transition-all duration-150 hover:bg-gradient-to-br hover:from-white hover:to-[#F5F5F0] hover:border-[#2C3E50]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              whileHover={{ translateY: -4, boxShadow: "0 20px 25px -5px rgba(107, 143, 163, 0.2)" }}
+              whileHover={{ translateY: -8, boxShadow: "0 25px 50px -12px rgba(26, 43, 47, 0.35)", scale: 1.02 }}
             >
-              <div className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2">
-                <span className="px-3 sm:px-4 py-1 bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] text-white text-[10px] sm:text-xs uppercase rounded-full">Populaire</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-[#1A2B2F] mb-3 sm:mb-4">Trimestre</h3>
+              <motion.div 
+                className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2"
+                whileHover={{ scale: 1.1 }}
+              >
+                <span className="px-3 sm:px-4 py-1 bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] text-white text-[10px] sm:text-xs uppercase rounded-full transition-all duration-150 group-hover:from-[#2C3E50] group-hover:to-[#34495E] group-hover:shadow-lg">Populaire</span>
+              </motion.div>
+              <motion.h3 
+                className="text-xl sm:text-2xl font-semibold text-[#1A2B2F] mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                whileHover={{ scale: 1.05 }}
+              >
+                Trimestre
+              </motion.h3>
               <div className="mb-4 sm:mb-6">
-                <span className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] bg-clip-text text-transparent">885 DH</span>
+                <motion.span 
+                  className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] bg-clip-text text-transparent inline-block transition-all duration-150 group-hover:from-[#2C3E50] group-hover:to-[#34495E]"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  885 DH
+                </motion.span>
+                <span className="text-sm sm:text-base font-semibold text-[#1A2B2F] ml-2">live</span>
               </div>
-              <p className="text-sm sm:text-base text-[#2C3E50] mb-3 sm:mb-4 min-h-[3rem]">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
+              <p className="text-sm sm:text-base text-[#2C3E50] mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-[#34495E]">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
               <div className="flex-1"></div>
               <motion.button
                 onClick={scrollToForm}
-                className="w-full px-4 sm:px-6 py-3 h-11 bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#2C3E50] hover:to-[#1A2B2F] hover:shadow-lg hover:shadow-[#1A2B2F]/40 transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
+                className="w-full px-4 sm:px-6 py-3 h-11 bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#2C3E50] hover:to-[#34495E] hover:shadow-lg hover:shadow-[#1A2B2F]/50 transition-all duration-150"
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(26, 43, 47, 0.4)" }}
                 whileTap={{ scale: 0.98 }}
               >
                 Choisir ce plan
@@ -1204,23 +1238,34 @@ const App: React.FC = () => {
             {/* Semestre */}
             <motion.div
               onClick={scrollToForm}
-              className="bg-white rounded-lg p-5 sm:p-6 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-lg w-full cursor-pointer flex flex-col"
+              className="group bg-white rounded-lg p-5 sm:p-6 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-xl w-full cursor-pointer flex flex-col transition-all duration-150 hover:bg-gradient-to-br hover:from-white hover:to-[#F5F5F0]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              whileHover={{ translateY: -4, borderColor: "#1A2B2F", boxShadow: "0 20px 25px -5px rgba(107, 143, 163, 0.15)" }}
+              whileHover={{ translateY: -8, borderColor: "#1A2B2F", boxShadow: "0 25px 50px -12px rgba(26, 43, 47, 0.25)" }}
             >
-              <h3 className="text-xl sm:text-2xl font-semibold text-[#1A2B2F] mb-3 sm:mb-4">Semestre</h3>
+              <motion.h3 
+                className="text-xl sm:text-2xl font-semibold text-[#1A2B2F] mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                whileHover={{ scale: 1.05 }}
+              >
+                Semestre
+              </motion.h3>
               <div className="mb-4 sm:mb-6">
-                <span className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#2C3E50] to-[#1A2B2F] bg-clip-text text-transparent">1650 DH</span>
+                <motion.span 
+                  className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#2C3E50] to-[#1A2B2F] bg-clip-text text-transparent inline-block transition-all duration-150 group-hover:from-[#1A2B2F] group-hover:to-[#34495E]"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  1650 DH
+                </motion.span>
+                <span className="text-sm sm:text-base font-semibold text-[#1A2B2F] ml-2">live</span>
               </div>
-              <p className="text-sm sm:text-base text-[#2C3E50] mb-3 sm:mb-4 min-h-[3rem]">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
+              <p className="text-sm sm:text-base text-[#2C3E50] mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-[#34495E]">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
               <div className="flex-1"></div>
               <motion.button
                 onClick={scrollToForm}
-                className="w-full px-4 sm:px-6 py-3 h-11 bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#2C3E50] hover:to-[#1A2B2F] hover:shadow-lg hover:shadow-[#1A2B2F]/40 transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
+                className="w-full px-4 sm:px-6 py-3 h-11 bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#2C3E50] hover:to-[#34495E] hover:shadow-lg hover:shadow-[#1A2B2F]/50 transition-all duration-150"
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(26, 43, 47, 0.4)" }}
                 whileTap={{ scale: 0.98 }}
               >
                 Choisir ce plan
@@ -1230,24 +1275,34 @@ const App: React.FC = () => {
             {/* Année */}
             <motion.div
               onClick={scrollToForm}
-              className="bg-white rounded-lg p-5 sm:p-6 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-lg w-full cursor-pointer flex flex-col"
+              className="group bg-white rounded-lg p-5 sm:p-6 md:p-8 border border-[#E6E0F0] shadow-md hover:shadow-xl w-full cursor-pointer flex flex-col transition-all duration-150 hover:bg-gradient-to-br hover:from-white hover:to-[#F5F5F0]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              whileHover={{ translateY: -4, borderColor: "#1A2B2F", boxShadow: "0 20px 25px -5px rgba(107, 143, 163, 0.15)" }}
+              whileHover={{ translateY: -8, borderColor: "#1A2B2F", boxShadow: "0 25px 50px -12px rgba(26, 43, 47, 0.25)" }}
             >
-              <h3 className="text-xl sm:text-2xl font-semibold text-[#1A2B2F] mb-3 sm:mb-4">Année</h3>
+              <motion.h3 
+                className="text-xl sm:text-2xl font-semibold text-[#1A2B2F] mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                whileHover={{ scale: 1.05 }}
+              >
+                Année
+              </motion.h3>
               <div className="mb-4 sm:mb-6">
-                <span className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#2C3E50] to-[#1A2B2F] bg-clip-text text-transparent">3000 DH</span>
+                <motion.span 
+                  className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#2C3E50] to-[#1A2B2F] bg-clip-text text-transparent inline-block transition-all duration-150 group-hover:from-[#1A2B2F] group-hover:to-[#34495E]"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  3000 DH
+                </motion.span>
               </div>
-              <p className="text-sm sm:text-base text-[#2C3E50] mb-3 sm:mb-4 min-h-[3rem]">Accès complet à la communauté et aux formations</p>
-              <p className="text-sm sm:text-base text-[#1A2B2F] font-semibold mb-3 sm:mb-4">45 min live coaching</p>
+              <p className="text-sm sm:text-base text-[#2C3E50] mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-[#34495E]">Accès complet à la communauté et aux formations</p>
+              <p className="text-sm sm:text-base text-[#1A2B2F] font-semibold mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-[#2C3E50]">45 min de coaching individuel (Pour diagnostic de ton projet)</p>
               <div className="flex-1"></div>
               <motion.button
                 onClick={scrollToForm}
-                className="w-full px-4 sm:px-6 py-3 h-11 bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#2C3E50] hover:to-[#1A2B2F] hover:shadow-lg hover:shadow-[#1A2B2F]/40 transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
+                className="w-full px-4 sm:px-6 py-3 h-11 bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#2C3E50] hover:to-[#34495E] hover:shadow-lg hover:shadow-[#1A2B2F]/50 transition-all duration-150"
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(26, 43, 47, 0.4)" }}
                 whileTap={{ scale: 0.98 }}
               >
                 Choisir ce plan
@@ -1359,7 +1414,7 @@ const App: React.FC = () => {
           </motion.h2>
           <motion.button
             onClick={scrollToForm}
-            className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 h-12 sm:h-auto bg-gradient-to-r from-[#1A2B2F] via-[#2C3E50] to-[#34495E] text-white text-base sm:text-lg font-semibold rounded-full hover:from-[#2C3E50] hover:via-[#1A2B2F] hover:to-[#34495E] hover:shadow-xl hover:shadow-[#1A2B2F]/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#1A2B2F] focus:ring-offset-2 focus:ring-offset-white"
+            className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 h-12 sm:h-auto bg-gradient-to-r from-[#1A2B2F] via-[#2C3E50] to-[#34495E] text-white text-base sm:text-lg font-semibold rounded-full hover:from-[#2C3E50] hover:via-[#1A2B2F] hover:to-[#34495E] hover:shadow-xl hover:shadow-[#1A2B2F]/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#1A2B2F] focus:ring-offset-2 focus:ring-offset-white"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             initial={{ opacity: 0, y: 20 }}
@@ -1376,13 +1431,13 @@ const App: React.FC = () => {
       <footer className="py-8 sm:py-12 px-4 sm:px-5 bg-[#F5F5F0] border-t border-[#E6E0F0] overflow-hidden">
         <div className="max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto">
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8">
-            <a href="#" className="text-sm sm:text-base text-[#2C3E50] hover:text-[#1A2B2F] transition-colors duration-300">
+            <a href="#" className="text-sm sm:text-base text-[#2C3E50] hover:text-[#1A2B2F] transition-colors duration-150">
               Mentions légales
             </a>
-            <a href="#" className="text-sm sm:text-base text-[#2C3E50] hover:text-[#1A2B2F] transition-colors duration-300">
+            <a href="#" className="text-sm sm:text-base text-[#2C3E50] hover:text-[#1A2B2F] transition-colors duration-150">
               Conditions
             </a>
-            <a href="#" className="text-sm sm:text-base text-[#2C3E50] hover:text-[#1A2B2F] transition-colors duration-300">
+            <a href="#" className="text-sm sm:text-base text-[#2C3E50] hover:text-[#1A2B2F] transition-colors duration-150">
               Contact
             </a>
           </div>
