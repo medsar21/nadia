@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 // Google Apps Script endpoint
 // GOOGLE_SCRIPT_URL points to the Apps Script Web App that writes into our Google Sheet.
 // Make sure the script accepts POST, is deployed as "Anyone", and returns JSON: { status: "success" | "error", message?: string }
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyp4hpmEnS_r3BFVNVo1Tegjc1qUgJoSqKjkj1tCxLp4BSF4iWiNBoJKUylCeMdiAv9IQ/exec";
-
-// Constants for images and links
-const ABOUT_URL = "/qui-suis-je"; // URL for "Qui suis-je?" page
 
 // Helper function to get correct image path for Vercel
 // Vercel serves files from public/ at the root, so we use absolute paths
@@ -19,7 +16,6 @@ const getImagePath = (filename: string): string => {
 };
 
 const NADIA_HERO_IMAGE = getImagePath("MEITU_20250501_145005910.png");
-const EVENT_BACKGROUND = getImagePath("A7V04780.jpg"); // Event/Conference background image
 const WHY_ELAN_IMAGE = getImagePath("A7V04780.jpg"); // Why choose ELAN BC section image
 const NEW_IMAGE_1 = getImagePath("cover.png"); // Results section image
 const NEW_IMAGE_2 = getImagePath("MEITU_20250501_145005910.png"); // Parcours section image
@@ -39,6 +35,42 @@ const App: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
+
+  // Load Instagram embed script
+  useEffect(() => {
+    // Check if script already exists
+    let script = document.querySelector('script[src="//www.instagram.com/embed.js"]') as HTMLScriptElement;
+    
+    if (!script) {
+      script = document.createElement('script');
+      script.src = '//www.instagram.com/embed.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    const processEmbeds = () => {
+      // @ts-ignore
+      if (window.instgrm) {
+        // @ts-ignore
+        window.instgrm.Embeds.process();
+      }
+    };
+
+    if (script.onload) {
+      script.onload = processEmbeds;
+    } else {
+      script.addEventListener('load', processEmbeds);
+    }
+
+    // Process embeds after a short delay to ensure script is loaded
+    const timeoutId = setTimeout(() => {
+      processEmbeds();
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
   
   // WhatsApp link
   const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=212606212122&text&type=phone_number&app_absent=0";
@@ -1396,168 +1428,78 @@ const App: React.FC = () => {
             💬 Témoignages Instagram
           </motion.h2>
 
+          <p className="text-center text-sm sm:text-base text-[#2C3E50] mb-6 sm:mb-8">
+            Découvre les témoignages authentiques de notre communauté sur Instagram
+          </p>
+          
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            {/* Testimonial 1 */}
+            {/* Instagram Embed 1 - Remplacez l'URL par un vrai post Instagram */}
             <motion.div
-              className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-150 border border-white/50"
+              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-150 border border-white/50"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
               whileHover={{ translateY: -5, scale: 1.02 }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#E3F2FD] to-[#FCE4EC] flex items-center justify-center font-semibold text-[#1A2B2F]">
-                  👤
-                </div>
-                <div>
-                  <p className="font-semibold text-[#1A2B2F] text-sm">@entrepreneur1</p>
-                  <p className="text-xs text-[#2C3E50]">Instagram</p>
-                </div>
-              </div>
-              <p className="text-sm sm:text-base text-[#2C3E50] leading-relaxed mb-3">
-                "ELAN BC a transformé ma façon de voir mon business. La méthode est claire et les résultats sont là ! 🙌"
-              </p>
-              <div className="flex items-center gap-2 text-xs text-[#2C3E50]">
-                <span>❤️ 245</span>
-                <span>💬 12</span>
-              </div>
+              <blockquote 
+                className="instagram-media" 
+                data-instgrm-permalink="https://www.instagram.com/lakzirnadia/p/REMPLACEZ_PAR_URL_REEL/"
+                data-instgrm-version="14"
+                style={{ background: '#FFF', border: '0', borderRadius: '3px', boxShadow: '0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)', margin: '1px', maxWidth: '540px', minWidth: '326px', padding: '0', width: '99.375%' }}
+              >
+              </blockquote>
             </motion.div>
 
-            {/* Testimonial 2 */}
+            {/* Instagram Embed 2 */}
             <motion.div
-              className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-150 border border-white/50"
+              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-150 border border-white/50"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
               whileHover={{ translateY: -5, scale: 1.02 }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FCE4EC] to-[#E3F2FD] flex items-center justify-center font-semibold text-[#1A2B2F]">
-                  👤
-                </div>
-                <div>
-                  <p className="font-semibold text-[#1A2B2F] text-sm">@business_woman</p>
-                  <p className="text-xs text-[#2C3E50]">Instagram</p>
-                </div>
-              </div>
-              <p className="text-sm sm:text-base text-[#2C3E50] leading-relaxed mb-3">
-                "Grâce à ELAN BC, j'ai enfin structuré mon projet. La communauté est incroyable et Nadia est une coach exceptionnelle ! ✨"
-              </p>
-              <div className="flex items-center gap-2 text-xs text-[#2C3E50]">
-                <span>❤️ 189</span>
-                <span>💬 8</span>
-              </div>
+              <blockquote 
+                className="instagram-media" 
+                data-instgrm-permalink="https://www.instagram.com/lakzirnadia/p/REMPLACEZ_PAR_URL_REEL/"
+                data-instgrm-version="14"
+                style={{ background: '#FFF', border: '0', borderRadius: '3px', boxShadow: '0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)', margin: '1px', maxWidth: '540px', minWidth: '326px', padding: '0', width: '99.375%' }}
+              >
+              </blockquote>
             </motion.div>
 
-            {/* Testimonial 3 */}
+            {/* Instagram Embed 3 */}
             <motion.div
-              className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-150 border border-white/50"
+              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-150 border border-white/50"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
               whileHover={{ translateY: -5, scale: 1.02 }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#BBDEFB] to-[#F8BBD0] flex items-center justify-center font-semibold text-[#1A2B2F]">
-                  👤
-                </div>
-                <div>
-                  <p className="font-semibold text-[#1A2B2F] text-sm">@startup_maroc</p>
-                  <p className="text-xs text-[#2C3E50]">Instagram</p>
-                </div>
-              </div>
-              <p className="text-sm sm:text-base text-[#2C3E50] leading-relaxed mb-3">
-                "Les formations sont top et l'accompagnement personnalisé fait toute la différence. Je recommande à 100% ! 🚀"
-              </p>
-              <div className="flex items-center gap-2 text-xs text-[#2C3E50]">
-                <span>❤️ 312</span>
-                <span>💬 15</span>
-              </div>
+              <blockquote 
+                className="instagram-media" 
+                data-instgrm-permalink="https://www.instagram.com/lakzirnadia/p/REMPLACEZ_PAR_URL_REEL/"
+                data-instgrm-version="14"
+                style={{ background: '#FFF', border: '0', borderRadius: '3px', boxShadow: '0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)', margin: '1px', maxWidth: '540px', minWidth: '326px', padding: '0', width: '99.375%' }}
+              >
+              </blockquote>
             </motion.div>
-
-            {/* Testimonial 4 */}
-            <motion.div
-              className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-150 border border-white/50"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              whileHover={{ translateY: -5, scale: 1.02 }}
+          </div>
+          
+          <div className="mt-6 sm:mt-8 text-center">
+            <a 
+              href="https://www.instagram.com/lakzirnadia/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#E4405F] to-[#C13584] text-white font-semibold rounded-full hover:from-[#C13584] hover:to-[#E4405F] transition-all duration-150 shadow-lg hover:shadow-xl"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#E3F2FD] to-[#FCE4EC] flex items-center justify-center font-semibold text-[#1A2B2F]">
-                  👤
-                </div>
-                <div>
-                  <p className="font-semibold text-[#1A2B2F] text-sm">@coach_business</p>
-                  <p className="text-xs text-[#2C3E50]">Instagram</p>
-                </div>
-              </div>
-              <p className="text-sm sm:text-base text-[#2C3E50] leading-relaxed mb-3">
-                "ELAN BC m'a aidé à passer de l'idée à la réalité. La méthode est progressive et vraiment efficace ! 💪"
-              </p>
-              <div className="flex items-center gap-2 text-xs text-[#2C3E50]">
-                <span>❤️ 156</span>
-                <span>💬 6</span>
-              </div>
-            </motion.div>
-
-            {/* Testimonial 5 */}
-            <motion.div
-              className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-150 border border-white/50"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              whileHover={{ translateY: -5, scale: 1.02 }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FCE4EC] to-[#BBDEFB] flex items-center justify-center font-semibold text-[#1A2B2F]">
-                  👤
-                </div>
-                <div>
-                  <p className="font-semibold text-[#1A2B2F] text-sm">@entrepreneuse_ma</p>
-                  <p className="text-xs text-[#2C3E50]">Instagram</p>
-                </div>
-              </div>
-              <p className="text-sm sm:text-base text-[#2C3E50] leading-relaxed mb-3">
-                "La communauté ELAN BC est une vraie source de motivation. On s'entraide et on grandit ensemble ! 🌟"
-              </p>
-              <div className="flex items-center gap-2 text-xs text-[#2C3E50]">
-                <span>❤️ 278</span>
-                <span>💬 20</span>
-              </div>
-            </motion.div>
-
-            {/* Testimonial 6 */}
-            <motion.div
-              className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-150 border border-white/50"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              whileHover={{ translateY: -5, scale: 1.02 }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#BBDEFB] to-[#F8BBD0] flex items-center justify-center font-semibold text-[#1A2B2F]">
-                  👤
-                </div>
-                <div>
-                  <p className="font-semibold text-[#1A2B2F] text-sm">@business_growth</p>
-                  <p className="text-xs text-[#2C3E50]">Instagram</p>
-                </div>
-              </div>
-              <p className="text-sm sm:text-base text-[#2C3E50] leading-relaxed mb-3">
-                "Les workshops sont incroyables et les sessions live m'ont beaucoup aidé. Merci ELAN BC ! 🎯"
-              </p>
-              <div className="flex items-center gap-2 text-xs text-[#2C3E50]">
-                <span>❤️ 201</span>
-                <span>💬 9</span>
-              </div>
-            </motion.div>
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              Voir plus sur Instagram
+            </a>
           </div>
         </div>
       </motion.section>
