@@ -9,17 +9,6 @@
       "source": "/((?!.*\\.(jpg|jpeg|png|gif|svg|webp|JPG|JPEG|PNG|css|js|ico|woff|woff2|ttf|eot)).*)",
       "destination": "/index.html"
     }
-  ],
-  "headers": [
-    {
-      "source": "/:path*.(jpg|jpeg|png|gif|svg|webp|JPG|JPEG|PNG)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    }
   ]
 }
 
