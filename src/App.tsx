@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 // Google Apps Script endpoint
@@ -20,6 +20,17 @@ const NEW_IMAGE_1 = getImagePath("cover.png"); // Results section image
 const NEW_IMAGE_2 = getImagePath("MEITU_20250501_145005910.png"); // Parcours section image
 const NEW_IMAGE_3 = getImagePath("A7V03753.JPG"); // Community section image
 
+// Testimonials images from Temoi folder
+const TESTIMONIAL_1 = getImagePath("Temoi/1.png");
+const TESTIMONIAL_2 = getImagePath("Temoi/2 (1).png");
+const TESTIMONIAL_3 = getImagePath("Temoi/3.png");
+const TESTIMONIAL_4 = getImagePath("Temoi/5.png");
+const TESTIMONIAL_5 = getImagePath("Temoi/6.png");
+const TESTIMONIAL_6 = getImagePath("Temoi/8.png");
+const TESTIMONIAL_7 = getImagePath("Temoi/9.png");
+const TESTIMONIAL_8 = getImagePath("Temoi/25.png");
+const TESTIMONIAL_9 = getImagePath("Temoi/27.png");
+
 const App: React.FC = () => {
   // Form state
   const [formData, setFormData] = useState({
@@ -34,28 +45,6 @@ const App: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
 
-  // Load Instagram embed script
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = '//www.instagram.com/embed.js';
-    script.async = true;
-    script.onload = () => {
-      // @ts-ignore
-      if (window.instgrm) {
-        // @ts-ignore
-        window.instgrm.Embeds.process();
-      }
-    };
-    document.body.appendChild(script);
-
-    return () => {
-      // Cleanup
-      const existingScript = document.querySelector('script[src="//www.instagram.com/embed.js"]');
-      if (existingScript) {
-        document.body.removeChild(existingScript);
-      }
-    };
-  }, []);
   
   // WhatsApp link
   const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=212606212122&text&type=phone_number&app_absent=0";
@@ -232,7 +221,7 @@ const App: React.FC = () => {
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             className="absolute top-1/4 -left-1/4 w-96 h-96 rounded-full blur-3xl opacity-15"
-            style={{ background: '#A58E6E' }}
+            style={{ background: '#E8B4A8' }}
             animate={{
               scale: [1, 1.2, 1],
               x: [0, 50, 0],
@@ -246,7 +235,7 @@ const App: React.FC = () => {
           />
           <motion.div
             className="absolute top-3/4 right-1/4 w-80 h-80 rounded-full blur-3xl opacity-12"
-            style={{ background: '#A58E6E' }}
+            style={{ background: '#E8B4A8' }}
             animate={{
               scale: [1, 1.3, 1],
               x: [0, -40, 0],
@@ -260,7 +249,7 @@ const App: React.FC = () => {
           />
           <motion.div
             className="absolute bottom-1/4 left-1/3 w-72 h-72 rounded-full blur-3xl opacity-12"
-            style={{ background: '#F3EBDB' }}
+            style={{ background: '#F4F4F2' }}
             animate={{
               scale: [1, 1.1, 1],
               x: [0, 30, 0],
@@ -274,7 +263,7 @@ const App: React.FC = () => {
           />
           <motion.div
             className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full blur-3xl opacity-10"
-            style={{ background: '#000000' }}
+            style={{ background: '#151313' }}
             animate={{
               scale: [1, 1.15, 1],
               x: [0, -30, 0],
@@ -288,7 +277,7 @@ const App: React.FC = () => {
           />
           <motion.div
             className="absolute bottom-1/3 right-1/4 w-56 h-56 rounded-full blur-3xl opacity-8"
-            style={{ background: '#464B51' }}
+            style={{ background: '#302D2C' }}
             animate={{
               scale: [1, 1.2, 1],
               x: [0, 20, 0],
@@ -336,7 +325,7 @@ const App: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               >
-                <span className="bg-gradient-to-r from-luxe-cream to-luxe-taupe bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-luxe-cream to-luxe-roseGold bg-clip-text text-transparent">
                 Business clair, actions concrètes, résultats assurés.
                 </span>
               </motion.p>
@@ -358,7 +347,7 @@ const App: React.FC = () => {
                     e.preventDefault();
                     scrollToBenefits();
                   }}
-                  className="text-luxe-cream underline hover:text-luxe-taupe transition-colors duration-150 hover:border-b-2 hover:border-luxe-taupe font-medium cursor-pointer"
+                  className="text-luxe-cream underline hover:text-luxe-roseGold transition-colors duration-150 hover:border-b-2 hover:border-luxe-roseGold font-medium cursor-pointer"
                 >
                   👤 Découvrir mon parcours
                 </a>
@@ -372,7 +361,7 @@ const App: React.FC = () => {
                 transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
               >
                 {/* Nadia Card */}
-                <div className="bg-card-luxe border border-luxe-charcoal/25 rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-lg hover:border-luxe-taupe/50 transition-all duration-150">
+                <div className="bg-card-luxe border border-luxe-charcoal/25 rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-lg hover:border-luxe-roseGold/50 transition-all duration-150">
                   {/* Nadia Portrait */}
                   <motion.img
                     src={NADIA_HERO_IMAGE}
@@ -445,7 +434,7 @@ const App: React.FC = () => {
               {/* Nadia Card */}
               <motion.div
                 className="bg-card-luxe border border-luxe-charcoal/25 rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-lg h-full"
-                whileHover={{ translateY: -4, borderColor: "#A58E6E" }}
+                whileHover={{ translateY: -4, borderColor: "#E8B4A8" }}
                 transition={{ duration: 0.3 }}
               >
                 {/* Nadia Portrait */}
@@ -476,7 +465,7 @@ const App: React.FC = () => {
           >
               {/* Video - Web Style */}
             <motion.div
-              className="relative w-full aspect-video rounded-lg overflow-hidden border-2 border-luxe-charcoal/25 shadow-lg hover:border-luxe-taupe hover:shadow-xl transition-all duration-150"
+              className="relative w-full aspect-video rounded-lg overflow-hidden border-2 border-luxe-charcoal/25 shadow-lg hover:border-luxe-roseGold hover:shadow-xl transition-all duration-150"
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3 }}
             >
@@ -852,7 +841,7 @@ const App: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                whileHover={{ translateY: -8, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)", scale: 1.02 }}
+                whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
               >
                 <div className="flex items-start gap-4 mb-3">
                   <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-2xl sm:text-3xl">
@@ -904,7 +893,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              whileHover={{ translateY: -6, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
               <motion.h3 
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
@@ -931,7 +920,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              whileHover={{ translateY: -6, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
               <motion.h3 
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
@@ -962,7 +951,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ translateY: -6, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
               <motion.h3 
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
@@ -1050,7 +1039,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ translateY: -6, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
               <div className="mb-4 sm:mb-6">
                 <motion.span 
@@ -1093,7 +1082,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              whileHover={{ translateY: -6, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
               <div className="mb-4 sm:mb-6">
                 <motion.span 
@@ -1136,7 +1125,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              whileHover={{ translateY: -6, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
               <div className="mb-4 sm:mb-6">
                 <motion.span 
@@ -1199,7 +1188,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ translateY: -8, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)" }}
+              whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
             >
               <motion.h3 
                 className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
@@ -1235,7 +1224,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              whileHover={{ translateY: -8, boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.3)", scale: 1.02 }}
+              whileHover={{ translateY: -8, boxShadow: "0 25px 50px -12px rgba(232, 180, 168, 0.3)", scale: 1.02 }}
             >
               <motion.div 
                 className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2"
@@ -1281,7 +1270,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              whileHover={{ translateY: -8, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)" }}
+              whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
             >
               <motion.h3 
                 className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
@@ -1321,7 +1310,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              whileHover={{ translateY: -8, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)" }}
+              whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
             >
               <motion.h3 
                 className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
@@ -1409,7 +1398,7 @@ const App: React.FC = () => {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
-                      whileHover={{ scale: 1.1, borderColor: "#A58E6E" }}
+                      whileHover={{ scale: 1.1, borderColor: "#E8B4A8" }}
                 >
                   {initials}
                     </motion.div>
@@ -1444,166 +1433,89 @@ const App: React.FC = () => {
             ✨ Découvre les témoignages authentiques de notre communauté sur Instagram
           </p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
-            {/* Instagram Embed 1 */}
-            <motion.div
-              className="group relative bg-card-luxe rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-luxe-charcoal/25"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              whileHover={{ translateY: -8, scale: 1.02 }}
-            >
-              {/* Decorative gradient overlay */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-luxe-black via-luxe-taupe to-luxe-black opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          {/* Auto-scrolling Carousel */}
+          <div className="relative w-full overflow-hidden">
+            <div className="flex gap-6 sm:gap-8 md:gap-10 animate-scroll">
+              {/* First set of testimonials */}
+              {[
+                TESTIMONIAL_1,
+                TESTIMONIAL_2,
+                TESTIMONIAL_3,
+                TESTIMONIAL_4,
+                TESTIMONIAL_5,
+                TESTIMONIAL_6,
+                TESTIMONIAL_7,
+                TESTIMONIAL_8,
+                TESTIMONIAL_9,
+              ].map((testimonialImage, index) => {
+                const gradientVariants = [
+                  'from-luxe-black via-luxe-roseGold to-luxe-black',
+                  'from-luxe-roseGold via-luxe-black to-luxe-roseGold',
+                  'from-luxe-black via-luxe-roseGold to-luxe-black',
+                ];
+                const gradientClass = gradientVariants[index % 3];
+                
+                return (
+                  <motion.div
+                    key={`first-${index}`}
+                    className="group relative bg-card-luxe rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-luxe-charcoal/25 flex-shrink-0 w-[280px] sm:w-[320px] md:w-[380px]"
+                    whileHover={{ translateY: -8, scale: 1.02 }}
+                  >
+                    {/* Decorative gradient overlay */}
+                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${gradientClass} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10`}></div>
+                    
+                    {/* Testimonial Image */}
+                    <motion.img
+                      src={testimonialImage}
+                      alt={`Témoignage ${index + 1} - ELAN BC`}
+                      className="w-full h-auto object-cover rounded-2xl"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.div>
+                );
+              })}
               
-              <div className="p-1">
-                <blockquote 
-                  className="instagram-media" 
-                  data-instgrm-permalink="https://www.instagram.com/lakzirnadia/p/CxXxXxXxXxX/"
-                  data-instgrm-version="14"
-                  style={{ background: '#FFF', border: '0', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)', margin: '0', maxWidth: '540px', minWidth: '326px', padding: '0', width: '100%' }}
-                >
-                  <div style={{ padding: '16px' }}>
-                    <a 
-                      href="https://www.instagram.com/lakzirnadia/" 
-                      style={{ background: '#FFFFFF', lineHeight: 0, padding: '0 0', textAlign: 'center', textDecoration: 'none', width: '100%' }}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                        <div style={{ backgroundColor: '#F4F4F4', borderRadius: '50%', flexGrow: 0, height: '40px', marginRight: '14px', width: '40px' }}></div>
-                        <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'center' }}>
-                          <div style={{ backgroundColor: '#F4F4F4', borderRadius: '4px', flexGrow: 0, height: '14px', marginBottom: '6px', width: '100px' }}></div>
-                          <div style={{ backgroundColor: '#F4F4F4', borderRadius: '4px', flexGrow: 0, height: '14px', width: '60px' }}></div>
-                        </div>
-                      </div>
-                      <div style={{ padding: '19% 0' }}></div>
-                      <div style={{ display: 'block', height: '50px', margin: '0 auto 12px', width: '50px' }}>
-                        <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1">
-                          <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                            <g transform="translate(-511.000000, -20.000000)" fill="#000000">
-                              <g>
-                                <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,75.017 C517.703,76.682 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.682 565.965,75.017 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <p style={{ color: '#c9c8cd', fontFamily: 'Arial,sans-serif', fontSize: '14px', lineHeight: '17px', marginBottom: 0, marginTop: '8px', overflow: 'hidden', padding: '8px 0 7px', textAlign: 'center', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        <a href="https://www.instagram.com/lakzirnadia/" style={{ color: '#c9c8cd', fontFamily: 'Arial,sans-serif', fontSize: '14px', fontStyle: 'normal', fontWeight: 'normal', lineHeight: '17px', textDecoration: 'none' }} target="_blank" rel="noopener noreferrer">Voir ce post sur Instagram</a>
-                      </p>
-                    </a>
-                  </div>
-                </blockquote>
-              </div>
-            </motion.div>
-
-            {/* Instagram Embed 2 */}
-            <motion.div
-              className="group relative bg-card-luxe rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-luxe-charcoal/25"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              whileHover={{ translateY: -8, scale: 1.02 }}
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-luxe-taupe via-luxe-black to-luxe-taupe opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              
-              <div className="p-1">
-                <blockquote 
-                  className="instagram-media" 
-                  data-instgrm-permalink="https://www.instagram.com/lakzirnadia/p/CxXxXxXxXxX/"
-                  data-instgrm-version="14"
-                  style={{ background: '#FFF', border: '0', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)', margin: '0', maxWidth: '540px', minWidth: '326px', padding: '0', width: '100%' }}
-                >
-                  <div style={{ padding: '16px' }}>
-                    <a 
-                      href="https://www.instagram.com/lakzirnadia/" 
-                      style={{ background: '#FFFFFF', lineHeight: 0, padding: '0 0', textAlign: 'center', textDecoration: 'none', width: '100%' }}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                        <div style={{ backgroundColor: '#F4F4F4', borderRadius: '50%', flexGrow: 0, height: '40px', marginRight: '14px', width: '40px' }}></div>
-                        <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'center' }}>
-                          <div style={{ backgroundColor: '#F4F4F4', borderRadius: '4px', flexGrow: 0, height: '14px', marginBottom: '6px', width: '100px' }}></div>
-                          <div style={{ backgroundColor: '#F4F4F4', borderRadius: '4px', flexGrow: 0, height: '14px', width: '60px' }}></div>
-                        </div>
-                      </div>
-                      <div style={{ padding: '19% 0' }}></div>
-                      <div style={{ display: 'block', height: '50px', margin: '0 auto 12px', width: '50px' }}>
-                        <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1">
-                          <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                            <g transform="translate(-511.000000, -20.000000)" fill="#000000">
-                              <g>
-                                <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,75.017 C517.703,76.682 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.682 565.965,75.017 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <p style={{ color: '#c9c8cd', fontFamily: 'Arial,sans-serif', fontSize: '14px', lineHeight: '17px', marginBottom: 0, marginTop: '8px', overflow: 'hidden', padding: '8px 0 7px', textAlign: 'center', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        <a href="https://www.instagram.com/lakzirnadia/" style={{ color: '#c9c8cd', fontFamily: 'Arial,sans-serif', fontSize: '14px', fontStyle: 'normal', fontWeight: 'normal', lineHeight: '17px', textDecoration: 'none' }} target="_blank" rel="noopener noreferrer">Voir ce post sur Instagram</a>
-                      </p>
-                    </a>
-                  </div>
-                </blockquote>
-              </div>
-            </motion.div>
-
-            {/* Instagram Embed 3 */}
-            <motion.div
-              className="group relative bg-card-luxe rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-luxe-charcoal/25"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              whileHover={{ translateY: -8, scale: 1.02 }}
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-luxe-black via-luxe-taupe to-luxe-black opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              
-              <div className="p-1">
-                <blockquote 
-                  className="instagram-media" 
-                  data-instgrm-permalink="https://www.instagram.com/lakzirnadia/p/CxXxXxXxXxX/"
-                  data-instgrm-version="14"
-                  style={{ background: '#FFF', border: '0', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)', margin: '0', maxWidth: '540px', minWidth: '326px', padding: '0', width: '100%' }}
-                >
-                  <div style={{ padding: '16px' }}>
-                    <a 
-                      href="https://www.instagram.com/lakzirnadia/" 
-                      style={{ background: '#FFFFFF', lineHeight: 0, padding: '0 0', textAlign: 'center', textDecoration: 'none', width: '100%' }}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                        <div style={{ backgroundColor: '#F4F4F4', borderRadius: '50%', flexGrow: 0, height: '40px', marginRight: '14px', width: '40px' }}></div>
-                        <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'center' }}>
-                          <div style={{ backgroundColor: '#F4F4F4', borderRadius: '4px', flexGrow: 0, height: '14px', marginBottom: '6px', width: '100px' }}></div>
-                          <div style={{ backgroundColor: '#F4F4F4', borderRadius: '4px', flexGrow: 0, height: '14px', width: '60px' }}></div>
-                        </div>
-                      </div>
-                      <div style={{ padding: '19% 0' }}></div>
-                      <div style={{ display: 'block', height: '50px', margin: '0 auto 12px', width: '50px' }}>
-                        <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1">
-                          <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                            <g transform="translate(-511.000000, -20.000000)" fill="#000000">
-                              <g>
-                                <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,75.017 C517.703,76.682 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.682 565.965,75.017 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <p style={{ color: '#c9c8cd', fontFamily: 'Arial,sans-serif', fontSize: '14px', lineHeight: '17px', marginBottom: 0, marginTop: '8px', overflow: 'hidden', padding: '8px 0 7px', textAlign: 'center', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        <a href="https://www.instagram.com/lakzirnadia/" style={{ color: '#c9c8cd', fontFamily: 'Arial,sans-serif', fontSize: '14px', fontStyle: 'normal', fontWeight: 'normal', lineHeight: '17px', textDecoration: 'none' }} target="_blank" rel="noopener noreferrer">Voir ce post sur Instagram</a>
-                      </p>
-                    </a>
-                  </div>
-                </blockquote>
-              </div>
-            </motion.div>
+              {/* Duplicate set for seamless loop */}
+              {[
+                TESTIMONIAL_1,
+                TESTIMONIAL_2,
+                TESTIMONIAL_3,
+                TESTIMONIAL_4,
+                TESTIMONIAL_5,
+                TESTIMONIAL_6,
+                TESTIMONIAL_7,
+                TESTIMONIAL_8,
+                TESTIMONIAL_9,
+              ].map((testimonialImage, index) => {
+                const gradientVariants = [
+                  'from-luxe-black via-luxe-roseGold to-luxe-black',
+                  'from-luxe-roseGold via-luxe-black to-luxe-roseGold',
+                  'from-luxe-black via-luxe-roseGold to-luxe-black',
+                ];
+                const gradientClass = gradientVariants[index % 3];
+                
+                return (
+                  <motion.div
+                    key={`second-${index}`}
+                    className="group relative bg-card-luxe rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-luxe-charcoal/25 flex-shrink-0 w-[280px] sm:w-[320px] md:w-[380px]"
+                    whileHover={{ translateY: -8, scale: 1.02 }}
+                  >
+                    {/* Decorative gradient overlay */}
+                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${gradientClass} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10`}></div>
+                    
+                    {/* Testimonial Image */}
+                    <motion.img
+                      src={testimonialImage}
+                      alt={`Témoignage ${index + 1} - ELAN BC`}
+                      className="w-full h-auto object-cover rounded-2xl"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
           
           <motion.div 
@@ -1665,7 +1577,7 @@ const App: React.FC = () => {
       </motion.section>
 
       {/* Footer */}
-        <footer className="w-full py-8 sm:py-12 px-4 sm:px-5 bg-luxe-charcoal border-t border-luxe-taupe/30 overflow-hidden">
+        <footer className="w-full py-8 sm:py-12 px-4 sm:px-5 bg-luxe-charcoal border-t border-luxe-roseGold/30 overflow-hidden">
         <div className="max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto w-full">
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8">
             <a href="#" className="text-sm sm:text-base text-luxe-cream/90 hover:text-luxe-cream transition-colors duration-150">
