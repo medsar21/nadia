@@ -35,9 +35,6 @@
   
   /* Buttons */
   --color-button-cta: linear-gradient(135deg, #000000 0%, #464B51 25%, #A58E6E 50%, #464B51 75%, #000000 100%);
-  
-  /* Buttons */
-  --color-button-cta: linear-gradient(135deg, #000000 0%, #464B51 40%, #A58E6E 100%);
 }
 
 * {
