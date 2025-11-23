@@ -18,8 +18,8 @@
   --color-bg-main: #F4F4F2;         /* Fond principal de la page */
   --color-bg-section: #D1A6A0;      /* Fond sections */
   --color-bg-dark: #302D2C;          /* Fond sombre */
-  --color-bg-hero: linear-gradient(135deg, #151313 0%, #302D2C 20%, #95655E 40%, #E8B4A8 60%, #D1A6A0 80%, #F4F4F2 100%);
-  --color-bg-section-gradient: linear-gradient(145deg, #F4F4F2 0%, #D1A6A0 25%, #E8B4A8 40%, #838078 50%, #D1A6A0 75%, #F4F4F2 100%);
+  --color-bg-hero: linear-gradient(135deg, #302D2C 0%, #838078 25%, #D1A6A0 50%, #E8B4A8 75%, #F4F4F2 100%);
+  --color-bg-section-gradient: linear-gradient(145deg, #F4F4F2 0%, #E8B4A8 20%, #D1A6A0 40%, #E8B4A8 60%, #F4F4F2 80%, #E8B4A8 100%);
   
   /* Text */
   --color-text-main: #151313;       /* Texte principal */
@@ -30,13 +30,13 @@
   --color-accent: #E8B4A8;           /* Rose gold - accent principal */
   
   /* Borders */
-  --color-border-luxe: rgba(48, 45, 44, 0.25); /* Bordure charcoal subtile */
+  --color-border-luxe: rgba(232, 180, 168, 0.3); /* Bordure rose gold subtile */
   
   /* Cards */
-  --color-card-bg: linear-gradient(145deg, #F4F4F2 0%, #FFFFFF 15%, #E8B4A8 35%, #D1A6A0 55%, #E8B4A8 75%, #F4F4F2 100%);
+  --color-card-bg: linear-gradient(145deg, #E8B4A8 0%, #838078 30%, #E8B4A8 60%, #838078 90%, #E8B4A8 100%);
   
   /* Buttons */
-  --color-button-cta: linear-gradient(135deg, #151313 0%, #302D2C 25%, #95655E 40%, #E8B4A8 60%, #302D2C 80%, #151313 100%);
+  --color-button-cta: linear-gradient(135deg, #95655E 0%, #95655E 50%, #95655E 100%);
 }
 
 * {
