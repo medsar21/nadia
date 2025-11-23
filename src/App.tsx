@@ -18,12 +18,12 @@ const getImagePath = (filename: string): string => {
   return `/${cleanFilename}`;
 };
 
-const NADIA_HERO_IMAGE = getImagePath("MEITU_20250501_145005910.png");
+const NADIA_HERO_IMAGE = getImagePath("MEITU_20250529_1011357914.png");
 const EVENT_BACKGROUND = getImagePath("A7V04780.jpg"); // Event/Conference background image
 const WHY_ELAN_IMAGE = getImagePath("A7V04780.jpg"); // Why choose ELAN BC section image
 const NEW_IMAGE_1 = getImagePath("cover.png"); // Results section image
 const NEW_IMAGE_2 = getImagePath("MEITU_20250501_145005910.png"); // Parcours section image
-const NEW_IMAGE_3 = getImagePath("MEITU_20250529_101135791.jpg"); // Community section image
+const NEW_IMAGE_3 = getImagePath("A7V03753.JPG"); // Community section image
 const FINAL_CTA_IMAGE = getImagePath("A7V03753.JPG"); // Final CTA section image
 
 const App: React.FC = () => {
@@ -216,6 +216,13 @@ const App: React.FC = () => {
   };
 
   // Scroll to form function
+  const scrollToBenefits = () => {
+    const element = document.getElementById('benefits-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const scrollToForm = () => {
     const formSection = document.getElementById('contact-form');
     if (formSection) {
@@ -226,12 +233,12 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen w-full flex items-center justify-center px-4 sm:px-5 py-4 sm:py-6 md:py-8 bg-gradient-to-br from-[#E3F2FD] via-[#FCE4EC] to-[#E1BEE7] overflow-hidden">
+      <section className="relative min-h-screen w-full flex items-center justify-center px-4 sm:px-5 py-4 sm:py-6 md:py-8 bg-hero-gradient overflow-hidden">
         {/* Gradient Blobs Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             className="absolute top-1/4 -left-1/4 w-96 h-96 rounded-full blur-3xl opacity-15"
-            style={{ background: '#9E9FCC' }}
+            style={{ background: '#A58E6E' }}
             animate={{
               scale: [1, 1.2, 1],
               x: [0, 50, 0],
@@ -245,7 +252,7 @@ const App: React.FC = () => {
           />
           <motion.div
             className="absolute top-3/4 right-1/4 w-80 h-80 rounded-full blur-3xl opacity-12"
-            style={{ background: '#B8D4E0' }}
+            style={{ background: '#A58E6E' }}
             animate={{
               scale: [1, 1.3, 1],
               x: [0, -40, 0],
@@ -259,7 +266,7 @@ const App: React.FC = () => {
           />
           <motion.div
             className="absolute bottom-1/4 left-1/3 w-72 h-72 rounded-full blur-3xl opacity-12"
-            style={{ background: '#E6E0F0' }}
+            style={{ background: '#F3EBDB' }}
             animate={{
               scale: [1, 1.1, 1],
               x: [0, 30, 0],
@@ -267,6 +274,34 @@ const App: React.FC = () => {
             }}
             transition={{
               duration: 18,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full blur-3xl opacity-10"
+            style={{ background: '#000000' }}
+            animate={{
+              scale: [1, 1.15, 1],
+              x: [0, -30, 0],
+              y: [0, 25, 0],
+            }}
+            transition={{
+              duration: 22,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute bottom-1/3 right-1/4 w-56 h-56 rounded-full blur-3xl opacity-8"
+            style={{ background: '#464B51' }}
+            animate={{
+              scale: [1, 1.2, 1],
+              x: [0, 20, 0],
+              y: [0, -30, 0],
+            }}
+            transition={{
+              duration: 19,
               repeat: Infinity,
               ease: "easeInOut"
             }}
@@ -284,14 +319,14 @@ const App: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-white/80 text-[#1A2B2F] text-[10px] sm:text-xs uppercase tracking-wider rounded-full border border-[#9E9FCC]/30 shadow-sm">
-                  Communauté Business • Formation • Coaching
+                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-luxe-white/90 text-luxe-black text-[10px] sm:text-xs uppercase tracking-wider rounded-full border border-luxe-charcoal/40 shadow-sm">
+                  Communauté Business • Academy • Coaching
                 </span>
               </motion.div>
 
               {/* Main Headline */}
               <motion.h1
-                className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-[#1A2B2F] leading-snug sm:leading-tight tracking-wide"
+                className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-luxe-cream leading-snug sm:leading-tight tracking-wide"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
@@ -302,32 +337,34 @@ const App: React.FC = () => {
 
               {/* Subheadline - Mise en évidence */}
               <motion.p
-                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#1A2B2F] font-bold mb-4 sm:mb-5 leading-tight tracking-wide"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-luxe-cream font-bold mb-4 sm:mb-5 leading-tight tracking-wide"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               >
-                <span className="bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-luxe-cream to-luxe-taupe bg-clip-text text-transparent">
                 Business clair, actions concrètes, résultats assurés.
                 </span>
               </motion.p>
 
               {/* Supporting Paragraph */}
               <motion.p
-                className="text-sm sm:text-base md:text-lg text-[#2C3E50] leading-relaxed max-w-xl mb-4 sm:mb-5"
+                className="text-sm sm:text-base md:text-lg text-luxe-cream/90 leading-relaxed max-w-xl mb-4 sm:mb-5"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
               >
-                <span className="font-bold text-[#1A2B2F]">Passe de l'incertitude à la clarté… et de la clarté à la croissance.</span>
+                <span className="font-bold text-luxe-cream">Passe de l'incertitude à la clarté… et de la clarté à la croissance.</span>
                 <br />
-                <span className="text-[#2C3E50]">Avec ELAN BUSINESS, un chemin guidé pour créer et développer ton projet rentable.</span>
+                <span className="text-luxe-cream/90">Avec ELAN BUSINESS, un chemin guidé pour créer et développer ton projet rentable.</span>
                 <br />
                 <a 
-                  href="https://nadialakzir.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#1A2B2F] underline hover:text-[#64B5F6] transition-colors duration-150 hover:border-b-2 hover:border-[#64B5F6] font-medium"
+                  href="#benefits-section"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToBenefits();
+                  }}
+                  className="text-luxe-cream underline hover:text-luxe-taupe transition-colors duration-150 hover:border-b-2 hover:border-luxe-taupe font-medium cursor-pointer"
                 >
                   👤 Découvrir mon parcours
                 </a>
@@ -341,19 +378,19 @@ const App: React.FC = () => {
                 transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
               >
                 {/* Nadia Card */}
-                <div className="bg-white border border-[#E6E0F0] rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-lg hover:border-[#64B5F6] transition-all duration-150">
+                <div className="bg-card-luxe border border-luxe-charcoal/25 rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-lg hover:border-luxe-taupe/50 transition-all duration-150">
                   {/* Nadia Portrait */}
                   <motion.img
                     src={NADIA_HERO_IMAGE}
                     alt="Nadia Lakzir - Coach Business : Mindset -Marketing -Vente"
-                    className="w-full rounded-lg object-cover aspect-square mb-3"
+                    className="w-full rounded-lg object-contain object-center aspect-square mb-3 bg-luxe-cream"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   />
                   {/* Nadia Info */}
                   <div className="space-y-1">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-[#1A2B2F]">Nadia</h3>
-                    <p className="text-sm text-[#2C3E50] mb-0">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-luxe-black">Nadia</h3>
+                    <p className="text-sm text-luxe-charcoal mb-0">
                       Coach Business : Mindset -Marketing -Vente
                     </p>
                   </div>
@@ -367,7 +404,7 @@ const App: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
               >
-                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-[#B8D4E0] shadow-md">
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-luxe-charcoal/25 shadow-md">
                   <iframe
                     src="https://player.vimeo.com/video/1139166666?title=0&byline=0&portrait=0"
                     className="absolute top-0 left-0 w-full h-full"
@@ -376,7 +413,7 @@ const App: React.FC = () => {
                     allowFullScreen
                     title="Vidéo de présentation ELAN BC"
                   ></iframe>
-                </div>
+                    </div>
               </motion.div>
 
               {/* Mobile: CTA Buttons (after video) */}
@@ -388,14 +425,14 @@ const App: React.FC = () => {
               >
                 <motion.button
                   onClick={scrollToForm}
-                  className="w-full px-6 sm:px-8 py-3 h-11 bg-gradient-to-r from-[#2C3E50] to-[#34495E] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#34495E] hover:to-[#1A252F] hover:shadow-lg hover:shadow-[#2C3E50]/40 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#2C3E50] focus:ring-offset-2 focus:ring-offset-white"
+                  className="w-full px-6 sm:px-8 py-3 h-11 bg-button-cta text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:shadow-lg hover:shadow-luxe-black/40 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   Rejoindre ELAN maintenant
                 </motion.button>
                 <motion.button
-                  className="w-full px-6 sm:px-8 py-3 h-11 border-2 border-[#2C3E50] text-[#2C3E50] bg-transparent text-sm sm:text-base font-semibold rounded-full hover:bg-gradient-to-r hover:from-[#2C3E50] hover:to-[#34495E] hover:text-white transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#2C3E50] focus:ring-offset-2 focus:ring-offset-white"
+                  className="w-full px-6 sm:px-8 py-3 h-11 border-2 border-luxe-black text-luxe-black bg-transparent text-sm sm:text-base font-semibold rounded-full hover:bg-luxe-black hover:text-luxe-cream transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -413,22 +450,22 @@ const App: React.FC = () => {
             >
               {/* Nadia Card */}
               <motion.div
-                className="bg-white border border-[#E6E0F0] rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-lg h-full"
-                whileHover={{ translateY: -4, borderColor: "#90CAF9" }}
+                className="bg-card-luxe border border-luxe-charcoal/25 rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-lg h-full"
+                whileHover={{ translateY: -4, borderColor: "#A58E6E" }}
                 transition={{ duration: 0.3 }}
               >
                 {/* Nadia Portrait */}
                 <motion.img
                   src={NADIA_HERO_IMAGE}
                   alt="Nadia Lakzir - Fondatrice de ELAN BUSINESS COMMUNITY (ELAN BC)"
-                  className="w-full rounded-lg object-cover aspect-square mb-3"
+                  className="w-full rounded-lg object-contain object-center aspect-square mb-3 bg-section-gradient"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 />
                 {/* Nadia Info */}
                 <div className="space-y-1">
-                  <h3 className="text-lg font-semibold text-[#1A2B2F]">Nadia Lakzir</h3>
-                  <p className="text-sm text-[#2C3E50] mb-0">
+                  <h3 className="text-lg font-semibold text-luxe-black">Nadia Lakzir</h3>
+                  <p className="text-sm text-luxe-charcoal mb-0">
                     Coach Business : Mindset -Marketing -Vente
                   </p>
                 </div>
@@ -445,7 +482,7 @@ const App: React.FC = () => {
           >
               {/* Video - Web Style */}
             <motion.div
-              className="relative w-full aspect-video rounded-lg overflow-hidden border-2 border-[#B8D4E0] shadow-lg hover:border-[#2C3E50] hover:shadow-xl transition-all duration-150"
+              className="relative w-full aspect-video rounded-lg overflow-hidden border-2 border-luxe-charcoal/25 shadow-lg hover:border-luxe-taupe hover:shadow-xl transition-all duration-150"
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3 }}
             >
@@ -463,14 +500,14 @@ const App: React.FC = () => {
             <div className="flex flex-col gap-3 w-full pt-4">
               <motion.button
                   onClick={scrollToForm}
-                  className="w-full px-6 py-3 h-11 bg-gradient-to-r from-[#2C3E50] via-[#34495E] to-[#1A252F] text-white text-sm font-semibold rounded-full hover:from-[#34495E] hover:via-[#1A252F] hover:to-[#2C3E50] hover:shadow-lg hover:shadow-[#2C3E50]/40 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#2C3E50] focus:ring-offset-2 focus:ring-offset-white"
+                  className="w-full px-6 py-3 h-11 bg-button-cta text-luxe-cream text-sm font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/40 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Rejoindre ELAN BC maintenant
               </motion.button>
               <motion.button
-                  className="w-full px-6 py-3 h-11 border-2 border-[#2C3E50] text-[#2C3E50] bg-transparent text-sm font-semibold rounded-full hover:bg-gradient-to-r hover:from-[#2C3E50] hover:to-[#34495E] hover:text-white transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#2C3E50] focus:ring-offset-2 focus:ring-offset-white"
+                  className="w-full px-6 py-3 h-11 border-2 border-luxe-black text-luxe-black bg-transparent text-sm font-semibold rounded-full hover:bg-button-cta hover:text-luxe-cream transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -482,9 +519,9 @@ const App: React.FC = () => {
       </section>
 
       {/* Conversion Form Section */}
-        <motion.section
-          id="contact-form"
-          className="w-full py-8 sm:py-10 md:py-12 px-4 sm:px-5 bg-gradient-to-br from-[#FCE4EC] via-[#E3F2FD] to-[#F8BBD0] overflow-hidden"
+      <motion.section
+        id="contact-form"
+          className="w-full py-8 sm:py-10 md:py-12 px-4 sm:px-5 bg-section-gradient overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -498,10 +535,10 @@ const App: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#1A2B2F]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-luxe-black">
               📝 Rejoindre ELAN BUSINESS COMMUNITY (ELAN BC)
             </h2>
-            <p className="text-sm sm:text-base text-[#2C3E50] mb-0">
+            <p className="text-sm sm:text-base text-luxe-charcoal mb-0">
               📝 Laisse tes informations et notre équipe te contacte pour t'orienter vers le meilleur parcours et plan.
             </p>
           </motion.div>
@@ -514,7 +551,7 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <label htmlFor="fullName" className="block text-sm font-medium text-[#1A2B2F]">
+              <label htmlFor="fullName" className="block text-sm font-medium text-luxe-black">
                 Nom complet
               </label>
               <input
@@ -524,7 +561,7 @@ const App: React.FC = () => {
                 value={formData.fullName}
                 onChange={handleChange}
                 required
-                className="w-full mt-1 rounded-lg bg-white border border-[#E6E0F0] px-3 py-2 text-sm text-[#1A2B2F] placeholder-[#8A9BA8] focus:outline-none focus:ring-2 focus:ring-[#64B5F6] focus:border-[#64B5F6] transition-all"
+                className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-charcoal/25 px-3 py-2 text-sm text-luxe-black placeholder-luxe-charcoal/70 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:border-luxe-black transition-all"
                 placeholder="Nom complet"
               />
             </motion.div>
@@ -536,7 +573,7 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <label htmlFor="phone" className="block text-sm font-medium text-[#1A2B2F]">
+              <label htmlFor="phone" className="block text-sm font-medium text-luxe-black">
                 Numéro de téléphone
               </label>
               <input
@@ -546,7 +583,7 @@ const App: React.FC = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 required
-                className="w-full mt-1 rounded-lg bg-white border border-[#E6E0F0] px-3 py-2 text-sm text-[#1A2B2F] placeholder-[#8A9BA8] focus:outline-none focus:ring-2 focus:ring-[#64B5F6] focus:border-[#64B5F6] transition-all"
+                className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-charcoal/25 px-3 py-2 text-sm text-luxe-black placeholder-luxe-charcoal/70 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:border-luxe-black transition-all"
                 placeholder="0660112233"
               />
             </motion.div>
@@ -558,7 +595,7 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <label htmlFor="email" className="block text-sm font-medium text-[#1A2B2F]">
+              <label htmlFor="email" className="block text-sm font-medium text-luxe-black">
                 Adresse email
               </label>
               <input
@@ -568,7 +605,7 @@ const App: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full mt-1 rounded-lg bg-white border border-[#E6E0F0] px-3 py-2 text-sm text-[#1A2B2F] placeholder-[#8A9BA8] focus:outline-none focus:ring-2 focus:ring-[#64B5F6] focus:border-[#64B5F6] transition-all"
+                className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-charcoal/25 px-3 py-2 text-sm text-luxe-black placeholder-luxe-charcoal/70 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:border-luxe-black transition-all"
                 placeholder="email@email.com"
               />
             </motion.div>
@@ -580,7 +617,7 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <label htmlFor="address" className="block text-sm font-medium text-[#1A2B2F]">
+              <label htmlFor="address" className="block text-sm font-medium text-luxe-black">
                 Adresse (Ville, Pays)
               </label>
               <input
@@ -589,7 +626,7 @@ const App: React.FC = () => {
                 name="address"
                 value={formData.address}
                 onChange={handleChange}
-                className="w-full mt-1 rounded-lg bg-white border border-[#E6E0F0] px-3 py-2 text-sm text-[#1A2B2F] placeholder-[#8A9BA8] focus:outline-none focus:ring-2 focus:ring-[#64B5F6] focus:border-[#64B5F6] transition-all"
+                className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-charcoal/25 px-3 py-2 text-sm text-luxe-black placeholder-luxe-charcoal/70 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:border-luxe-black transition-all"
                 placeholder="Casablanca, Maroc"
               />
             </motion.div>
@@ -601,7 +638,7 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <label htmlFor="packChoice" className="block text-sm font-medium text-[#1A2B2F]">
+              <label htmlFor="packChoice" className="block text-sm font-medium text-luxe-black">
                 Plan choisi
               </label>
               <select
@@ -610,7 +647,7 @@ const App: React.FC = () => {
                 value={formData.packChoice}
                 onChange={handleChange}
                 required
-                className="w-full mt-1 rounded-lg bg-white border border-[#E6E0F0] px-3 py-2 text-sm text-[#1A2B2F] focus:outline-none focus:ring-2 focus:ring-[#64B5F6] focus:border-[#64B5F6] transition-all"
+                className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-charcoal/25 px-3 py-2 text-sm text-luxe-black focus:outline-none focus:ring-2 focus:ring-luxe-black focus:border-luxe-black transition-all"
               >
                 <option value="">Sélectionne un plan</option>
                 <option value="Mensuel – 390 DH / mois">Mensuel – 390 DH / mois</option>
@@ -624,7 +661,7 @@ const App: React.FC = () => {
             <motion.button
               type="submit"
               disabled={isSubmitting}
-              className="w-full mt-4 rounded-full bg-gradient-to-r from-[#2C3E50] to-[#34495E] py-3 text-sm font-semibold text-white shadow-md hover:from-[#34495E] hover:to-[#1A252F] hover:shadow-lg hover:shadow-[#2C3E50]/40 transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-[#2C3E50] focus:ring-offset-2 focus:ring-offset-white"
+              className="w-full mt-4 rounded-full bg-button-cta py-3 text-sm font-semibold text-luxe-cream shadow-md hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/40 transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
               whileHover={isSubmitting ? {} : { scale: 1.02 }}
               whileTap={isSubmitting ? {} : { scale: 0.98 }}
             >
@@ -634,7 +671,7 @@ const App: React.FC = () => {
             {/* Success Message */}
             {successMessage && (
               <motion.p
-                className="mt-3 text-sm text-[#3CCF91] text-center"
+                className="mt-3 text-sm text-luxe-black font-semibold text-center"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
@@ -646,7 +683,7 @@ const App: React.FC = () => {
             {/* Error Message */}
             {errorMessage && (
               <motion.p
-                className="mt-3 text-sm text-red-400 text-center"
+                className="mt-3 text-sm text-luxe-black/80 text-center"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
@@ -668,7 +705,7 @@ const App: React.FC = () => {
           onClick={() => setShowPaymentModal(false)}
         >
           <motion.div
-            className="bg-gradient-to-br from-white via-[#FCE4EC]/50 to-[#E3F2FD]/50 rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-8 relative backdrop-blur-sm border border-white/50"
+            className="bg-card-luxe rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-8 relative backdrop-blur-sm border border-luxe-charcoal/25"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
@@ -677,7 +714,7 @@ const App: React.FC = () => {
             {/* Close Button */}
             <button
               onClick={() => setShowPaymentModal(false)}
-              className="absolute top-4 right-4 text-[#8A9BA8] hover:text-[#1A2B2F] transition-colors"
+              className="absolute top-4 right-4 text-luxe-charcoal/70 hover:text-luxe-black transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -689,27 +726,27 @@ const App: React.FC = () => {
               {/* Header */}
               <div className="text-center">
                 <motion.div
-                  className="w-16 h-16 bg-[#3CCF91]/20 rounded-full flex items-center justify-center mx-auto mb-4"
+                  className="w-16 h-16 bg-luxe-taupe/20 rounded-full flex items-center justify-center mx-auto mb-4"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.1 }}
                 >
-                  <svg className="w-8 h-8 text-[#3CCF91]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-8 h-8 text-luxe-black" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                 </motion.div>
-                <h3 className="text-2xl font-bold text-[#1A2B2F] mb-2">
+                <h3 className="text-2xl font-bold text-luxe-black mb-2">
                   Formulaire envoyé avec succès !
                 </h3>
-                <p className="text-sm text-[#2C3E50]">
+                <p className="text-sm text-luxe-charcoal">
                   Merci ! Voici les informations de paiement pour finaliser votre inscription.
                 </p>
               </div>
 
               {/* Payment Information */}
-              <div className="bg-gradient-to-br from-[#E3F2FD] to-[#FCE4EC] rounded-xl p-5 border border-[#BBDEFB]/50 shadow-md">
-                <h4 className="text-lg font-semibold text-[#1A2B2F] mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#1A2B2F]" fill="currentColor" viewBox="0 0 20 20">
+              <div className="bg-card-luxe rounded-xl p-5 border border-luxe-charcoal/25 shadow-md">
+                <h4 className="text-lg font-semibold text-luxe-black mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-luxe-black" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
                     <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
                   </svg>
@@ -717,25 +754,25 @@ const App: React.FC = () => {
                 </h4>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between items-center">
-                    <span className="text-[#2C3E50] font-medium">Banque :</span>
-                    <span className="text-[#1A2B2F] font-semibold">{PAYMENT_RIB.bankName}</span>
+                    <span className="text-luxe-charcoal font-medium">Banque :</span>
+                    <span className="text-luxe-black font-semibold">{PAYMENT_RIB.bankName}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[#2C3E50] font-medium">Titulaire :</span>
-                    <span className="text-[#1A2B2F] font-semibold">{PAYMENT_RIB.accountName}</span>
+                    <span className="text-luxe-charcoal font-medium">Titulaire :</span>
+                    <span className="text-luxe-black font-semibold">{PAYMENT_RIB.accountName}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[#2C3E50] font-medium">Numéro de compte :</span>
-                    <span className="text-[#1A2B2F] font-semibold font-mono">{PAYMENT_RIB.accountNumber}</span>
+                    <span className="text-luxe-charcoal font-medium">Numéro de compte :</span>
+                    <span className="text-luxe-black font-semibold font-mono">{PAYMENT_RIB.accountNumber}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[#2C3E50] font-medium">IBAN :</span>
-                    <span className="text-[#1A2B2F] font-semibold font-mono text-xs">{PAYMENT_RIB.iban}</span>
+                    <span className="text-luxe-charcoal font-medium">IBAN :</span>
+                    <span className="text-luxe-black font-semibold font-mono text-xs">{PAYMENT_RIB.iban}</span>
                   </div>
                   {PAYMENT_RIB.swift && (
                     <div className="flex justify-between items-center">
-                      <span className="text-[#2C3E50] font-medium">SWIFT :</span>
-                      <span className="text-[#1A2B2F] font-semibold font-mono">{PAYMENT_RIB.swift}</span>
+                      <span className="text-luxe-charcoal font-medium">SWIFT :</span>
+                      <span className="text-luxe-black font-semibold font-mono">{PAYMENT_RIB.swift}</span>
               </div>
             )}
                 </div>
@@ -757,7 +794,7 @@ const App: React.FC = () => {
               </motion.a>
 
               {/* Info Text */}
-              <p className="text-xs text-center text-[#8A9BA8]">
+              <p className="text-xs text-center text-luxe-charcoal/70">
                 Après le paiement, contactez-nous sur WhatsApp pour confirmer votre inscription.
                 </p>
               </div>
@@ -765,9 +802,9 @@ const App: React.FC = () => {
         </motion.div>
       )}
 
-        {/* Why ELAN BC Section */}
-        <motion.section
-          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-gradient-to-br from-[#F5F5F0] to-white overflow-hidden"
+      {/* Why ELAN BC Section */}
+      <motion.section
+          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-section-gradient overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -775,7 +812,7 @@ const App: React.FC = () => {
       >
         <div className="max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto w-full">
           <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-6 sm:mb-8 text-[#1A2B2F] leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-6 sm:mb-8 text-luxe-black leading-tight"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -784,86 +821,67 @@ const App: React.FC = () => {
             💡 Pourquoi choisir ELAN BUSINESS COMMUNITY (ELAN BC) ?
           </motion.h2>
           
-          <div className="flex flex-col md:grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-8 items-stretch mt-6 sm:mt-8 md:mt-10">
-            {/* Left - Image (Mobile: stacked above) */}
-            <motion.div
-              className="w-full order-2 md:order-1 flex md:h-full"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+          {/* Introduction Text */}
+          <div className="max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 text-center">
+            <motion.p
+              className="text-sm sm:text-base md:text-lg lg:text-xl text-luxe-charcoal leading-relaxed mb-4 sm:mb-5"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <motion.img
-                src={WHY_ELAN_IMAGE}
-                alt="Nadia Lakzir accompagnant la communauté ELAN BC"
-                className="w-full rounded-2xl object-cover mb-4 md:mb-0 md:h-full min-h-[300px] sm:min-h-[350px] md:min-h-0"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                onError={(e) => {
-                  // Fallback si l'image ne charge pas
-                  const target = e.target as HTMLImageElement;
-                  const currentSrc = target.src;
-                  // Essayer différents chemins possibles
-                  if (currentSrc.includes('/A7V04780.jpg')) {
-                    target.src = './A7V04780.jpg';
-                  } else if (currentSrc.includes('./A7V04780.jpg')) {
-                    target.src = 'A7V04780.jpg';
-                  } else {
-                    target.src = '/A7V04780.jpg';
-                  }
-                }}
-                loading="eager"
-                decoding="async"
-              />
-            </motion.div>
-
-            {/* Right - Text & Bullet Points */}
-            <motion.div
-              className="space-y-4 sm:space-y-5 w-full order-1 md:order-2 md:flex md:flex-col md:justify-center"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              ⏰ Arrête de <span className="font-bold text-luxe-black">perdre ton temps</span> à chercher partout. Tout ce dont tu as besoin pour <span className="font-bold text-luxe-black">lancer</span>, <span className="font-bold text-luxe-black">développer</span> et <span className="font-bold text-luxe-black">scaler</span> ton business est réuni ici.
+            </motion.p>
+            <motion.p
+              className="text-sm sm:text-base md:text-lg lg:text-xl text-luxe-charcoal leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[#2C3E50] leading-relaxed mb-4 sm:mb-5 text-center md:text-left max-w-2xl mx-auto md:mx-0">
-                ⏰ Arrête de <span className="font-bold text-[#1A2B2F]">perdre ton temps</span> à chercher partout. Tout ce dont tu as besoin pour <span className="font-bold text-[#1A2B2F]">lancer</span>, <span className="font-bold text-[#1A2B2F]">développer</span> et <span className="font-bold text-[#1A2B2F]">scaler</span> ton business est réuni ici.
-              </p>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[#2C3E50] leading-relaxed mb-4 sm:mb-5 text-center md:text-left max-w-2xl mx-auto md:mx-0">
-                🎯 Avec ELAN BC, une méthode claire et structurée qui t'oriente à chaque étape. Apprends efficacement et applique immédiatement.
-              </p>
+              🎯 Avec ELAN BC, une méthode claire et structurée qui t'oriente à chaque étape. Apprends efficacement et applique immédiatement.
+            </motion.p>
+          </div>
 
-              {/* Bullet Points */}
-              <div className="space-y-3 sm:space-y-4 mt-4 max-w-2xl mx-auto md:mx-0">
-              {[
-                "✅ Méthode structurée et progressive",
-                "📚 Ressources centralisées en un seul endroit",
-                "⚡ Application immédiate des concepts",
-                "🎯 Guidance à chaque étape"
+          {/* Cards Grid - 2 per row, 4 cards total */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
+            {[
+              { icon: "✅", text: "Méthode structurée et progressive" },
+              { icon: "📚", text: "Ressources centralisées en un seul endroit" },
+              { icon: "⚡", text: "Application immédiate des concepts" },
+              { icon: "🎯", text: "Guidance à chaque étape" }
               ].map((item, index) => (
                   <motion.div
                     key={index}
-                    className="flex items-start gap-3 sm:gap-4"
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                className="group bg-card-luxe rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-charcoal/25 shadow-md hover:shadow-xl w-full cursor-pointer flex flex-col transition-all duration-150"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  >
-                  <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 mt-0.5 sm:mt-1">
-                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#1A2B2F]" fill="currentColor" viewBox="0 0 20 20">
+                whileHover={{ translateY: -8, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)", scale: 1.02 }}
+              >
+                <div className="flex items-start gap-4 mb-3">
+                  <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-2xl sm:text-3xl">
+                    {item.icon}
+                  </div>
+                  <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 mt-1">
+                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-luxe-black" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                   </div>
-                    <p className="text-sm sm:text-base md:text-lg text-[#2C3E50] flex-1 mb-0">{item}</p>
+                </div>
+                <p className="text-sm sm:text-base md:text-lg font-semibold text-luxe-black flex-1 transition-colors duration-150 group-hover:text-luxe-charcoal">
+                  {item.text}
+                </p>
                   </motion.div>
               ))}
-            </div>
-            </motion.div>
           </div>
         </div>
       </motion.section>
 
-        {/* Benefits Section */}
-        <motion.section
+      {/* Benefits Section */}
+      <motion.section
+          id="benefits-section"
           className="relative w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -871,11 +889,11 @@ const App: React.FC = () => {
         transition={{ duration: 0.6 }}
       >
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FCE4EC] via-[#E3F2FD] to-[#F8BBD0]" />
+        <div className="absolute inset-0 bg-section-gradient" />
         
         <div className="relative z-10 max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto">
           <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-6 sm:mb-8 md:mb-10 text-[#1A2B2F] leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-6 sm:mb-8 md:mb-10 text-luxe-black leading-tight"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -887,89 +905,89 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {/* Card 1 */}
             <motion.div
-              className="group bg-gradient-to-br from-[#E3F2FD] to-[#FCE4EC] rounded-xl p-4 sm:p-5 md:p-8 border border-[#BBDEFB] shadow-md hover:shadow-xl transition-all duration-150 hover:from-[#BBDEFB] hover:to-[#F8BBD0]"
+              className="group bg-card-luxe rounded-xl p-4 sm:p-5 md:p-8 border border-luxe-charcoal/25 shadow-md hover:shadow-xl transition-all duration-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              whileHover={{ translateY: -6, borderColor: "#90CAF9", boxShadow: "0 25px 50px -12px rgba(144, 202, 249, 0.3)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)", scale: 1.02 }}
             >
               <motion.h3 
-                className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Une plateforme complète de formations
+                Une plateforme complète d'Academy
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Plus de 30 cours sur le marketing, la vente et le leadership</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Plus de 30 cours sur le marketing, la vente et le leadership</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Ressources & contenus pratiques, applicables immédiatement</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Ressources & contenus pratiques, applicables immédiatement</span>
                 </li>
               </ul>
             </motion.div>
 
             {/* Card 2 */}
             <motion.div
-              className="group bg-gradient-to-br from-[#E3F2FD] to-[#FCE4EC] rounded-xl p-4 sm:p-5 md:p-8 border border-[#BBDEFB] shadow-md hover:shadow-xl transition-all duration-150 hover:from-[#BBDEFB] hover:to-[#F8BBD0]"
+              className="group bg-card-luxe rounded-xl p-4 sm:p-5 md:p-8 border border-luxe-charcoal/25 shadow-md hover:shadow-xl transition-all duration-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              whileHover={{ translateY: -6, borderColor: "#90CAF9", boxShadow: "0 25px 50px -12px rgba(144, 202, 249, 0.3)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)", scale: 1.02 }}
             >
               <motion.h3 
-                className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
                 Un accompagnement et suivi au quotidien
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Guidance personnalisée pour ne jamais te sentir perdu</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Guidance personnalisée pour ne jamais te sentir perdu</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Support continu via la communauté et les sessions live</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Support continu via la communauté et les sessions live</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Coaching pour appliquer la méthode pas à pas</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Coaching pour appliquer la méthode pas à pas</span>
                 </li>
               </ul>
             </motion.div>
 
             {/* Card 3 */}
             <motion.div
-              className="group bg-gradient-to-br from-[#E3F2FD] to-[#FCE4EC] rounded-xl p-4 sm:p-5 md:p-8 border border-[#BBDEFB] shadow-md hover:shadow-xl transition-all duration-150 hover:from-[#BBDEFB] hover:to-[#F8BBD0]"
+              className="group bg-card-luxe rounded-xl p-4 sm:p-5 md:p-8 border border-luxe-charcoal/25 shadow-md hover:shadow-xl transition-all duration-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ translateY: -6, borderColor: "#90CAF9", boxShadow: "0 25px 50px -12px rgba(144, 202, 249, 0.3)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)", scale: 1.02 }}
             >
               <motion.h3 
-                className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
                 Des résultats concrets
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Plus de ventes et de clients</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Plus de ventes et de clients</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Gain de temps : fini la dispersion</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Gain de temps : fini la dispersion</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Motivation et growth mindset grâce à la communauté</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Motivation et growth mindset grâce à la communauté</span>
                 </li>
               </ul>
             </motion.div>
@@ -994,9 +1012,9 @@ const App: React.FC = () => {
           </div>
       </motion.section>
 
-        {/* 3 Parcours Section */}
-        <motion.section
-          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-gradient-to-br from-[#BBDEFB] via-[#F8BBD0] to-[#E3F2FD] border-t border-[#90CAF9]/30 overflow-hidden"
+      {/* 3 Parcours Section */}
+      <motion.section
+          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-section-gradient border-t border-luxe-charcoal/30 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -1004,13 +1022,13 @@ const App: React.FC = () => {
       >
         <div className="max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto w-full">
           <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-6 sm:mb-8 md:mb-10 text-[#1A2B2F] leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-6 sm:mb-8 md:mb-10 text-luxe-black leading-tight"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            🚀 Les 3 parcours de la formation ELAN BC
+            🚀 Les 3 parcours de l'Academy ELAN BC
           </motion.h2>
 
           {/* Learning Image - Mobile stacked above, desktop could be side-by-side */}
@@ -1023,7 +1041,7 @@ const App: React.FC = () => {
           >
             <motion.img
               src={NEW_IMAGE_2}
-              alt="Parcours de formation en ligne ELAN BC"
+              alt="Parcours de l'Academy en ligne ELAN BC"
               className="w-full rounded-2xl object-cover mb-4"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
@@ -1033,125 +1051,125 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {/* Starter Card */}
             <motion.div
-              className="group bg-gradient-to-br from-[#E3F2FD] to-[#FCE4EC] rounded-xl p-4 sm:p-5 md:p-8 border border-[#BBDEFB] shadow-md hover:shadow-xl transition-all duration-150 hover:from-[#BBDEFB] hover:to-[#F8BBD0]"
+              className="group bg-card-luxe rounded-xl p-4 sm:p-5 md:p-8 border border-luxe-charcoal/25 shadow-md hover:shadow-xl transition-all duration-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ translateY: -6, borderColor: "#90CAF9", boxShadow: "0 25px 50px -12px rgba(144, 202, 249, 0.3)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)", scale: 1.02 }}
             >
               <div className="mb-4 sm:mb-6">
                 <motion.span 
-                  className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#F5F5F0] text-[#1A2B2F] text-xs sm:text-sm uppercase tracking-wider rounded-full border border-[#E6E0F0] transition-all duration-150 group-hover:bg-[#1A2B2F] group-hover:text-white group-hover:border-[#2C3E50] inline-block"
+                  className="px-3 py-1.5 sm:px-4 sm:py-2 bg-section-gradient text-luxe-black text-xs sm:text-sm uppercase tracking-wider rounded-full border border-luxe-charcoal/25 transition-all duration-150 group-hover:bg-button-cta group-hover:text-luxe-cream group-hover:border-luxe-charcoal inline-block"
                   whileHover={{ scale: 1.05 }}
                 >
                   Starter
                 </motion.span>
               </div>
               <motion.h3 
-                className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
                 Ceux qui démarrent
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Trouve et clarifie ton idée de projet</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Trouve et clarifie ton idée de projet</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Bases solides pour structurer ton projet</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Bases solides pour structurer ton projet</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Idée claire et détaillée prête à se lancer</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Idée claire et détaillée prête à se lancer</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Pose les fondations pour démarrer vite et en confiance</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Pose les fondations pour démarrer vite et en confiance</span>
                 </li>
               </ul>
             </motion.div>
 
             {/* Builder Card */}
             <motion.div
-              className="group bg-gradient-to-br from-[#E3F2FD] to-[#FCE4EC] rounded-xl p-4 sm:p-5 md:p-8 border border-[#BBDEFB] shadow-md hover:shadow-xl transition-all duration-150 hover:from-[#BBDEFB] hover:to-[#F8BBD0]"
+              className="group bg-card-luxe rounded-xl p-4 sm:p-5 md:p-8 border border-luxe-charcoal/25 shadow-md hover:shadow-xl transition-all duration-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              whileHover={{ translateY: -6, borderColor: "#90CAF9", boxShadow: "0 25px 50px -12px rgba(144, 202, 249, 0.3)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)", scale: 1.02 }}
             >
               <div className="mb-4 sm:mb-6">
                 <motion.span 
-                  className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#F5F5F0] text-[#1A2B2F] text-xs sm:text-sm uppercase tracking-wider rounded-full border border-[#E6E0F0] transition-all duration-150 group-hover:bg-[#1A2B2F] group-hover:text-white group-hover:border-[#2C3E50] inline-block"
+                  className="px-3 py-1.5 sm:px-4 sm:py-2 bg-section-gradient text-luxe-black text-xs sm:text-sm uppercase tracking-wider rounded-full border border-luxe-charcoal/25 transition-all duration-150 group-hover:bg-button-cta group-hover:text-luxe-cream group-hover:border-luxe-charcoal inline-block"
                   whileHover={{ scale: 1.05 }}
                 >
                   Builder
                 </motion.span>
               </div>
               <motion.h3 
-                className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
                 Entrepreneurs déjà lancés
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Développe ta stratégie marketing et vente</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Développe ta stratégie marketing et vente</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Organisation et process business optimisés</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Organisation et process business optimisés</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Apprends à vendre efficacement tes produits/services</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Apprends à vendre efficacement tes produits/services</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Transforme ton projet en business rentable et structuré</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Transforme ton projet en business rentable et structuré</span>
                 </li>
               </ul>
             </motion.div>
 
             {/* Scaler Card */}
             <motion.div
-              className="group bg-gradient-to-br from-[#E3F2FD] to-[#FCE4EC] rounded-xl p-4 sm:p-5 md:p-8 border border-[#BBDEFB] shadow-md hover:shadow-xl transition-all duration-150 hover:from-[#BBDEFB] hover:to-[#F8BBD0]"
+              className="group bg-card-luxe rounded-xl p-4 sm:p-5 md:p-8 border border-luxe-charcoal/25 shadow-md hover:shadow-xl transition-all duration-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              whileHover={{ translateY: -6, borderColor: "#90CAF9", boxShadow: "0 25px 50px -12px rgba(144, 202, 249, 0.3)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)", scale: 1.02 }}
             >
               <div className="mb-4 sm:mb-6">
                 <motion.span 
-                  className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#F5F5F0] text-[#1A2B2F] text-xs sm:text-sm uppercase tracking-wider rounded-full border border-[#E6E0F0] transition-all duration-150 group-hover:bg-[#1A2B2F] group-hover:text-white group-hover:border-[#2C3E50] inline-block"
+                  className="px-3 py-1.5 sm:px-4 sm:py-2 bg-section-gradient text-luxe-black text-xs sm:text-sm uppercase tracking-wider rounded-full border border-luxe-charcoal/25 transition-all duration-150 group-hover:bg-button-cta group-hover:text-luxe-cream group-hover:border-luxe-charcoal inline-block"
                   whileHover={{ scale: 1.05 }}
                 >
                   Scaler
                 </motion.span>
               </div>
               <motion.h3 
-                className="text-lg sm:text-xl md:text-2xl font-semibold text-[#1A2B2F] mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
                 Entrepreneurs établis
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Mise en place de l'écosystème complet</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Mise en place de l'écosystème complet</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Optimisation pour scaler sans friction</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Optimisation pour scaler sans friction</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#1A2B2F] mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-[#2C3E50] flex-1">Passe d'un business qui fonctionne à un business qui croît durablement</span>
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Passe d'un business qui fonctionne à un business qui croît durablement</span>
                 </li>
               </ul>
             </motion.div>
@@ -1159,9 +1177,9 @@ const App: React.FC = () => {
           </div>
       </motion.section>
 
-        {/* Pricing Section */}
-        <motion.section
-          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-gradient-to-br from-[#FCE4EC] via-[#E3F2FD] to-[#F8BBD0] overflow-hidden"
+      {/* Pricing Section */}
+      <motion.section
+          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-section-gradient overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -1169,7 +1187,7 @@ const App: React.FC = () => {
       >
         <div className="max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto w-full">
           <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-6 sm:mb-8 md:mb-10 text-[#1A2B2F] leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-6 sm:mb-8 md:mb-10 text-luxe-black leading-tight"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -1182,33 +1200,33 @@ const App: React.FC = () => {
             {/* Mensuel */}
             <motion.div
               onClick={scrollToForm}
-              className="group bg-gradient-to-br from-[#E3F2FD] to-[#FCE4EC] rounded-lg p-5 sm:p-6 md:p-8 border border-[#BBDEFB] shadow-md hover:shadow-xl w-full cursor-pointer flex flex-col transition-all duration-150 hover:from-[#BBDEFB] hover:to-[#F8BBD0]"
+              className="group bg-card-luxe rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-charcoal/25 shadow-md hover:shadow-xl w-full cursor-pointer flex flex-col transition-all duration-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ translateY: -8, borderColor: "#90CAF9", boxShadow: "0 25px 50px -12px rgba(144, 202, 249, 0.3)" }}
+              whileHover={{ translateY: -8, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)" }}
             >
               <motion.h3 
-                className="text-xl sm:text-2xl font-semibold text-[#1A2B2F] mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
                 Mensuel
               </motion.h3>
               <div className="mb-4 sm:mb-6">
                 <motion.span 
-                  className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] bg-clip-text text-transparent inline-block transition-all duration-150 group-hover:from-[#2C3E50] group-hover:to-[#34495E]"
+                  className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
                 >
                   390 DH
                 </motion.span>
-                <span className="text-sm sm:text-base text-[#2C3E50] transition-colors duration-150 group-hover:text-[#34495E]"> / mois</span>
+                <span className="text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black"> / mois</span>
               </div>
               <div className="flex-1"></div>
               <motion.button
                 onClick={scrollToForm}
-                className="w-full px-4 sm:px-6 py-3 h-11 bg-gradient-to-r from-[#2C3E50] to-[#34495E] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#34495E] hover:to-[#1A252F] hover:shadow-lg hover:shadow-[#2C3E50]/50 transition-all duration-150"
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(26, 43, 47, 0.4)" }}
+                className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150"
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
                 whileTap={{ scale: 0.98 }}
               >
                 Choisir ce plan
@@ -1218,43 +1236,43 @@ const App: React.FC = () => {
             {/* Trimestre - Highlighted */}
             <motion.div
               onClick={scrollToForm}
-              className="group bg-gradient-to-br from-[#BBDEFB] to-[#F8BBD0] rounded-lg p-5 sm:p-6 md:p-8 border-2 border-[#90CAF9] shadow-lg shadow-[#90CAF9]/20 relative w-full cursor-pointer flex flex-col transition-all duration-150 hover:from-[#90CAF9] hover:to-[#F48FB1] hover:border-[#64B5F6]"
+              className="group bg-card-luxe rounded-lg p-5 sm:p-6 md:p-8 border-2 border-luxe-charcoal shadow-lg shadow-luxe-taupe/20 relative w-full cursor-pointer flex flex-col transition-all duration-150 hover:border-luxe-black"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              whileHover={{ translateY: -8, boxShadow: "0 25px 50px -12px rgba(26, 43, 47, 0.35)", scale: 1.02 }}
+              whileHover={{ translateY: -8, boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.3)", scale: 1.02 }}
             >
               <motion.div 
                 className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2"
                 whileHover={{ scale: 1.1 }}
               >
-                <span className="px-3 sm:px-4 py-1 bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] text-white text-[10px] sm:text-xs uppercase rounded-full transition-all duration-150 group-hover:from-[#2C3E50] group-hover:to-[#34495E] group-hover:shadow-lg">Populaire</span>
+                <span className="px-3 sm:px-4 py-1 bg-button-cta text-luxe-cream text-[10px] sm:text-xs uppercase rounded-full transition-all duration-150 group-hover:opacity-90 group-hover:shadow-lg">Populaire</span>
               </motion.div>
               <motion.h3 
-                className="text-xl sm:text-2xl font-semibold text-[#1A2B2F] mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
                 Trimestre
               </motion.h3>
               <div className="mb-4 sm:mb-6">
                 <motion.span 
-                  className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#1A2B2F] to-[#2C3E50] bg-clip-text text-transparent inline-block transition-all duration-150 group-hover:from-[#2C3E50] group-hover:to-[#34495E]"
+                  className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
                 >
                   885 DH
                 </motion.span>
-                <span className="text-sm sm:text-base font-semibold text-[#1A2B2F] ml-2">live</span>
-                <div className="mt-2 text-sm sm:text-base text-[#2C3E50] transition-colors duration-150 group-hover:text-[#34495E]">
+                <span className="text-sm sm:text-base font-semibold text-luxe-black ml-2">live</span>
+                <div className="mt-2 text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
                   <span className="font-semibold">295 DH</span> / mois
-                </div>
               </div>
-              <p className="text-sm sm:text-base text-[#2C3E50] mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-[#34495E]">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
+                </div>
+              <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-luxe-black">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
               <div className="flex-1"></div>
               <motion.button
                 onClick={scrollToForm}
-                className="w-full px-4 sm:px-6 py-3 h-11 bg-gradient-to-r from-[#2C3E50] to-[#34495E] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#34495E] hover:to-[#1A252F] hover:shadow-lg hover:shadow-[#2C3E50]/50 transition-all duration-150"
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(26, 43, 47, 0.4)" }}
+                className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150"
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
                 whileTap={{ scale: 0.98 }}
               >
                 Choisir ce plan
@@ -1264,37 +1282,37 @@ const App: React.FC = () => {
             {/* Semestre */}
             <motion.div
               onClick={scrollToForm}
-              className="group bg-gradient-to-br from-[#E3F2FD] to-[#FCE4EC] rounded-lg p-5 sm:p-6 md:p-8 border border-[#BBDEFB] shadow-md hover:shadow-xl w-full cursor-pointer flex flex-col transition-all duration-150 hover:from-[#BBDEFB] hover:to-[#F8BBD0]"
+              className="group bg-card-luxe rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-charcoal/25 shadow-md hover:shadow-xl w-full cursor-pointer flex flex-col transition-all duration-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              whileHover={{ translateY: -8, borderColor: "#90CAF9", boxShadow: "0 25px 50px -12px rgba(144, 202, 249, 0.3)" }}
+              whileHover={{ translateY: -8, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)" }}
             >
               <motion.h3 
-                className="text-xl sm:text-2xl font-semibold text-[#1A2B2F] mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
                 Semestre
               </motion.h3>
               <div className="mb-4 sm:mb-6">
                 <motion.span 
-                  className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#2C3E50] to-[#1A2B2F] bg-clip-text text-transparent inline-block transition-all duration-150 group-hover:from-[#1A2B2F] group-hover:to-[#34495E]"
+                  className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
                 >
                   1650 DH
                 </motion.span>
-                <span className="text-sm sm:text-base font-semibold text-[#1A2B2F] ml-2">live</span>
-                <div className="mt-2 text-sm sm:text-base text-[#2C3E50] transition-colors duration-150 group-hover:text-[#34495E]">
+                <span className="text-sm sm:text-base font-semibold text-luxe-black ml-2">live</span>
+                <div className="mt-2 text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
                   <span className="font-semibold">275 DH</span> / mois
-                </div>
               </div>
-              <p className="text-sm sm:text-base text-[#2C3E50] mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-[#34495E]">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
+                </div>
+              <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-luxe-black">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
               <div className="flex-1"></div>
               <motion.button
                 onClick={scrollToForm}
-                className="w-full px-4 sm:px-6 py-3 h-11 bg-gradient-to-r from-[#2C3E50] to-[#34495E] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#34495E] hover:to-[#1A252F] hover:shadow-lg hover:shadow-[#2C3E50]/50 transition-all duration-150"
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(26, 43, 47, 0.4)" }}
+                className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150"
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
                 whileTap={{ scale: 0.98 }}
               >
                 Choisir ce plan
@@ -1304,37 +1322,37 @@ const App: React.FC = () => {
             {/* Année */}
             <motion.div
               onClick={scrollToForm}
-              className="group bg-gradient-to-br from-[#E3F2FD] to-[#FCE4EC] rounded-lg p-5 sm:p-6 md:p-8 border border-[#BBDEFB] shadow-md hover:shadow-xl w-full cursor-pointer flex flex-col transition-all duration-150 hover:from-[#BBDEFB] hover:to-[#F8BBD0]"
+              className="group bg-card-luxe rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-charcoal/25 shadow-md hover:shadow-xl w-full cursor-pointer flex flex-col transition-all duration-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              whileHover={{ translateY: -8, borderColor: "#90CAF9", boxShadow: "0 25px 50px -12px rgba(144, 202, 249, 0.3)" }}
+              whileHover={{ translateY: -8, borderColor: "#A58E6E", boxShadow: "0 25px 50px -12px rgba(70, 75, 81, 0.2)" }}
             >
               <motion.h3 
-                className="text-xl sm:text-2xl font-semibold text-[#1A2B2F] mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-[#2C3E50]"
+                className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
                 Année
               </motion.h3>
               <div className="mb-4 sm:mb-6">
                 <motion.span 
-                  className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#2C3E50] to-[#1A2B2F] bg-clip-text text-transparent inline-block transition-all duration-150 group-hover:from-[#1A2B2F] group-hover:to-[#34495E]"
+                  className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
                 >
                   3000 DH
                 </motion.span>
-                <div className="mt-2 text-sm sm:text-base text-[#2C3E50] transition-colors duration-150 group-hover:text-[#34495E]">
+                <div className="mt-2 text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
                   <span className="font-semibold">250 DH</span> / mois
-                </div>
               </div>
-              <p className="text-sm sm:text-base text-[#2C3E50] mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-[#34495E]">Accès complet à la communauté et aux formations</p>
-              <p className="text-sm sm:text-base text-[#1A2B2F] font-semibold mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-[#2C3E50]">45 min de coaching individuel (Pour diagnostic de ton projet)</p>
+                </div>
+              <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-luxe-black">Accès complet à la communauté et à l'Academy</p>
+              <p className="text-sm sm:text-base text-luxe-black font-semibold mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal">45 min de coaching individuel (Pour diagnostic de ton projet)</p>
               <div className="flex-1"></div>
               <motion.button
                 onClick={scrollToForm}
-                className="w-full px-4 sm:px-6 py-3 h-11 bg-gradient-to-r from-[#2C3E50] to-[#34495E] text-white text-sm sm:text-base font-semibold rounded-full hover:from-[#34495E] hover:to-[#1A252F] hover:shadow-lg hover:shadow-[#2C3E50]/50 transition-all duration-150"
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(26, 43, 47, 0.4)" }}
+                className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150"
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
                 whileTap={{ scale: 0.98 }}
               >
                 Choisir ce plan
@@ -1344,45 +1362,45 @@ const App: React.FC = () => {
           </div>
       </motion.section>
 
-        {/* Community Section */}
-        <motion.section
-          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-gradient-to-br from-[#F5F5F0] to-white overflow-hidden"
+      {/* Community Section */}
+      <motion.section
+          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-section-gradient overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
       >
         <div className="max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto w-full">
-          <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-6 items-center">
-            {/* Left - Image (Mobile: stacked above) */}
+          <div className="flex flex-col gap-6 md:gap-6">
+            {/* Image - Horizontal on top */}
             <motion.div
-              className="w-full order-2 md:order-1"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="w-full"
+              initial={{ opacity: 0, y: -30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <motion.img
                 src={NEW_IMAGE_3}
                 alt="Communauté d'entrepreneurs ELAN BC en atelier"
-                className="w-full rounded-lg object-cover aspect-[4/5] sm:aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] mb-4 md:mb-0"
+                className="w-full rounded-lg object-cover object-center aspect-video"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               />
             </motion.div>
 
-            {/* Right - Text & Avatars */}
+            {/* Text & Avatars - Below image */}
             <motion.div
-              className="text-center md:text-left space-y-4 sm:space-y-5 w-full order-1 md:order-2"
+              className="text-center md:text-left space-y-4 sm:space-y-5 w-full"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 sm:mb-6 text-[#1A2B2F] leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 sm:mb-6 text-luxe-black leading-tight">
             👥 Une communauté d'entrepreneurs engagés
           </h2>
-              <p className="text-sm sm:text-base md:text-lg text-[#2C3E50] leading-relaxed mb-6 sm:mb-8 px-2 md:px-0">
+              <p className="text-sm sm:text-base md:text-lg text-luxe-charcoal leading-relaxed mb-6 sm:mb-8 px-2 md:px-0">
                 👥 Rejoins une communauté dynamique d'entrepreneurs. Entraide, motivation, sessions live et échanges enrichissants pour t'accompagner dans ta croissance avec ELAN BC.
           </p>
 
@@ -1392,12 +1410,12 @@ const App: React.FC = () => {
               {['AB', 'CD', 'EF', 'GH', 'IJ', 'KL'].map((initials, index) => (
                     <motion.div
                   key={index}
-                      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white border-2 border-[#B8D4E0] flex items-center justify-center text-[#2C3E50] font-semibold text-sm sm:text-base md:text-lg flex-shrink-0"
+                      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-luxe-cream border-2 border-luxe-charcoal/25 flex items-center justify-center text-luxe-charcoal font-semibold text-sm sm:text-base md:text-lg flex-shrink-0"
                       initial={{ opacity: 0, scale: 0 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
-                      whileHover={{ scale: 1.1, borderColor: "#90CAF9" }}
+                      whileHover={{ scale: 1.1, borderColor: "#A58E6E" }}
                 >
                   {initials}
                     </motion.div>
@@ -1411,7 +1429,7 @@ const App: React.FC = () => {
 
       {/* Testimonials from Instagram Section */}
       <motion.section
-        className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-gradient-to-br from-[#FCE4EC] via-[#E3F2FD] to-[#F8BBD0] overflow-hidden"
+        className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-section-gradient overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -1419,7 +1437,7 @@ const App: React.FC = () => {
       >
         <div className="max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto w-full">
           <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-6 sm:mb-8 md:mb-10 text-[#1A2B2F] leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-6 sm:mb-8 md:mb-10 text-luxe-black leading-tight"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -1428,14 +1446,14 @@ const App: React.FC = () => {
             💬 Témoignages Instagram
           </motion.h2>
 
-          <p className="text-center text-base sm:text-lg text-[#2C3E50] mb-8 sm:mb-10 max-w-2xl mx-auto">
+          <p className="text-center text-base sm:text-lg text-luxe-charcoal mb-8 sm:mb-10 max-w-2xl mx-auto">
             ✨ Découvre les témoignages authentiques de notre communauté sur Instagram
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
             {/* Instagram Embed 1 */}
             <motion.div
-              className="group relative bg-gradient-to-br from-white to-[#F8F9FA] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-[#E4405F]/30"
+              className="group relative bg-card-luxe rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-luxe-charcoal/25"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -1443,7 +1461,7 @@ const App: React.FC = () => {
               whileHover={{ translateY: -8, scale: 1.02 }}
             >
               {/* Decorative gradient overlay */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E4405F] via-[#C13584] to-[#833AB4] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-luxe-black via-luxe-taupe to-luxe-black opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               <div className="p-1">
                 <blockquote 
@@ -1489,14 +1507,14 @@ const App: React.FC = () => {
 
             {/* Instagram Embed 2 */}
             <motion.div
-              className="group relative bg-gradient-to-br from-white to-[#F8F9FA] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-[#E4405F]/30"
+              className="group relative bg-card-luxe rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-luxe-charcoal/25"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
               whileHover={{ translateY: -8, scale: 1.02 }}
             >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#C13584] via-[#833AB4] to-[#E4405F] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-luxe-taupe via-luxe-black to-luxe-taupe opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               <div className="p-1">
                 <blockquote 
@@ -1542,14 +1560,14 @@ const App: React.FC = () => {
 
             {/* Instagram Embed 3 */}
             <motion.div
-              className="group relative bg-gradient-to-br from-white to-[#F8F9FA] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-[#E4405F]/30"
+              className="group relative bg-card-luxe rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-luxe-charcoal/25"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
               whileHover={{ translateY: -8, scale: 1.02 }}
             >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#833AB4] via-[#E4405F] to-[#C13584] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-luxe-black via-luxe-taupe to-luxe-black opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               <div className="p-1">
                 <blockquote 
@@ -1605,7 +1623,7 @@ const App: React.FC = () => {
               href="https://www.instagram.com/lakzirnadia/" 
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#E4405F] via-[#C13584] to-[#833AB4] text-white font-semibold rounded-full hover:from-[#833AB4] hover:via-[#E4405F] hover:to-[#C13584] transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-button-cta text-luxe-cream font-semibold rounded-full hover:opacity-90 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
             >
               <svg className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -1619,34 +1637,17 @@ const App: React.FC = () => {
         </div>
       </motion.section>
 
-        {/* Final CTA Section */}
-        <motion.section
-          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-gradient-to-br from-[#E3F2FD] via-[#FCE4EC] to-[#BBDEFB] border-t border-[#90CAF9]/30 overflow-hidden"
+      {/* Final CTA Section */}
+      <motion.section
+          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-section-gradient border-t border-luxe-charcoal/30 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
       >
         <div className="max-w-screen-sm sm:max-w-screen-md md:max-w-4xl mx-auto text-center">
-          {/* Final CTA Image */}
-          <motion.div
-            className="mb-6 sm:mb-8 md:mb-10"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <motion.img
-              src={FINAL_CTA_IMAGE}
-              alt="Nadia Lakzir - ELAN BUSINESS COMMUNITY"
-              className="w-full max-w-2xl mx-auto rounded-lg object-cover shadow-lg aspect-video"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            />
-          </motion.div>
-          
           <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 sm:mb-8 text-[#1A2B2F] leading-tight px-2"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 sm:mb-8 text-luxe-black leading-tight px-2"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -1656,7 +1657,7 @@ const App: React.FC = () => {
           </motion.h2>
           <motion.button
             onClick={scrollToForm}
-            className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 h-12 sm:h-auto bg-gradient-to-r from-[#64B5F6] via-[#42A5F5] to-[#2196F3] text-white text-base sm:text-lg font-semibold rounded-full hover:from-[#42A5F5] hover:via-[#2196F3] hover:to-[#1E88E5] hover:shadow-xl hover:shadow-[#64B5F6]/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#64B5F6] focus:ring-offset-2 focus:ring-offset-white"
+            className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 h-12 sm:h-auto bg-button-cta text-luxe-cream text-base sm:text-lg font-semibold rounded-full hover:opacity-90 hover:shadow-xl hover:shadow-luxe-black/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             initial={{ opacity: 0, y: 20 }}
@@ -1669,21 +1670,21 @@ const App: React.FC = () => {
         </div>
       </motion.section>
 
-        {/* Footer */}
-        <footer className="w-full py-8 sm:py-12 px-4 sm:px-5 bg-gradient-to-br from-[#2C3E50] via-[#34495E] to-[#1A252F] border-t border-[#90CAF9]/30 overflow-hidden">
+      {/* Footer */}
+        <footer className="w-full py-8 sm:py-12 px-4 sm:px-5 bg-luxe-charcoal border-t border-luxe-taupe/30 overflow-hidden">
         <div className="max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto w-full">
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8">
-            <a href="#" className="text-sm sm:text-base text-white/90 hover:text-white transition-colors duration-150">
+            <a href="#" className="text-sm sm:text-base text-luxe-cream/90 hover:text-luxe-cream transition-colors duration-150">
               Mentions légales
             </a>
-            <a href="#" className="text-sm sm:text-base text-white/90 hover:text-white transition-colors duration-150">
+            <a href="#" className="text-sm sm:text-base text-luxe-cream/90 hover:text-luxe-cream transition-colors duration-150">
               Conditions
             </a>
-            <a href="#" className="text-sm sm:text-base text-white/90 hover:text-white transition-colors duration-150">
+            <a href="#" className="text-sm sm:text-base text-luxe-cream/90 hover:text-luxe-cream transition-colors duration-150">
               Contact
             </a>
           </div>
-          <div className="mt-6 sm:mt-8 text-center text-xs sm:text-sm text-white/80">
+          <div className="mt-6 sm:mt-8 text-center text-xs sm:text-sm text-luxe-cream/70">
             © 2024 ELAN BUSINESS COMMUNITY (ELAN BC). Tous droits réservés.
           </div>
         </div>
