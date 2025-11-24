@@ -1406,11 +1406,12 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 text-luxe-black leading-tight">
-            👥 Une communauté d'entrepreneurs engagés
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 text-luxe-black leading-tight flex items-center justify-center md:justify-start gap-3">
+            <span role="img" aria-label="communauté" className="text-2xl sm:text-3xl">👥</span>
+            Une communauté d'entrepreneurs engagés
           </h2>
               <p className="text-sm sm:text-base md:text-lg text-luxe-charcoal leading-relaxed mb-6 sm:mb-8 px-2 md:px-0">
-                👥 Rejoins une communauté dynamique d'entrepreneurs. Entraide, motivation, sessions live et échanges enrichissants pour t'accompagner dans ta croissance avec ELAN BC.
+                Rejoins une communauté dynamique d'entrepreneurs. Entraide, motivation, sessions live et échanges enrichissants pour t'accompagner dans ta croissance avec ELAN BC.
           </p>
 
           {/* Avatar Placeholders */}
