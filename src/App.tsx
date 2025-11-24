@@ -1,26 +1,20 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
-// Google Apps Script endpoint
-// GOOGLE_SCRIPT_URL points to the Apps Script Web App that writes into our Google Sheet.
-// Make sure the script accepts POST, is deployed as "Anyone", and returns JSON: { status: "success" | "error", message?: string }
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyp4hpmEnS_r3BFVNVo1Tegjc1qUgJoSqKjkj1tCxLp4BSF4iWiNBoJKUylCeMdiAv9IQ/exec";
 
-// Helper function to get correct image path for Vercel
-// Vercel serves files from public/ at the root, so we use absolute paths
 const getImagePath = (filename: string): string => {
-  // Remove leading slash if present to avoid double slashes
   const cleanFilename = filename.startsWith('/') ? filename.slice(1) : filename;
-  // Always use absolute path from root
   return `/${cleanFilename}`;
 };
 
 const NADIA_HERO_IMAGE = getImagePath("MEITU_20250529_1011357914.png");
-const NEW_IMAGE_1 = getImagePath("cover.png"); // Results section image
-const NEW_IMAGE_2 = getImagePath("MEITU_20250501_145005910.png"); // Parcours section image
-const NEW_IMAGE_3 = getImagePath("A7V03753.JPG"); // Community section image
-
-// Testimonials images from Temoi folder
+const NEW_IMAGE_1 = getImagePath("cover.png");
+const NEW_IMAGE_2 = getImagePath("MEITU_20250501_145005910.png");
+const NEW_IMAGE_3 = getImagePath("A7V03753.JPG");
+const STARTER_BG = getImagePath("star.png");
+const BUILDER_BG = getImagePath("bui.png");
+const SCALER_BG = getImagePath("sca.png");
 const TESTIMONIAL_1 = getImagePath("Temoi/1.png");
 const TESTIMONIAL_2 = getImagePath("Temoi/2 (1).png");
 const TESTIMONIAL_3 = getImagePath("Temoi/3.png");
@@ -31,7 +25,6 @@ const TESTIMONIAL_7 = getImagePath("Temoi/9.png");
 const TESTIMONIAL_8 = getImagePath("Temoi/25.png");
 const TESTIMONIAL_9 = getImagePath("Temoi/27.png");
 
-// Icons from icones folder
 const ICON_LOUPE = getImagePath("icones/loupe.png");
 const ICON_FORMULAIRE = getImagePath("icones/remplir-le-formulaire.png");
 const ICON_REJOINDRE = getImagePath("icones/rejoindre.png");
@@ -39,6 +32,10 @@ const ICON_CARRIERE = getImagePath("icones/carriere.png");
 const ICON_GAGNER = getImagePath("icones/gagner-de-largent.png");
 const ICON_PARCOURS = getImagePath("icones/parcours-professionnel.png");
 const ICON_MAIN = getImagePath("icones/main.png");
+const ICON_FLUX_TRAVAIL = getImagePath("icones/flux-de-travail.png");
+const ICON_ORIENTATION = getImagePath("icones/orientation.png");
+const ICON_RESSOURCES_HUMAINES = getImagePath("icones/ressources-humaines.png");
+const ICON_INSTANTANE = getImagePath("icones/instantane.png");
 
 const App: React.FC = () => {
   // Form state
@@ -53,12 +50,10 @@ const App: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
-
+  const [selectedTestimonial, setSelectedTestimonial] = useState<string | null>(null);
   
-  // WhatsApp link
+  
   const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=212606212122&text&type=phone_number&app_absent=0";
-  
-  // Payment RIB information (à compléter avec vos vraies informations)
   const PAYMENT_RIB = {
     bankName: "Nom de la banque",
     accountName: "Nom du compte",
@@ -74,20 +69,17 @@ const App: React.FC = () => {
       ...prev,
       [name]: value
     }));
-    // Clear messages when user starts typing again
     if (successMessage || errorMessage) {
       setSuccessMessage(null);
       setErrorMessage(null);
     }
   };
 
-  // Basic email validation pattern
   const isValidEmail = (email: string): boolean => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
   };
 
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
@@ -128,10 +120,6 @@ const App: React.FC = () => {
         packChoice: formData.packChoice
       };
 
-      console.log('Sending payload to Google Apps Script:', payload);
-
-      // Use hidden iframe form submission (works reliably with Google Apps Script)
-      // This approach bypasses CORS issues completely
       const iframeName = 'hidden-submit-' + Date.now();
       const iframe = document.createElement('iframe');
       iframe.name = iframeName;
@@ -141,14 +129,12 @@ const App: React.FC = () => {
       iframe.style.border = 'none';
       document.body.appendChild(iframe);
       
-      // Create a form element that will submit to the iframe
       const hiddenForm = document.createElement('form');
       hiddenForm.method = 'POST';
       hiddenForm.action = GOOGLE_SCRIPT_URL;
       hiddenForm.target = iframeName;
       hiddenForm.style.display = 'none';
       
-      // Add form fields
       Object.entries(payload).forEach(([key, value]) => {
         const input = document.createElement('input');
         input.type = 'hidden';
@@ -157,29 +143,21 @@ const App: React.FC = () => {
         hiddenForm.appendChild(input);
       });
       
-      // Add form to body and submit
       document.body.appendChild(hiddenForm);
       hiddenForm.submit();
       
-      console.log('Form submitted via hidden iframe to Google Apps Script');
-      
-      // Wait for submission and then clean up
       setTimeout(() => {
         try {
           document.body.removeChild(hiddenForm);
           document.body.removeChild(iframe);
-        } catch (e) {
-          console.log('Cleanup error (expected):', e);
+        } catch {
+          // Elements may have been removed already
         }
       }, 3000);
       
-      // Wait a bit for the submission to complete
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // Assume success (we can't read response with this approach but it works)
       setErrorMessage(null);
-      
-      // Reset form state
         setFormData({
           fullName: '',
           phone: '',
@@ -188,19 +166,13 @@ const App: React.FC = () => {
         packChoice: ''
       });
       
-      // Reset form HTML element if available
       if (form) {
         form.reset();
       }
       
-      // Show payment modal instead of success message
       setShowPaymentModal(true);
-    } catch (error) {
-      // Network failure or other error
-      console.error('Network or fetch error:', error);
-      const errorDetails = error instanceof Error ? error.message : 'Unknown error';
-      console.error('Error details:', errorDetails);
-      setErrorMessage(`Une erreur est survenue lors de l'envoi. Merci de réessayer dans quelques instants. (${errorDetails})`);
+    } catch {
+      setErrorMessage(`Une erreur est survenue lors de l'envoi. Merci de réessayer dans quelques instants.`);
       setSuccessMessage(null);
     } finally {
       setIsSubmitting(false);
@@ -356,7 +328,7 @@ const App: React.FC = () => {
                     e.preventDefault();
                     scrollToBenefits();
                   }}
-                  className="inline-flex items-center gap-2 text-luxe-cream font-semibold underline hover:text-luxe-roseGold transition-colors duration-150 hover:border-b-2 hover:border-luxe-roseGold cursor-pointer"
+                  className="inline-flex items-center gap-2 text-luxe-cream font-semibold underline decoration-luxe-roseGold decoration-2 underline-offset-2 hover:text-luxe-roseGold transition-colors duration-150 cursor-pointer"
                 >
                   <img src={ICON_LOUPE} alt="Loupe" className="w-4 h-4 sm:w-5 sm:h-5 object-contain" />
                     Découvrir mon parcours
@@ -377,6 +349,9 @@ const App: React.FC = () => {
                     src={NADIA_HERO_IMAGE}
                     alt="Nadia Lakzir - Coach Business : Mindset -Marketing -Vente"
                     className="w-full rounded-lg object-contain object-center aspect-square mb-3 bg-luxe-cream"
+                    width="400"
+                    height="400"
+                    fetchPriority="high"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   />
@@ -405,6 +380,7 @@ const App: React.FC = () => {
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowFullScreen
                     title="Vidéo de présentation ELAN BC"
+                    loading="lazy"
                   ></iframe>
                     </div>
               </motion.div>
@@ -453,6 +429,9 @@ const App: React.FC = () => {
                   src={NADIA_HERO_IMAGE}
                   alt="Nadia Lakzir - Fondatrice de ELAN BUSINESS COMMUNITY (ELAN BC)"
                   className="w-full rounded-lg object-contain object-center aspect-square mb-3 bg-section-gradient"
+                  width="400"
+                  height="400"
+                  fetchPriority="high"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 />
@@ -487,6 +466,7 @@ const App: React.FC = () => {
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
                 title="Vidéo de présentation ELAN BC"
+                loading="lazy"
               ></iframe>
             </motion.div>
 
@@ -644,13 +624,17 @@ const App: React.FC = () => {
                 value={formData.packChoice}
                 onChange={handleChange}
                 required
-                className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-roseGold/30 px-3 py-2 text-sm text-luxe-black focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all"
+                className="w-full mt-1 rounded-lg bg-luxe-cream border-2 border-luxe-roseGold/40 px-4 py-3 text-sm font-medium text-luxe-black focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all shadow-sm hover:shadow-md hover:border-luxe-roseGold/60 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%234C1F1A%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E')] bg-no-repeat bg-right pr-10"
+                style={{
+                  backgroundPosition: 'right 0.75rem center',
+                  backgroundSize: '1.25em 1.25em'
+                }}
               >
-                <option value="">Sélectionne un plan</option>
-                <option value="Mensuel – 390 DH / mois">Mensuel – 390 DH / mois</option>
-                <option value="Trimestre – 885 DH">Trimestre – 885 DH</option>
-                <option value="Semestre – 1650 DH">Semestre – 1650 DH</option>
-                <option value="Année – 3000 DH">Année – 3000 DH</option>
+                <option value="" className="text-luxe-charcoal/70">Sélectionne un plan</option>
+                <option value="Mensuel – 390 DH / mois" className="text-luxe-black bg-luxe-cream py-2">Mensuel – 390 DH / mois</option>
+                <option value="Trimestre – 885 DH" className="text-luxe-black bg-luxe-cream py-2">Trimestre – 885 DH</option>
+                <option value="Semestre – 1650 DH" className="text-luxe-black bg-luxe-cream py-2">Semestre – 1650 DH</option>
+                <option value="Année – 3000 DH" className="text-luxe-black bg-luxe-cream py-2">Année – 3000 DH</option>
               </select>
             </motion.div>
 
@@ -845,11 +829,11 @@ const App: React.FC = () => {
 
           {/* Cards Grid - 2 per row, 4 cards total */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
-            {[
-              { icon: "✅", text: "Méthode structurée et progressive" },
-              { icon: "📚", text: "Ressources centralisées en un seul endroit" },
-              { icon: "⚡", text: "Application immédiate des concepts" },
-              { icon: "🎯", text: "Guidance à chaque étape" }
+              {[
+                { icon: ICON_FLUX_TRAVAIL, text: "Méthode structurée et progressive" },
+                { icon: ICON_RESSOURCES_HUMAINES, text: "Ressources centralisées en un seul endroit" },
+                { icon: ICON_INSTANTANE, text: "Application immédiate des concepts" },
+                { icon: ICON_ORIENTATION, text: "Guidance à chaque étape" },
               ].map((item, index) => (
                   <motion.div
                     key={index}
@@ -860,12 +844,10 @@ const App: React.FC = () => {
                     transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                 whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
               >
-                <div className="mb-3">
-                  <div className="inline-flex items-center justify-center text-2xl sm:text-3xl">
-                    {item.icon}
+                <div className="mb-3 flex justify-center">
+                  <img src={item.icon} alt={item.text} className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain" />
                   </div>
-                </div>
-                <p className="text-sm sm:text-base md:text-lg font-semibold text-luxe-black flex-1 transition-colors duration-150 group-hover:text-luxe-charcoal">
+                <p className="text-sm sm:text-base md:text-lg font-semibold text-luxe-black flex-1 text-center transition-colors duration-150 group-hover:text-luxe-charcoal">
                   {item.text}
                 </p>
                   </motion.div>
@@ -1003,6 +985,9 @@ const App: React.FC = () => {
               src={NEW_IMAGE_1}
               alt="Résultats concrets obtenus par les membres de ELAN BC"
               className="w-full rounded-2xl object-cover mb-4"
+              width="1200"
+              height="675"
+              loading="lazy"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             />
@@ -1044,6 +1029,9 @@ const App: React.FC = () => {
               src={NEW_IMAGE_2}
               alt="Parcours de l'Academy en ligne ELAN BC"
               className="w-full rounded-2xl object-cover mb-4"
+              width="1200"
+              height="675"
+              loading="lazy"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             />
@@ -1052,13 +1040,22 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {/* Starter Card */}
             <motion.div
-              className="group bg-card-luxe card-luxe-panel rounded-xl p-4 sm:p-5 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 transition-all duration-150"
+              className="group relative rounded-xl p-4 sm:p-5 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 transition-all duration-150 overflow-hidden"
+              style={{
+                backgroundImage: `url(${STARTER_BG})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+              }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
               whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
+              {/* Overlay for readability */}
+              <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/55 to-white/65 rounded-xl"></div>
+              <div className="relative z-10">
               <div className="mb-4 sm:mb-6">
                 <motion.span 
                   className="px-3 py-1.5 sm:px-4 sm:py-2 bg-section-gradient text-luxe-black text-xs sm:text-sm uppercase tracking-wider rounded-full border border-luxe-roseGold/30 transition-all duration-150 group-hover:bg-button-cta group-hover:text-white group-hover:border-luxe-roseGold/60 inline-block"
@@ -1091,17 +1088,27 @@ const App: React.FC = () => {
                   <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Pose les fondations pour démarrer vite et en confiance</span>
                 </li>
               </ul>
+              </div>
             </motion.div>
 
             {/* Builder Card */}
             <motion.div
-              className="group bg-card-luxe card-luxe-panel rounded-xl p-4 sm:p-5 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 transition-all duration-150"
+              className="group relative rounded-xl p-4 sm:p-5 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 transition-all duration-150 overflow-hidden"
+              style={{
+                backgroundImage: `url(${BUILDER_BG})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+              }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
               whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
+              {/* Overlay for readability */}
+              <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/55 to-white/65 rounded-xl"></div>
+              <div className="relative z-10">
               <div className="mb-4 sm:mb-6">
                 <motion.span 
                   className="px-3 py-1.5 sm:px-4 sm:py-2 bg-section-gradient text-luxe-black text-xs sm:text-sm uppercase tracking-wider rounded-full border border-luxe-roseGold/30 transition-all duration-150 group-hover:bg-button-cta group-hover:text-white group-hover:border-luxe-roseGold/60 inline-block"
@@ -1134,17 +1141,27 @@ const App: React.FC = () => {
                   <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Transforme ton projet en business rentable et structuré</span>
                 </li>
               </ul>
+              </div>
             </motion.div>
 
             {/* Scaler Card */}
             <motion.div
-              className="group bg-card-luxe card-luxe-panel rounded-xl p-4 sm:p-5 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 transition-all duration-150"
+              className="group relative rounded-xl p-4 sm:p-5 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 transition-all duration-150 overflow-hidden"
+              style={{
+                backgroundImage: `url(${SCALER_BG})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+              }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
               whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
+              {/* Overlay for readability */}
+              <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/55 to-white/65 rounded-xl"></div>
+              <div className="relative z-10">
               <div className="mb-4 sm:mb-6">
                 <motion.span 
                   className="px-3 py-1.5 sm:px-4 sm:py-2 bg-section-gradient text-luxe-black text-xs sm:text-sm uppercase tracking-wider rounded-full border border-luxe-roseGold/30 transition-all duration-150 group-hover:bg-button-cta group-hover:text-white group-hover:border-luxe-roseGold/60 inline-block"
@@ -1173,6 +1190,7 @@ const App: React.FC = () => {
                   <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Passe d'un business qui fonctionne à un business qui croît durablement</span>
                 </li>
               </ul>
+              </div>
             </motion.div>
             </div>
           </div>
@@ -1388,6 +1406,9 @@ const App: React.FC = () => {
                 src={NEW_IMAGE_3}
                 alt="Communauté d'entrepreneurs ELAN BC en atelier"
                 className="w-full rounded-lg object-cover object-center aspect-video"
+                width="1200"
+                height="675"
+                loading="lazy"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               />
@@ -1455,89 +1476,62 @@ const App: React.FC = () => {
             ✨ Découvre les témoignages authentiques de notre communauté sur Instagram
           </p>
           
-          {/* Auto-scrolling Carousel */}
-          <div className="relative w-full overflow-hidden">
-            <div className="flex gap-6 sm:gap-8 md:gap-10 animate-scroll">
-              {/* First set of testimonials */}
-              {[
-                TESTIMONIAL_1,
-                TESTIMONIAL_2,
-                TESTIMONIAL_3,
-                TESTIMONIAL_4,
-                TESTIMONIAL_5,
-                TESTIMONIAL_6,
-                TESTIMONIAL_7,
-                TESTIMONIAL_8,
-                TESTIMONIAL_9,
-              ].map((testimonialImage, index) => {
-                const gradientVariants = [
-                  'from-luxe-black via-luxe-roseGold to-luxe-black',
-                  'from-luxe-roseGold via-luxe-black to-luxe-roseGold',
-                  'from-luxe-black via-luxe-roseGold to-luxe-black',
-                ];
-                const gradientClass = gradientVariants[index % 3];
-                
-                return (
-                  <motion.div
-                    key={`first-${index}`}
-                    className="group relative bg-card-luxe card-luxe-panel rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-luxe-roseGold/40 flex-shrink-0 w-[280px] sm:w-[320px] md:w-[380px]"
-                    whileHover={{ translateY: -8, scale: 1.02 }}
-                  >
-                    {/* Decorative gradient overlay */}
-                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${gradientClass} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10`}></div>
-                    
-                    {/* Testimonial Image */}
+          {/* Testimonials Grid - 3 columns */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+            {[
+              TESTIMONIAL_1,
+              TESTIMONIAL_2,
+              TESTIMONIAL_3,
+              TESTIMONIAL_4,
+              TESTIMONIAL_5,
+              TESTIMONIAL_6,
+              TESTIMONIAL_7,
+              TESTIMONIAL_8,
+              TESTIMONIAL_9,
+            ].map((testimonialImage, index) => {
+              const gradientVariants = [
+                'from-luxe-black via-luxe-roseGold to-luxe-black',
+                'from-luxe-roseGold via-luxe-black to-luxe-roseGold',
+                'from-luxe-black via-luxe-roseGold to-luxe-black',
+              ];
+              const gradientClass = gradientVariants[index % 3];
+              
+              return (
+                <motion.div
+                  key={index}
+                  className="group relative bg-card-luxe card-luxe-panel rounded-lg sm:rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-luxe-roseGold/30 hover:border-luxe-roseGold/60 cursor-pointer aspect-square flex items-center justify-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ translateY: -4, scale: 1.02 }}
+                  onClick={() => setSelectedTestimonial(testimonialImage)}
+                >
+                  {/* Decorative gradient overlay */}
+                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${gradientClass} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10`}></div>
+                  
+                  {/* Testimonial Image - Complete view */}
             <motion.img
-                      src={testimonialImage}
-                      alt={`Témoignage ${index + 1} - ELAN BC`}
-                      className="w-full h-auto object-cover rounded-2xl"
-                      whileHover={{ scale: 1.05 }}
+                    src={testimonialImage}
+                    alt={`Témoignage ${index + 1} - ELAN BC`}
+                    className="absolute inset-0 w-full h-full object-contain bg-luxe-cream"
+                    width="400"
+                    height="400"
+                    loading="lazy"
+                    whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             />
+                  {/* Overlay hint */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="bg-white/90 rounded-full p-2 shadow-lg">
+                      <svg className="w-6 h-6 text-luxe-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                      </svg>
+                    </div>
+                  </div>
           </motion.div>
-                );
-              })}
-              
-              {/* Duplicate set for seamless loop */}
-              {[
-                TESTIMONIAL_1,
-                TESTIMONIAL_2,
-                TESTIMONIAL_3,
-                TESTIMONIAL_4,
-                TESTIMONIAL_5,
-                TESTIMONIAL_6,
-                TESTIMONIAL_7,
-                TESTIMONIAL_8,
-                TESTIMONIAL_9,
-              ].map((testimonialImage, index) => {
-                const gradientVariants = [
-                  'from-luxe-black via-luxe-roseGold to-luxe-black',
-                  'from-luxe-roseGold via-luxe-black to-luxe-roseGold',
-                  'from-luxe-black via-luxe-roseGold to-luxe-black',
-                ];
-                const gradientClass = gradientVariants[index % 3];
-                
-                return (
-                  <motion.div
-                    key={`second-${index}`}
-                    className="group relative bg-card-luxe card-luxe-panel rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-luxe-roseGold/40 flex-shrink-0 w-[280px] sm:w-[320px] md:w-[380px]"
-                    whileHover={{ translateY: -8, scale: 1.02 }}
-                  >
-                    {/* Decorative gradient overlay */}
-                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${gradientClass} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10`}></div>
-                    
-                    {/* Testimonial Image */}
-                    <motion.img
-                      src={testimonialImage}
-                      alt={`Témoignage ${index + 1} - ELAN BC`}
-                      className="w-full h-auto object-cover rounded-2xl"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </motion.div>
-                );
-              })}
-            </div>
+              );
+            })}
           </div>
           
           <motion.div 
@@ -1564,6 +1558,49 @@ const App: React.FC = () => {
           </motion.div>
         </div>
       </motion.section>
+
+      {/* Testimonial Modal */}
+      <AnimatePresence>
+        {selectedTestimonial && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedTestimonial(null)}
+          >
+            <motion.div
+              className="relative max-w-4xl w-full max-h-[90vh]"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedTestimonial(null)}
+                className="absolute -top-10 right-0 text-white hover:text-luxe-roseGold transition-colors z-10"
+              >
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              
+              {/* Image */}
+              <motion.img
+                src={selectedTestimonial}
+                alt="Témoignage ELAN BC"
+                className="w-full h-auto rounded-lg shadow-2xl object-contain max-h-[90vh]"
+                width="800"
+                height="800"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 }}
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Final CTA Section */}
       <motion.section

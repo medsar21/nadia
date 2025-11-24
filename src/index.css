@@ -6,7 +6,7 @@
   /* Palette LUXE - Rose Gold & Neutres */
   /* Couleurs principales */
   --color-cream: #F4F4F2;            /* Crème très clair - fond principal */
-  --color-black: #4C1F1A;            /* Bordeaux profond - titres principaux */
+  --color-black: #151313;            /* Noir profond - titres principaux */
   --color-grey: #838078;             /* Gris moyen neutre - textes secondaires */
   --color-charcoal: #302D2C;         /* Charbon foncé - fonds sombres */
   --color-rose: #D1A6A0;             /* Rose poussiéreux - accents */
@@ -51,8 +51,13 @@ html {
   overflow-x: hidden;
 }
 
+@font-face {
+  font-family: 'Montserrat';
+  font-display: swap;
+}
+
 body {
-  font-family: 'Montserrat', system-ui, sans-serif;
+  font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: var(--color-bg-main);
   background: var(--color-bg-section-gradient);
   color: var(--color-text-main);
@@ -199,4 +204,25 @@ img {
 .card-luxe-panel > * {
   position: relative;
   z-index: 1;
+}
+
+/* Custom Select Styling */
+select {
+  cursor: pointer;
+}
+
+select option {
+  background-color: #F4F4F2;
+  color: #151313;
+  padding: 0.75rem;
+  font-weight: 500;
+}
+
+select option:hover {
+  background-color: #E8B4A8;
+}
+
+select option:checked {
+  background-color: #E8B4A8;
+  color: #151313;
 }
