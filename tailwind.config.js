@@ -9,7 +9,7 @@ export default {
       colors: {
         luxe: {
           cream: '#F4F4F2',         // Crème très clair - fond principal
-          black: '#151313',         // Noir profond - titres principaux
+          black: '#4C1F1A',         // Bordeaux profond - titres principaux
           grey: '#838078',          // Gris moyen neutre - textes secondaires
           charcoal: '#302D2C',      // Charbon foncé - fonds sombres
           rose: '#D1A6A0',          // Rose poussiéreux - accents
@@ -20,7 +20,7 @@ export default {
         // Alias pour compatibilité
         brand: {
           cream: '#F4F4F2',
-          black: '#151313',
+          black: '#4C1F1A',
           grey: '#838078',
           charcoal: '#302D2C',
           rose: '#D1A6A0',
