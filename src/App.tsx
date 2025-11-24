@@ -860,14 +860,9 @@ const App: React.FC = () => {
                     transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                 whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
               >
-                <div className="flex items-start gap-4 mb-3">
-                  <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-2xl sm:text-3xl">
+                <div className="mb-3">
+                  <div className="inline-flex items-center justify-center text-2xl sm:text-3xl">
                     {item.icon}
-                  </div>
-                  <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 mt-1">
-                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-luxe-black" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
                   </div>
                 </div>
                 <p className="text-sm sm:text-base md:text-lg font-semibold text-luxe-black flex-1 transition-colors duration-150 group-hover:text-luxe-charcoal">
