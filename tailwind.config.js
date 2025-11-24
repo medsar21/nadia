@@ -46,7 +46,7 @@ export default {
         'hero-gradient': 'linear-gradient(135deg, #302D2C 0%, #838078 25%, #D1A6A0 50%, #E8B4A8 75%, #F4F4F2 100%)',
         'section-gradient': 'linear-gradient(145deg, #F4F4F2 0%, #E8B4A8 20%, #D1A6A0 40%, #E8B4A8 60%, #F4F4F2 80%, #E8B4A8 100%)',
         'button-cta': 'linear-gradient(135deg, #95655E 0%, #95655E 50%, #95655E 100%)',
-        'card-luxe': 'linear-gradient(145deg, #E8B4A8 0%, #838078 30%, #E8B4A8 60%, #838078 90%, #E8B4A8 100%)',
+        'card-luxe': 'linear-gradient(145deg, #F8F1EA 0%, #F1DACE 45%, #F8F1EA 100%)',
       },
     },
   },
