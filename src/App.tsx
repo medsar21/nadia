@@ -355,40 +355,18 @@ const App: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                
-                {/* Mobile: Button after Nadia Card */}
-                <motion.div
-                  className="md:hidden w-full mt-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
-                >
-                  <div className="flex justify-center">
-                    <motion.a
-                      href="https://nadialakzir.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-button-cta btn-luxe text-luxe-cream text-sm font-semibold rounded-full hover:opacity-90 hover:shadow-xl hover:shadow-luxe-roseGold/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:ring-offset-2 focus:ring-offset-luxe-cream"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <img src={ICON_LOUPE} alt="Loupe" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" />
-                      Découvrir mon parcours
-                    </motion.a>
-                  </div>
-                </motion.div>
               </motion.div>
 
             </div>
 
             {/* Right Column - Desktop: Nadia Card */}
-            <motion.div
+              <motion.div
               className="hidden md:flex md:flex-col w-full order-2 h-full items-center"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            >
-              {/* Nadia Card */}
+              >
+                {/* Nadia Card */}
               <motion.div
                 className="bg-card-luxe card-luxe-panel border border-luxe-roseGold/30 rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 h-full transition-all duration-150"
                 whileHover={{ translateY: -4, borderColor: "#E8B4A8" }}
@@ -413,28 +391,28 @@ const App: React.FC = () => {
                     </p>
                   </div>
               </motion.div>
-              
-              {/* Desktop: Button after Nadia Card */}
-              <motion.div
-                className="hidden md:flex w-full justify-center mt-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-              >
-                <motion.a
-                  href="https://nadialakzir.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-button-cta btn-luxe text-luxe-cream text-sm font-semibold rounded-full hover:opacity-90 hover:shadow-xl hover:shadow-luxe-roseGold/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:ring-offset-2 focus:ring-offset-luxe-cream"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <img src={ICON_LOUPE} alt="Loupe" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" />
-                  Découvrir mon parcours
-                </motion.a>
-              </motion.div>
             </motion.div>
                 </div>
+
+            {/* Button centered at bottom of hero section */}
+            <motion.div
+              className="w-full flex justify-center mt-6 md:mt-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
+            >
+              <motion.a
+                href="https://nadialakzir.com/a-propos/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-button-cta btn-luxe text-luxe-cream text-sm font-semibold rounded-full hover:opacity-90 hover:shadow-xl hover:shadow-luxe-roseGold/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:ring-offset-2 focus:ring-offset-luxe-cream"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <img src={ICON_LOUPE} alt="Loupe" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" />
+                Découvrir mon parcours
+              </motion.a>
+            </motion.div>
 
         </div>
       </section>
@@ -810,8 +788,8 @@ const App: React.FC = () => {
                     <div className="flex justify-between items-center gap-2">
                       <span className="text-luxe-charcoal font-medium flex-shrink-0">Code SWIFT :</span>
                       <span className="text-luxe-black font-semibold font-mono">{PAYMENT_RIB.swift}</span>
-                    </div>
-                  )}
+              </div>
+            )}
                 </div>
               </div>
 
@@ -1510,13 +1488,13 @@ const App: React.FC = () => {
                 { initials: 'MH', name: 'Mohamed H.', role: 'CEO' },
                 { initials: 'KR', name: 'Karim R.', role: 'Entrepreneur' }
               ].map((member, index) => (
-                <motion.div
+                    <motion.div
                   key={index}
                   className="flex flex-col items-center group"
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
+                      initial={{ opacity: 0, scale: 0 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
                   whileHover={{ scale: 1.05 }}
                 >
                   <div className="relative">
@@ -1531,7 +1509,7 @@ const App: React.FC = () => {
                     <p className="text-xs sm:text-sm font-semibold text-luxe-black mb-1">{member.name}</p>
                     <p className="text-[10px] sm:text-xs text-luxe-charcoal/70">{member.role}</p>
                   </div>
-                </motion.div>
+                    </motion.div>
               ))}
             </div>
           </div>
@@ -1598,7 +1576,7 @@ const App: React.FC = () => {
                   <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${gradientClass} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10`}></div>
                   
                   {/* Testimonial Image */}
-                  <motion.img
+            <motion.img
                     src={testimonialImage}
                     alt={`Témoignage ${index + 1} - ELAN BC`}
                     className="w-full h-full object-cover"
@@ -1606,8 +1584,8 @@ const App: React.FC = () => {
                     height="400"
                     loading="lazy"
                     whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  />
+              transition={{ duration: 0.3 }}
+            />
                   
                   {/* Overlay hint */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -1617,7 +1595,7 @@ const App: React.FC = () => {
                       </svg>
                     </div>
                   </div>
-                </motion.div>
+          </motion.div>
               );
             })}
           </div>
