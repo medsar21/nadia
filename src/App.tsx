@@ -11,7 +11,7 @@ const getImagePath = (filename: string): string => {
 const NADIA_HERO_IMAGE = getImagePath("MEITU_20250529_1011357914.png");
 const NEW_IMAGE_1 = getImagePath("cover.png");
 const NEW_IMAGE_2 = getImagePath("MEITU_20250501_145005910.png");
-const NEW_IMAGE_3 = getImagePath("A7V03753.JPG");
+const NEW_IMAGE_3 = getImagePath("meeting.jpg");
 const STARTER_BG = getImagePath("star.png");
 const BUILDER_BG = getImagePath("bui.png");
 const SCALER_BG = getImagePath("sca.png");
@@ -55,11 +55,16 @@ const App: React.FC = () => {
   
   const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=212606212122&text&type=phone_number&app_absent=0";
   const PAYMENT_RIB = {
-    bankName: "Nom de la banque",
-    accountName: "Nom du compte",
-    accountNumber: "XXXX XXXX XXXX XXXX",
+    bankName: "Banque Centrale Populaire",
+    branch: "CASA LES EPERVIERS",
+    accountName: "VENTEF CONSULTING SARL AU",
+    accountNumber: "007 780 0001175000000650 95",
+    bankCode: "007",
+    cityCode: "780",
+    accountNum: "0001175000000650",
+    ribKey: "95",
     iban: "MAXXXXXXXXXXXXXX",
-    swift: "XXXXXXXXXX"
+    swift: "BCMAMAMC"
   };
 
   // Handle input changes
@@ -179,18 +184,17 @@ const App: React.FC = () => {
     }
   };
 
-  // Scroll to form function
-  const scrollToBenefits = () => {
-    const element = document.getElementById('benefits-section');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
   const scrollToForm = () => {
     const formSection = document.getElementById('contact-form');
     if (formSection) {
       formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const scrollToParcours = () => {
+    const parcoursSection = document.getElementById('parcours-section');
+    if (parcoursSection) {
+      parcoursSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -273,9 +277,9 @@ const App: React.FC = () => {
         </div>
         <div className="max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto w-full relative z-10">
           {/* Desktop: 2 columns for text and Nadia, then video at bottom */}
-          <div className="flex flex-col md:grid md:grid-cols-2 gap-3 sm:gap-4 md:gap-4 lg:gap-6 items-start mb-4 md:mb-6">
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-3 sm:gap-4 md:gap-4 lg:gap-6 items-start md:items-center mb-4 md:mb-6">
             {/* Left Column - Text Content */}
-            <div className="space-y-2 sm:space-y-3 md:space-y-4 w-full order-1 h-full">
+            <div className="space-y-2 sm:space-y-3 md:space-y-4 w-full order-1 h-full flex flex-col justify-center">
               {/* Pill Label */}
               <motion.div
                 className="inline-block"
@@ -306,7 +310,7 @@ const App: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               >
-                <span className="bg-gradient-to-r from-luxe-cream to-luxe-roseGold bg-clip-text text-transparent">
+                <span className="text-[#D1A6A0] drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)]">
                 Business clair, actions concrètes, résultats assurés.
                 </span>
               </motion.p>
@@ -321,18 +325,6 @@ const App: React.FC = () => {
                 <span className="font-bold text-luxe-cream">Passe de l'incertitude à la clarté… et de la clarté à la croissance.</span>
                 <br />
                 <span className="text-luxe-cream/90">Avec ELAN BUSINESS, un chemin guidé pour créer et développer ton projet rentable.</span>
-                <br />
-                <a
-                  href="#benefits-section"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToBenefits();
-                  }}
-                  className="inline-flex items-center gap-2 text-luxe-cream font-semibold underline decoration-luxe-roseGold decoration-2 underline-offset-2 hover:text-luxe-roseGold transition-colors duration-150 cursor-pointer"
-                >
-                  <img src={ICON_LOUPE} alt="Loupe" className="w-4 h-4 sm:w-5 sm:h-5 object-contain" />
-                    Découvrir mon parcours
-                  </a>
               </motion.p>
 
               {/* Mobile: Nadia Card */}
@@ -363,8 +355,118 @@ const App: React.FC = () => {
                     </p>
                   </div>
                 </div>
+                
+                {/* Mobile: Button after Nadia Card */}
+                <motion.div
+                  className="md:hidden w-full mt-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
+                >
+                  <div className="flex justify-center">
+                    <motion.a
+                      href="https://nadialakzir.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-button-cta btn-luxe text-luxe-cream text-sm font-semibold rounded-full hover:opacity-90 hover:shadow-xl hover:shadow-luxe-roseGold/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:ring-offset-2 focus:ring-offset-luxe-cream"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <img src={ICON_LOUPE} alt="Loupe" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" />
+                      Découvrir mon parcours
+                    </motion.a>
+                  </div>
+                </motion.div>
               </motion.div>
 
+            </div>
+
+            {/* Right Column - Desktop: Nadia Card */}
+            <motion.div
+              className="hidden md:flex md:flex-col w-full order-2 h-full items-center"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            >
+              {/* Nadia Card */}
+              <motion.div
+                className="bg-card-luxe card-luxe-panel border border-luxe-roseGold/30 rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 h-full transition-all duration-150"
+                whileHover={{ translateY: -4, borderColor: "#E8B4A8" }}
+                transition={{ duration: 0.3 }}
+              >
+                  {/* Nadia Portrait */}
+                  <motion.img
+                    src={NADIA_HERO_IMAGE}
+                    alt="Nadia Lakzir - Fondatrice de ELAN BUSINESS COMMUNITY (ELAN BC)"
+                  className="w-full rounded-lg object-contain object-center aspect-square mb-3 bg-section-gradient"
+                  width="400"
+                  height="400"
+                  fetchPriority="high"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  {/* Nadia Info */}
+                  <div className="space-y-1">
+                  <h3 className="text-lg font-semibold text-luxe-black">Nadia Lakzir</h3>
+                  <p className="text-sm text-luxe-charcoal mb-0">
+                    Coach Business : Mindset -Marketing -Vente
+                    </p>
+                  </div>
+              </motion.div>
+              
+              {/* Desktop: Button after Nadia Card */}
+              <motion.div
+                className="hidden md:flex w-full justify-center mt-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+              >
+                <motion.a
+                  href="https://nadialakzir.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-button-cta btn-luxe text-luxe-cream text-sm font-semibold rounded-full hover:opacity-90 hover:shadow-xl hover:shadow-luxe-roseGold/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:ring-offset-2 focus:ring-offset-luxe-cream"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <img src={ICON_LOUPE} alt="Loupe" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" />
+                  Découvrir mon parcours
+                </motion.a>
+              </motion.div>
+            </motion.div>
+                </div>
+
+        </div>
+      </section>
+
+      {/* Conversion Form Section */}
+      <motion.section
+        id="contact-form"
+          className="w-full py-8 sm:py-10 md:py-12 px-4 sm:px-5 bg-section-gradient overflow-hidden"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="max-w-6xl mx-auto space-y-6">
+          <motion.div
+            className="text-center space-y-3"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-luxe-black flex items-center justify-center gap-3 flex-wrap">
+              <img src={ICON_FORMULAIRE} alt="Formulaire" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain flex-shrink-0" />
+              Rejoindre ELAN BUSINESS COMMUNITY (ELAN BC)
+            </h2>
+            <p className="text-sm sm:text-base text-luxe-charcoal mb-0">
+              Laisse tes informations et notre équipe te contacte pour t'orienter vers le meilleur parcours et plan.
+            </p>
+              </motion.div>
+
+          <div className="join-section-row">
+            <div className="join-video-block">
               {/* Mobile: Video */}
               <motion.div
                 className="md:hidden w-full mb-3"
@@ -402,87 +504,53 @@ const App: React.FC = () => {
                   Rejoindre ELAN maintenant
                 </motion.button>
                 <motion.button
-                  className="w-full px-6 sm:px-8 py-3 h-11 border-2 border-luxe-black text-luxe-black bg-transparent text-sm sm:text-base font-semibold rounded-full hover:bg-luxe-black hover:text-luxe-cream transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
+                  onClick={scrollToParcours}
+                  className="w-full px-6 sm:px-8 py-3 h-11 border-2 border-luxe-black text-luxe-black bg-transparent text-sm sm:text-base font-semibold rounded-full hover:bg-luxe-black hover:text-luxe-cream transition-all durée-150 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   Découvrir les parcours
                 </motion.button>
               </motion.div>
-            </div>
-
-            {/* Right Column - Desktop: Nadia Card */}
-            <motion.div
-              className="hidden md:flex md:flex-col w-full order-2 h-full"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            >
-              {/* Nadia Card */}
-              <motion.div
-                className="bg-card-luxe card-luxe-panel border border-luxe-roseGold/30 rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 h-full transition-all duration-150"
-                whileHover={{ translateY: -4, borderColor: "#E8B4A8" }}
-                transition={{ duration: 0.3 }}
-              >
-                {/* Nadia Portrait */}
-                <motion.img
-                  src={NADIA_HERO_IMAGE}
-                  alt="Nadia Lakzir - Fondatrice de ELAN BUSINESS COMMUNITY (ELAN BC)"
-                  className="w-full rounded-lg object-contain object-center aspect-square mb-3 bg-section-gradient"
-                  width="400"
-                  height="400"
-                  fetchPriority="high"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                />
-                {/* Nadia Info */}
-                <div className="space-y-1">
-                  <h3 className="text-lg font-semibold text-luxe-black">Nadia Lakzir</h3>
-                  <p className="text-sm text-luxe-charcoal mb-0">
-                    Coach Business : Mindset -Marketing -Vente
-                  </p>
-                </div>
-              </motion.div>
-            </motion.div>
-              </div>
 
           {/* Desktop: Video + CTA at bottom center */}
           <motion.div
-            className="hidden md:flex md:flex-col w-full max-w-2xl mx-auto items-center justify-center"
+                className="hidden md:flex md:flex-col w-full max-w-2xl mx-auto items-center justify-center video-desktop-block"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
           >
-              {/* Video - Web Style */}
-            <motion.div
-              className="relative w-full aspect-video rounded-lg overflow-hidden border-2 border-luxe-roseGold/30 shadow-lg hover:border-luxe-roseGold/60 hover:shadow-xl transition-all duration-150"
-              whileHover={{ scale: 1.01 }}
+                {/* Video - Web Style */}
+                <motion.div
+                  className="relative w-full aspect-video rounded-lg overflow-hidden border-2 border-luxe-roseGold/30 shadow-lg hover:border-luxe-roseGold/60 hover:shadow-xl transition-all duration-150"
+                  whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3 }}
             >
-              <iframe
-                src="https://player.vimeo.com/video/1139166666?title=0&byline=0&portrait=0"
-                className="absolute top-0 left-0 w-full h-full"
-                frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-                title="Vidéo de présentation ELAN BC"
-                loading="lazy"
-              ></iframe>
-            </motion.div>
+                  <iframe
+                    src="https://player.vimeo.com/video/1139166666?title=0&byline=0&portrait=0"
+                    className="absolute top-0 left-0 w-full h-full"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
+                    title="Vidéo de présentation ELAN BC"
+                    loading="lazy"
+                  ></iframe>
+                </motion.div>
 
             {/* Desktop: CTA Buttons (Centered under video) */}
             <div className="flex flex-col gap-3 w-full pt-4">
               <motion.button
                   onClick={scrollToForm}
-                  className="w-full px-6 py-3 h-11 bg-button-cta btn-luxe text-white text-sm font-semibold rounded-full hover:opacity-90 hover:shadow-xl hover:shadow-luxe-roseGold/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:ring-offset-2 focus:ring-offset-luxe-cream flex items-center justify-center gap-2"
+                    className="w-full px-6 py-3 h-11 bg-button-cta btn-luxe text-white text-sm font-semibold rounded-full hover:opacity-90 hover:shadow-xl hover:shadow-luxe-roseGold/50 transition-all durée-150 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:ring-offset-2 focus:ring-offset-luxe-cream flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <img src={ICON_REJOINDRE} alt="Rejoindre" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" />
+                    <img src={ICON_REJOINDRE} alt="Rejoindre" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" />
                 Rejoindre ELAN BC maintenant
               </motion.button>
               <motion.button
-                  className="w-full px-6 py-3 h-11 border-2 border-luxe-black text-luxe-black bg-transparent text-sm font-semibold rounded-full hover:bg-button-cta hover:text-luxe-cream transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
+                    onClick={scrollToParcours}
+                    className="w-full px-6 py-3 h-11 border-2 border-luxe-black text-luxe-black bg-transparent text-sm font-semibold rounded-full hover:bg-button-cta hover:text-luxe-cream transition-all durée-150 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -491,34 +559,8 @@ const App: React.FC = () => {
               </div>
           </motion.div>
         </div>
-      </section>
 
-      {/* Conversion Form Section */}
-      <motion.section
-        id="contact-form"
-          className="w-full py-8 sm:py-10 md:py-12 px-4 sm:px-5 bg-section-gradient overflow-hidden"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="max-w-xl mx-auto space-y-4">
-          <motion.div
-            className="text-center space-y-3"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-luxe-black flex items-center justify-center gap-3 flex-wrap">
-              <img src={ICON_FORMULAIRE} alt="Formulaire" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain flex-shrink-0" />
-              Rejoindre ELAN BUSINESS COMMUNITY (ELAN BC)
-            </h2>
-            <p className="text-sm sm:text-base text-luxe-charcoal mb-0">
-              Laisse tes informations et notre équipe te contacte pour t'orienter vers le meilleur parcours et plan.
-            </p>
-          </motion.div>
-
+            <div className="join-form-block">
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Full Name */}
             <motion.div
@@ -633,8 +675,8 @@ const App: React.FC = () => {
                 <option value="" className="text-luxe-charcoal/70">Sélectionne un plan</option>
                 <option value="Mensuel – 390 DH / mois" className="text-luxe-black bg-luxe-cream py-2">Mensuel – 390 DH / mois</option>
                 <option value="Trimestre – 885 DH" className="text-luxe-black bg-luxe-cream py-2">Trimestre – 885 DH</option>
-                <option value="Semestre – 1650 DH" className="text-luxe-black bg-luxe-cream py-2">Semestre – 1650 DH</option>
-                <option value="Année – 3000 DH" className="text-luxe-black bg-luxe-cream py-2">Année – 3000 DH</option>
+                <option value="Semestre – 1590 DH" className="text-luxe-black bg-luxe-cream py-2">Semestre – 1590 DH</option>
+                <option value="Année – 2990 DH" className="text-luxe-black bg-luxe-cream py-2">Année – 2990 DH</option>
               </select>
             </motion.div>
 
@@ -673,6 +715,8 @@ const App: React.FC = () => {
               </motion.p>
             )}
           </form>
+            </div>
+          </div>
         </div>
       </motion.section>
 
@@ -686,7 +730,7 @@ const App: React.FC = () => {
           onClick={() => setShowPaymentModal(false)}
         >
           <motion.div
-            className="bg-card-luxe card-luxe-panel rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-8 relative backdrop-blur-sm border border-luxe-roseGold/30"
+            className="bg-card-luxe card-luxe-panel rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 relative backdrop-blur-sm border border-luxe-roseGold/30"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
@@ -695,68 +739,90 @@ const App: React.FC = () => {
             {/* Close Button */}
             <button
               onClick={() => setShowPaymentModal(false)}
-              className="absolute top-4 right-4 text-luxe-charcoal/70 hover:text-luxe-black transition-colors"
+              className="absolute top-3 right-3 text-luxe-charcoal/70 hover:text-luxe-black transition-colors z-10"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
 
             {/* Modal Content */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* Header */}
               <div className="text-center">
                 <motion.div
-                  className="w-16 h-16 bg-luxe-taupe/20 rounded-full flex items-center justify-center mx-auto mb-4"
+                  className="w-12 h-12 sm:w-14 sm:h-14 bg-luxe-taupe/20 rounded-full flex items-center justify-center mx-auto mb-3"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.1 }}
                 >
-                  <svg className="w-8 h-8 text-luxe-black" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 text-luxe-black" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                 </motion.div>
-                <h3 className="text-2xl font-bold text-luxe-black mb-2">
+                <h3 className="text-lg sm:text-xl font-bold text-luxe-black mb-1">
                   Formulaire envoyé avec succès !
                 </h3>
-                <p className="text-sm text-luxe-charcoal">
+                <p className="text-xs sm:text-sm text-luxe-charcoal">
                   Merci ! Voici les informations de paiement pour finaliser votre inscription.
                 </p>
               </div>
 
               {/* Payment Information */}
-              <div className="bg-card-luxe card-luxe-panel rounded-xl p-5 border border-luxe-roseGold/30 shadow-md">
-                <h4 className="text-lg font-semibold text-luxe-black mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-luxe-black" fill="currentColor" viewBox="0 0 20 20">
+              <div className="bg-card-luxe card-luxe-panel rounded-xl p-3 sm:p-4 border border-luxe-roseGold/30 shadow-md">
+                <h4 className="text-base sm:text-lg font-semibold text-luxe-black mb-3 flex items-center gap-2">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxe-black" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
                     <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
                   </svg>
                   Coordonnées bancaires (RIB)
                 </h4>
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between items-center">
-                    <span className="text-luxe-charcoal font-medium">Banque :</span>
-                    <span className="text-luxe-black font-semibold">{PAYMENT_RIB.bankName}</span>
+                <div className="space-y-2 text-xs sm:text-sm">
+                  <div className="flex justify-between items-start gap-2">
+                    <span className="text-luxe-charcoal font-medium flex-shrink-0">Banque :</span>
+                    <span className="text-luxe-black font-semibold text-right break-words">{PAYMENT_RIB.bankName}</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-luxe-charcoal font-medium">Titulaire :</span>
-                    <span className="text-luxe-black font-semibold">{PAYMENT_RIB.accountName}</span>
+                  <div className="flex justify-between items-start gap-2">
+                    <span className="text-luxe-charcoal font-medium flex-shrink-0">Agence :</span>
+                    <span className="text-luxe-black font-semibold text-right break-words">{PAYMENT_RIB.branch}</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-luxe-charcoal font-medium">Numéro de compte :</span>
-                    <span className="text-luxe-black font-semibold font-mono">{PAYMENT_RIB.accountNumber}</span>
+                  <div className="flex justify-between items-start gap-2">
+                    <span className="text-luxe-charcoal font-medium flex-shrink-0">Titulaire :</span>
+                    <span className="text-luxe-black font-semibold text-right break-words">{PAYMENT_RIB.accountName}</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-luxe-charcoal font-medium">IBAN :</span>
-                    <span className="text-luxe-black font-semibold font-mono text-xs">{PAYMENT_RIB.iban}</span>
+                  <div className="flex justify-between items-center gap-2">
+                    <span className="text-luxe-charcoal font-medium flex-shrink-0">Code banque :</span>
+                    <span className="text-luxe-black font-semibold font-mono">{PAYMENT_RIB.bankCode}</span>
+                  </div>
+                  <div className="flex justify-between items-center gap-2">
+                    <span className="text-luxe-charcoal font-medium flex-shrink-0">Code ville :</span>
+                    <span className="text-luxe-black font-semibold font-mono">{PAYMENT_RIB.cityCode}</span>
+                  </div>
+                  <div className="flex justify-between items-start gap-2">
+                    <span className="text-luxe-charcoal font-medium flex-shrink-0">N° Compte :</span>
+                    <span className="text-luxe-black font-semibold font-mono text-right break-all">{PAYMENT_RIB.accountNum}</span>
+                  </div>
+                  <div className="flex justify-between items-center gap-2">
+                    <span className="text-luxe-charcoal font-medium flex-shrink-0">Clé RIB :</span>
+                    <span className="text-luxe-black font-semibold font-mono">{PAYMENT_RIB.ribKey}</span>
                   </div>
                   {PAYMENT_RIB.swift && (
-                    <div className="flex justify-between items-center">
-                      <span className="text-luxe-charcoal font-medium">SWIFT :</span>
+                    <div className="flex justify-between items-center gap-2">
+                      <span className="text-luxe-charcoal font-medium flex-shrink-0">Code SWIFT :</span>
                       <span className="text-luxe-black font-semibold font-mono">{PAYMENT_RIB.swift}</span>
-              </div>
-            )}
+                    </div>
+                  )}
                 </div>
+              </div>
+
+              {/* RIB QR Code Image */}
+              <div className="flex flex-col items-center">
+                <img 
+                  src={getImagePath("rib.png")} 
+                  alt="QR Code RIB" 
+                  className="w-40 h-40 sm:w-48 sm:h-48 object-contain rounded-lg border border-luxe-roseGold/30 shadow-md"
+                />
+                <p className="mt-2 text-xs sm:text-sm font-medium text-luxe-black">QR compte bancaire</p>
               </div>
 
               {/* WhatsApp Button */}
@@ -764,18 +830,18 @@ const App: React.FC = () => {
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-3 bg-[#25D366] text-white px-6 py-4 rounded-full font-semibold text-base hover:bg-[#20BA5A] shadow-lg hover:shadow-xl transition-all duration-150"
+                className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white px-4 py-3 rounded-full font-semibold text-sm sm:text-base hover:bg-[#20BA5A] shadow-lg hover:shadow-xl transition-all duration-150"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
                 <span>Contacter via WhatsApp</span>
               </motion.a>
 
               {/* Info Text */}
-              <p className="text-xs text-center text-luxe-charcoal/70">
+              <p className="text-[10px] sm:text-xs text-center text-luxe-charcoal/70">
                 Après le paiement, contactez-nous sur WhatsApp pour confirmer votre inscription.
                 </p>
               </div>
@@ -997,6 +1063,7 @@ const App: React.FC = () => {
 
       {/* 3 Parcours Section */}
       <motion.section
+          id="parcours-section"
           className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-section-gradient border-t border-luxe-roseGold/20 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -1322,11 +1389,11 @@ const App: React.FC = () => {
                   className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
                 >
-                  1650 DH
+                  1590 DH
                 </motion.span>
                 <span className="text-sm sm:text-base font-semibold text-luxe-black ml-2">live</span>
                 <div className="mt-2 text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
-                  <span className="font-semibold">275 DH</span> / mois
+                  <span className="font-semibold">265 DH</span> / mois
               </div>
                 </div>
               <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-luxe-black">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
@@ -1362,10 +1429,10 @@ const App: React.FC = () => {
                   className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
                 >
-                  3000 DH
+                  2990 DH
                 </motion.span>
                 <div className="mt-2 text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
-                  <span className="font-semibold">250 DH</span> / mois
+                  <span className="font-semibold">249 DH</span> / mois
               </div>
                 </div>
               <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-luxe-black">Accès complet à la communauté et à l'Academy</p>
@@ -1405,7 +1472,7 @@ const App: React.FC = () => {
               <motion.img
                 src={NEW_IMAGE_3}
                 alt="Communauté d'entrepreneurs ELAN BC en atelier"
-                className="w-full rounded-lg object-cover object-center aspect-video"
+                className="w-full rounded-lg object-contain object-center bg-luxe-cream"
                 width="1200"
                 height="675"
                 loading="lazy"
@@ -1430,21 +1497,41 @@ const App: React.FC = () => {
                 Rejoins une communauté dynamique d'entrepreneurs. Entraide, motivation, sessions live et échanges enrichissants pour t'accompagner dans ta croissance avec ELAN BC.
           </p>
 
-          {/* Avatar Placeholders */}
-          <div className="w-full overflow-x-auto pb-2 -mx-4 sm:mx-0 px-4 sm:px-0">
-                <div className="flex justify-center md:justify-start items-center gap-3 sm:gap-4 min-w-max">
-              {['AB', 'CD', 'EF', 'GH', 'IJ', 'KL'].map((initials, index) => (
-                    <motion.div
+          {/* Community Members Profiles */}
+          <div className="w-full flex justify-center overflow-x-auto pb-2">
+            <div className="flex justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6 min-w-max px-4">
+              {[
+                { initials: 'AB', name: 'Amina B.', role: 'CEO' },
+                { initials: 'CD', name: 'Chaimae D.', role: 'Entrepreneur' },
+                { initials: 'OM', name: 'Omar M.', role: 'Chef de projet' },
+                { initials: 'GH', name: 'Ghita H.', role: 'CEO' },
+                { initials: 'IJ', name: 'Imane J.', role: 'Entrepreneur' },
+                { initials: 'KL', name: 'Khadija L.', role: 'Chef de projet' },
+                { initials: 'MH', name: 'Mohamed H.', role: 'CEO' },
+                { initials: 'KR', name: 'Karim R.', role: 'Entrepreneur' }
+              ].map((member, index) => (
+                <motion.div
                   key={index}
-                      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-luxe-cream border-2 border-luxe-roseGold/30 flex items-center justify-center text-luxe-charcoal font-semibold text-sm sm:text-base md:text-lg flex-shrink-0"
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
-                      whileHover={{ scale: 1.1, borderColor: "#E8B4A8" }}
+                  className="flex flex-col items-center group"
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
                 >
-                  {initials}
+                  <div className="relative">
+                    <motion.div
+                      className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-luxe-roseGold via-luxe-rose to-luxe-brown border-3 border-luxe-roseGold/50 flex items-center justify-center text-luxe-cream font-bold text-lg sm:text-xl md:text-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:border-luxe-roseGold"
+                    >
+                      {member.initials}
                     </motion.div>
+                    <div className="absolute -bottom-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-[#25D366] rounded-full border-2 border-luxe-cream shadow-md"></div>
+                  </div>
+                  <div className="mt-2 text-center">
+                    <p className="text-xs sm:text-sm font-semibold text-luxe-black mb-1">{member.name}</p>
+                    <p className="text-[10px] sm:text-xs text-luxe-charcoal/70">{member.role}</p>
+                  </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -1499,7 +1586,7 @@ const App: React.FC = () => {
               return (
                 <motion.div
                   key={index}
-                  className="group relative bg-card-luxe card-luxe-panel rounded-lg sm:rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-luxe-roseGold/30 hover:border-luxe-roseGold/60 cursor-pointer aspect-square flex items-center justify-center"
+                  className="group relative bg-luxe-cream rounded-lg sm:rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border-2 border-luxe-roseGold/40 hover:border-luxe-roseGold/70 cursor-pointer aspect-square"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -1510,26 +1597,27 @@ const App: React.FC = () => {
                   {/* Decorative gradient overlay */}
                   <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${gradientClass} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10`}></div>
                   
-                  {/* Testimonial Image - Complete view */}
-            <motion.img
+                  {/* Testimonial Image */}
+                  <motion.img
                     src={testimonialImage}
                     alt={`Témoignage ${index + 1} - ELAN BC`}
-                    className="absolute inset-0 w-full h-full object-contain bg-luxe-cream"
+                    className="w-full h-full object-cover"
                     width="400"
                     height="400"
                     loading="lazy"
                     whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            />
+                    transition={{ duration: 0.3 }}
+                  />
+                  
                   {/* Overlay hint */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="bg-white/90 rounded-full p-2 shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="bg-white/90 rounded-full p-3 shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">
                       <svg className="w-6 h-6 text-luxe-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                       </svg>
                     </div>
                   </div>
-          </motion.div>
+                </motion.div>
               );
             })}
           </div>
