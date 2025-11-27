@@ -8,6 +8,11 @@ const getImagePath = (filename: string): string => {
   return `/${cleanFilename}`;
 };
 
+// Helper pour obtenir le chemin WebP
+const getWebPPath = (originalPath: string): string => {
+  return originalPath.replace(/\.(png|jpg|jpeg|PNG|JPG|JPEG)$/i, '.webp');
+};
+
 const NADIA_HERO_IMAGE = getImagePath("MEITU_20250529_1011357914.png");
 const NEW_IMAGE_1 = getImagePath("cover.png");
 const NEW_IMAGE_2 = getImagePath("MEITU_20250501_145005910.png");
@@ -337,16 +342,19 @@ const App: React.FC = () => {
                 {/* Nadia Card */}
                 <div className="bg-card-luxe card-luxe-panel border border-luxe-roseGold/30 rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 transition-all duration-150">
                   {/* Nadia Portrait */}
-                  <motion.img
-                    src={NADIA_HERO_IMAGE}
-                    alt="Nadia Lakzir - Coach Business : Mindset -Marketing -Vente"
-                    className="w-full rounded-lg object-contain object-center aspect-square mb-3 bg-luxe-cream"
-                    width="400"
-                    height="400"
-                    fetchPriority="high"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <motion.picture className="w-full rounded-lg mb-3 bg-luxe-cream">
+                    <source srcSet={NADIA_HERO_IMAGE.replace('.png', '.webp')} type="image/webp" />
+                    <motion.img
+                      src={NADIA_HERO_IMAGE}
+                      alt="Nadia Lakzir - Coach Business : Mindset -Marketing -Vente"
+                      className="w-full rounded-lg object-contain object-center aspect-square"
+                      width="400"
+                      height="400"
+                      fetchPriority="high"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.picture>
                   {/* Nadia Info */}
                   <div className="space-y-1">
                     <h3 className="text-2xl sm:text-3xl font-bold text-luxe-black">Nadia</h3>
@@ -373,16 +381,19 @@ const App: React.FC = () => {
                 transition={{ duration: 0.3 }}
               >
                   {/* Nadia Portrait */}
-                  <motion.img
-                    src={NADIA_HERO_IMAGE}
-                    alt="Nadia Lakzir - Fondatrice de ELAN BUSINESS COMMUNITY (ELAN BC)"
-                  className="w-full rounded-lg object-contain object-center aspect-square mb-3 bg-section-gradient"
-                  width="400"
-                  height="400"
-                  fetchPriority="high"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <motion.picture className="w-full rounded-lg mb-3 bg-section-gradient">
+                    <source srcSet={NADIA_HERO_IMAGE.replace('.png', '.webp')} type="image/webp" />
+                    <motion.img
+                      src={NADIA_HERO_IMAGE}
+                      alt="Nadia Lakzir - Fondatrice de ELAN BUSINESS COMMUNITY (ELAN BC)"
+                      className="w-full rounded-lg object-contain object-center aspect-square"
+                      width="400"
+                      height="400"
+                      fetchPriority="high"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.picture>
                   {/* Nadia Info */}
                   <div className="space-y-1">
                   <h3 className="text-lg font-semibold text-luxe-black">Nadia Lakzir</h3>
@@ -405,14 +416,18 @@ const App: React.FC = () => {
                 href="https://nadialakzir.com/a-propos/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open('https://nadialakzir.com/a-propos/', '_blank', 'noopener,noreferrer');
+                }}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-button-cta btn-luxe text-luxe-cream text-sm font-semibold rounded-full hover:opacity-90 hover:shadow-xl hover:shadow-luxe-roseGold/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:ring-offset-2 focus:ring-offset-luxe-cream"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <img src={ICON_LOUPE} alt="Loupe" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" />
+                <img src={ICON_LOUPE} alt="Loupe" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" width="20" height="20" />
                 Découvrir mon parcours
               </motion.a>
-            </motion.div>
+              </motion.div>
 
         </div>
       </section>
@@ -435,7 +450,7 @@ const App: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-luxe-black flex items-center justify-center gap-3 flex-wrap">
-              <img src={ICON_FORMULAIRE} alt="Formulaire" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain flex-shrink-0" />
+              <img src={ICON_FORMULAIRE} alt="Formulaire" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain flex-shrink-0" width="40" height="40" />
               Rejoindre ELAN BUSINESS COMMUNITY (ELAN BC)
             </h2>
             <p className="text-sm sm:text-base text-luxe-charcoal mb-0">
@@ -1025,16 +1040,19 @@ const App: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <motion.img
-              src={NEW_IMAGE_1}
-              alt="Résultats concrets obtenus par les membres de ELAN BC"
-              className="w-full rounded-2xl object-cover mb-4"
-              width="1200"
-              height="675"
-              loading="lazy"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            />
+            <motion.picture className="w-full rounded-2xl mb-4">
+              <source srcSet={getWebPPath(NEW_IMAGE_1)} type="image/webp" />
+              <motion.img
+                src={NEW_IMAGE_1}
+                alt="Résultats concrets obtenus par les membres de ELAN BC"
+                className="w-full rounded-2xl object-cover"
+                width="1200"
+                height="675"
+                loading="lazy"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              />
+            </motion.picture>
           </motion.div>
           </div>
       </motion.section>
@@ -1070,16 +1088,19 @@ const App: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <motion.img
-              src={NEW_IMAGE_2}
-              alt="Parcours de l'Academy en ligne ELAN BC"
-              className="w-full rounded-2xl object-cover mb-4"
-              width="1200"
-              height="675"
-              loading="lazy"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            />
+            <motion.picture className="w-full rounded-2xl mb-4">
+              <source srcSet={getWebPPath(NEW_IMAGE_2)} type="image/webp" />
+              <motion.img
+                src={NEW_IMAGE_2}
+                alt="Parcours de l'Academy en ligne ELAN BC"
+                className="w-full rounded-2xl object-cover"
+                width="1200"
+                height="675"
+                loading="lazy"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              />
+            </motion.picture>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
@@ -1447,16 +1468,19 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <motion.img
-                src={NEW_IMAGE_3}
-                alt="Communauté d'entrepreneurs ELAN BC en atelier"
-                className="w-full rounded-lg object-contain object-center bg-luxe-cream"
-                width="1200"
-                height="675"
-                loading="lazy"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              />
+              <motion.picture className="w-full rounded-lg bg-luxe-cream">
+                <source srcSet={getWebPPath(NEW_IMAGE_3)} type="image/webp" />
+                <motion.img
+                  src={NEW_IMAGE_3}
+                  alt="Communauté d'entrepreneurs ELAN BC en atelier"
+                  className="w-full rounded-lg object-contain object-center"
+                  width="1200"
+                  height="675"
+                  loading="lazy"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.picture>
             </motion.div>
 
             {/* Text & Avatars - Below image */}

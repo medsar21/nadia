@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "convert:webp": "node scripts/convert-to-webp.js"
   },
   "dependencies": {
     "framer-motion": "^12.23.24",
@@ -25,6 +26,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.32",
+    "sharp": "^0.33.5",
     "tailwindcss": "^3.4.0",
     "terser": "^5.44.1",
     "typescript": "^5.2.2",
