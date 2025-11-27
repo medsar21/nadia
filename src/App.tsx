@@ -60,7 +60,7 @@ const App: React.FC = () => {
   
   const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=212606212122&text&type=phone_number&app_absent=0";
   const PAYMENT_RIB = {
-    bankName: "Banque Centrale Populaire",
+    bankName: "Bank Atijari",
     branch: "CASA LES EPERVIERS",
     accountName: "VENTEF CONSULTING SARL AU",
     accountNumber: "007 780 0001175000000650 95",
@@ -284,7 +284,7 @@ const App: React.FC = () => {
           {/* Desktop: 2 columns for text and Nadia, then video at bottom */}
           <div className="flex flex-col md:grid md:grid-cols-2 gap-3 sm:gap-4 md:gap-4 lg:gap-6 items-start md:items-center mb-4 md:mb-6">
             {/* Left Column - Text Content */}
-            <div className="space-y-2 sm:space-y-3 md:space-y-4 w-full order-1 h-full flex flex-col justify-center">
+            <div className="space-y-2 sm:space-y-3 md:space-y-4 w-full order-1 h-full flex flex-col justify-center items-center text-center">
               {/* Pill Label */}
               <motion.div
                 className="inline-block"
@@ -292,19 +292,19 @@ const App: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-luxe-white/90 text-luxe-black text-[10px] sm:text-xs uppercase tracking-wider rounded-full border border-luxe-charcoal/40 shadow-sm">
+                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-luxe-white/90 text-luxe-black text-[10px] sm:text-xs uppercase tracking-wider rounded-full border border-luxe-charcoal/40 shadow-sm font-bold">
                   Communauté Business • Academy • Coaching
                 </span>
               </motion.div>
 
               {/* Main Headline */}
               <motion.h1
-                className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-luxe-cream leading-snug sm:leading-tight tracking-wide"
+                className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-luxe-cream leading-snug sm:leading-tight tracking-wide font-bold"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
               >
-                <span className="font-semibold">ELAN BC</span>{' '}
+                <span className="font-bold">ELAN BC</span>{' '}
                 <span className="font-bold">BUSINESS COMMUNITY</span>
               </motion.h1>
 
@@ -315,21 +315,21 @@ const App: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               >
-                <span className="text-[#D1A6A0] drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)]">
+                <span className="text-[#D1A6A0] drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)] font-bold">
                 Business clair, actions concrètes, résultats assurés.
                 </span>
               </motion.p>
 
               {/* Supporting Paragraph */}
               <motion.p
-                className="text-sm sm:text-base md:text-lg text-luxe-cream/90 leading-relaxed max-w-xl mb-4 sm:mb-5"
+                className="text-sm sm:text-base md:text-lg text-luxe-cream/90 leading-relaxed max-w-xl mb-4 sm:mb-5 font-bold"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
               >
                 <span className="font-bold text-luxe-cream">Passe de l'incertitude à la clarté… et de la clarté à la croissance.</span>
                 <br />
-                <span className="text-luxe-cream/90">Avec ELAN BUSINESS, un chemin guidé pour créer et développer ton projet rentable.</span>
+                <span className="font-bold text-luxe-cream">Avec ELAN BUSINESS, un chemin guidé pour créer et développer ton projet rentable.</span>
               </motion.p>
 
               {/* Mobile: Nadia Card */}
@@ -356,9 +356,9 @@ const App: React.FC = () => {
                     />
                   </motion.picture>
                   {/* Nadia Info */}
-                  <div className="space-y-1">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-luxe-black">Nadia</h3>
-                    <p className="text-sm text-luxe-charcoal mb-0">
+                  <div className="space-y-1 text-center">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-luxe-black">Nadia Lakzir</h3>
+                    <p className="text-sm text-luxe-charcoal mb-0 font-bold">
                       Coach Business : Mindset -Marketing -Vente
                     </p>
                   </div>
@@ -383,21 +383,21 @@ const App: React.FC = () => {
                   {/* Nadia Portrait */}
                   <motion.picture className="w-full rounded-lg mb-3 bg-section-gradient">
                     <source srcSet={NADIA_HERO_IMAGE.replace('.png', '.webp')} type="image/webp" />
-                    <motion.img
-                      src={NADIA_HERO_IMAGE}
-                      alt="Nadia Lakzir - Fondatrice de ELAN BUSINESS COMMUNITY (ELAN BC)"
+                  <motion.img
+                    src={NADIA_HERO_IMAGE}
+                    alt="Nadia Lakzir - Fondatrice de ELAN BUSINESS COMMUNITY (ELAN BC)"
                       className="w-full rounded-lg object-contain object-center aspect-square"
                       width="400"
                       height="400"
                       fetchPriority="high"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.3 }}
-                    />
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  />
                   </motion.picture>
                   {/* Nadia Info */}
-                  <div className="space-y-1">
-                  <h3 className="text-lg font-semibold text-luxe-black">Nadia Lakzir</h3>
-                  <p className="text-sm text-luxe-charcoal mb-0">
+                  <div className="space-y-1 text-center">
+                  <h3 className="text-lg font-bold text-luxe-black">Nadia Lakzir</h3>
+                  <p className="text-sm text-luxe-charcoal mb-0 font-bold">
                     Coach Business : Mindset -Marketing -Vente
                     </p>
                   </div>
@@ -554,7 +554,7 @@ const App: React.FC = () => {
         </div>
 
             <div className="join-form-block">
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3 max-h-[85vh] overflow-y-auto pr-2">
             {/* Full Name */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -572,7 +572,7 @@ const App: React.FC = () => {
                 value={formData.fullName}
                 onChange={handleChange}
                 required
-                className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-roseGold/30 px-3 py-2 text-sm text-luxe-black placeholder-luxe-grey/60 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all"
+                className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-roseGold/30 px-2.5 py-1.5 text-sm text-luxe-black placeholder-luxe-grey/60 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all"
                 placeholder="Nom complet"
               />
             </motion.div>
@@ -594,7 +594,7 @@ const App: React.FC = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 required
-                className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-roseGold/30 px-3 py-2 text-sm text-luxe-black placeholder-luxe-grey/60 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all"
+                className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-roseGold/30 px-2.5 py-1.5 text-sm text-luxe-black placeholder-luxe-grey/60 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all"
                 placeholder="0660112233"
               />
             </motion.div>
@@ -616,7 +616,7 @@ const App: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-roseGold/30 px-3 py-2 text-sm text-luxe-black placeholder-luxe-grey/60 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all"
+                className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-roseGold/30 px-2.5 py-1.5 text-sm text-luxe-black placeholder-luxe-grey/60 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all"
                 placeholder="email@email.com"
               />
             </motion.div>
@@ -637,7 +637,7 @@ const App: React.FC = () => {
                 name="address"
                 value={formData.address}
                 onChange={handleChange}
-                className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-roseGold/30 px-3 py-2 text-sm text-luxe-black placeholder-luxe-grey/60 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all"
+                className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-roseGold/30 px-2.5 py-1.5 text-sm text-luxe-black placeholder-luxe-grey/60 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all"
                 placeholder="Casablanca, Maroc"
               />
             </motion.div>
@@ -659,7 +659,7 @@ const App: React.FC = () => {
                 value={formData.packChoice}
                 onChange={handleChange}
                 required
-                className="w-full mt-1 rounded-lg bg-luxe-cream border-2 border-luxe-roseGold/40 px-4 py-3 text-sm font-medium text-luxe-black focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all shadow-sm hover:shadow-md hover:border-luxe-roseGold/60 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%234C1F1A%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E')] bg-no-repeat bg-right pr-10"
+                className="w-full mt-1 rounded-lg bg-luxe-cream border-2 border-luxe-roseGold/40 px-2.5 py-1.5 text-sm font-medium text-luxe-black focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all shadow-sm hover:shadow-md hover:border-luxe-roseGold/60 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%234C1F1A%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E')] bg-no-repeat bg-right pr-8"
                 style={{
                   backgroundPosition: 'right 0.75rem center',
                   backgroundSize: '1.25em 1.25em'
@@ -677,7 +677,7 @@ const App: React.FC = () => {
             <motion.button
               type="submit"
               disabled={isSubmitting}
-              className="w-full mt-4 rounded-full bg-button-cta btn-luxe py-3 text-sm font-semibold text-luxe-cream shadow-md hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/40 transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
+              className="w-full mt-3 rounded-full bg-button-cta btn-luxe py-2 text-sm font-semibold text-luxe-cream shadow-md hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/40 transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
               whileHover={isSubmitting ? {} : { scale: 1.02 }}
               whileTap={isSubmitting ? {} : { scale: 0.98 }}
             >
@@ -723,7 +723,7 @@ const App: React.FC = () => {
           onClick={() => setShowPaymentModal(false)}
         >
           <motion.div
-            className="bg-card-luxe card-luxe-panel rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 relative backdrop-blur-sm border border-luxe-roseGold/30"
+            className="bg-card-luxe card-luxe-panel rounded-xl shadow-2xl max-w-sm w-full max-h-[95vh] overflow-y-auto p-2.5 sm:p-3 relative backdrop-blur-sm border border-luxe-roseGold/30"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
@@ -732,45 +732,45 @@ const App: React.FC = () => {
             {/* Close Button */}
             <button
               onClick={() => setShowPaymentModal(false)}
-              className="absolute top-3 right-3 text-luxe-charcoal/70 hover:text-luxe-black transition-colors z-10"
+              className="absolute top-2 right-2 text-luxe-charcoal/70 hover:text-luxe-black transition-colors z-10"
             >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
 
             {/* Modal Content */}
-            <div className="space-y-4">
+            <div className="space-y-1.5 sm:space-y-2">
               {/* Header */}
               <div className="text-center">
                 <motion.div
-                  className="w-12 h-12 sm:w-14 sm:h-14 bg-luxe-taupe/20 rounded-full flex items-center justify-center mx-auto mb-3"
+                  className="w-9 h-9 sm:w-10 sm:h-10 bg-luxe-taupe/20 rounded-full flex items-center justify-center mx-auto mb-1.5"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.1 }}
                 >
-                  <svg className="w-6 h-6 sm:w-7 sm:h-7 text-luxe-black" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxe-black" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                 </motion.div>
-                <h3 className="text-lg sm:text-xl font-bold text-luxe-black mb-1">
+                <h3 className="text-sm sm:text-base font-bold text-luxe-black mb-0.5">
                   Formulaire envoyé avec succès !
                 </h3>
-                <p className="text-xs sm:text-sm text-luxe-charcoal">
+                <p className="text-[9px] sm:text-[10px] text-luxe-charcoal">
                   Merci ! Voici les informations de paiement pour finaliser votre inscription.
                 </p>
               </div>
 
               {/* Payment Information */}
-              <div className="bg-card-luxe card-luxe-panel rounded-xl p-3 sm:p-4 border border-luxe-roseGold/30 shadow-md">
-                <h4 className="text-base sm:text-lg font-semibold text-luxe-black mb-3 flex items-center gap-2">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxe-black" fill="currentColor" viewBox="0 0 20 20">
+              <div className="bg-card-luxe card-luxe-panel rounded-lg p-2 sm:p-2.5 border border-luxe-roseGold/30 shadow-md">
+                <h4 className="text-xs sm:text-sm font-semibold text-luxe-black mb-1.5 flex items-center gap-1">
+                  <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-luxe-black" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
                     <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
                   </svg>
                   Coordonnées bancaires (RIB)
                 </h4>
-                <div className="space-y-2 text-xs sm:text-sm">
+                <div className="space-y-1 text-[9px] sm:text-[10px]">
                   <div className="flex justify-between items-start gap-2">
                     <span className="text-luxe-charcoal font-medium flex-shrink-0">Banque :</span>
                     <span className="text-luxe-black font-semibold text-right break-words">{PAYMENT_RIB.bankName}</span>
@@ -809,13 +809,13 @@ const App: React.FC = () => {
               </div>
 
               {/* RIB QR Code Image */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center mt-1.5">
                 <img 
                   src={getImagePath("rib.png")} 
                   alt="QR Code RIB" 
-                  className="w-40 h-40 sm:w-48 sm:h-48 object-contain rounded-lg border border-luxe-roseGold/30 shadow-md"
+                  className="w-24 h-24 sm:w-28 sm:h-28 object-contain rounded-lg border border-luxe-roseGold/30 shadow-md"
                 />
-                <p className="mt-2 text-xs sm:text-sm font-medium text-luxe-black">QR compte bancaire</p>
+                <p className="mt-0.5 text-[9px] sm:text-[10px] font-medium text-luxe-black">QR compte bancaire</p>
               </div>
 
               {/* WhatsApp Button */}
@@ -823,20 +823,20 @@ const App: React.FC = () => {
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white px-4 py-3 rounded-full font-semibold text-sm sm:text-base hover:bg-[#20BA5A] shadow-lg hover:shadow-xl transition-all duration-150"
+                className="w-full flex items-center justify-center gap-1.5 bg-[#25D366] text-white px-2.5 py-1.5 rounded-full font-semibold text-[10px] sm:text-xs hover:bg-[#20BA5A] shadow-lg hover:shadow-xl transition-all duration-150 mt-1.5"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
                 <span>Contacter via WhatsApp</span>
               </motion.a>
 
               {/* Info Text */}
-              <p className="text-[10px] sm:text-xs text-center text-luxe-charcoal/70">
+              <p className="text-[8px] sm:text-[9px] text-center text-luxe-charcoal/70 mt-1 pb-1 leading-tight">
                 Après le paiement, contactez-nous sur WhatsApp pour confirmer votre inscription.
-                </p>
+              </p>
               </div>
           </motion.div>
         </motion.div>
@@ -1042,16 +1042,16 @@ const App: React.FC = () => {
           >
             <motion.picture className="w-full rounded-2xl mb-4">
               <source srcSet={getWebPPath(NEW_IMAGE_1)} type="image/webp" />
-              <motion.img
-                src={NEW_IMAGE_1}
-                alt="Résultats concrets obtenus par les membres de ELAN BC"
+            <motion.img
+              src={NEW_IMAGE_1}
+              alt="Résultats concrets obtenus par les membres de ELAN BC"
                 className="w-full rounded-2xl object-cover"
                 width="1200"
                 height="675"
                 loading="lazy"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              />
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            />
             </motion.picture>
           </motion.div>
           </div>
@@ -1090,16 +1090,16 @@ const App: React.FC = () => {
           >
             <motion.picture className="w-full rounded-2xl mb-4">
               <source srcSet={getWebPPath(NEW_IMAGE_2)} type="image/webp" />
-              <motion.img
-                src={NEW_IMAGE_2}
+            <motion.img
+              src={NEW_IMAGE_2}
                 alt="Parcours de l'Academy en ligne ELAN BC"
                 className="w-full rounded-2xl object-cover"
                 width="1200"
                 height="675"
                 loading="lazy"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              />
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            />
             </motion.picture>
           </motion.div>
 
@@ -1470,16 +1470,16 @@ const App: React.FC = () => {
             >
               <motion.picture className="w-full rounded-lg bg-luxe-cream">
                 <source srcSet={getWebPPath(NEW_IMAGE_3)} type="image/webp" />
-                <motion.img
-                  src={NEW_IMAGE_3}
-                  alt="Communauté d'entrepreneurs ELAN BC en atelier"
+              <motion.img
+                src={NEW_IMAGE_3}
+                alt="Communauté d'entrepreneurs ELAN BC en atelier"
                   className="w-full rounded-lg object-contain object-center"
                   width="1200"
                   height="675"
                   loading="lazy"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                />
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              />
               </motion.picture>
             </motion.div>
 
