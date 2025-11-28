@@ -299,7 +299,7 @@ const App: React.FC = () => {
 
               {/* Main Headline */}
               <motion.h1
-                className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-luxe-cream leading-snug sm:leading-tight tracking-wide font-bold"
+                className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-luxe-black leading-snug sm:leading-tight tracking-wide font-bold"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
@@ -310,26 +310,26 @@ const App: React.FC = () => {
 
               {/* Subheadline - Mise en évidence */}
               <motion.p
-                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-luxe-cream font-bold mb-4 sm:mb-5 leading-tight tracking-wide"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-luxe-black font-bold mb-4 sm:mb-5 leading-tight tracking-wide"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               >
-                <span className="text-[#D1A6A0] drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)] font-bold">
+                <span className="text-[#95655E] drop-shadow-[0_2px_4px_rgba(255,255,255,0.5)] font-bold">
                 Business clair, actions concrètes, résultats assurés.
                 </span>
               </motion.p>
 
               {/* Supporting Paragraph */}
               <motion.p
-                className="text-sm sm:text-base md:text-lg text-luxe-cream/90 leading-relaxed max-w-xl mb-4 sm:mb-5 font-bold"
+                className="text-sm sm:text-base md:text-lg text-luxe-charcoal leading-relaxed max-w-xl mb-4 sm:mb-5 font-bold"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
               >
-                <span className="font-bold text-luxe-cream">Passe de l'incertitude à la clarté… et de la clarté à la croissance.</span>
+                <span className="font-bold text-luxe-black">Passe de l'incertitude à la clarté… et de la clarté à la croissance.</span>
                 <br />
-                <span className="font-bold text-luxe-cream">Avec ELAN BUSINESS, un chemin guidé pour créer et développer ton projet rentable.</span>
+                <span className="font-bold text-luxe-charcoal">Avec ELAN BUSINESS, un chemin guidé pour créer et développer ton projet rentable.</span>
               </motion.p>
 
               {/* Mobile: Nadia Card */}
