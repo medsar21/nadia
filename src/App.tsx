@@ -206,7 +206,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen w-full flex items-center justify-center px-4 sm:px-5 py-4 sm:py-6 md:py-8 bg-hero-gradient overflow-hidden">
+      <section className="relative min-h-screen w-full flex items-center justify-center px-4 sm:px-5 py-4 sm:py-6 md:py-8 overflow-hidden">
         {/* Gradient Blobs Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -435,7 +435,7 @@ const App: React.FC = () => {
       {/* Conversion Form Section */}
       <motion.section
         id="contact-form"
-          className="w-full py-8 sm:py-10 md:py-12 px-4 sm:px-5 bg-section-gradient overflow-hidden"
+          className="w-full py-8 sm:py-10 md:py-12 px-4 sm:px-5 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -667,8 +667,8 @@ const App: React.FC = () => {
               >
                 <option value="" className="text-luxe-charcoal/70">Sélectionne un plan</option>
                 <option value="Mensuel – 390 DH / mois" className="text-luxe-black bg-luxe-cream py-2">Mensuel – 390 DH / mois</option>
-                <option value="Trimestre – 885 DH" className="text-luxe-black bg-luxe-cream py-2">Trimestre – 885 DH</option>
-                <option value="Semestre – 1590 DH" className="text-luxe-black bg-luxe-cream py-2">Semestre – 1590 DH</option>
+                <option value="Trimestre – 990 DH" className="text-luxe-black bg-luxe-cream py-2">Trimestre – 990 DH</option>
+                <option value="Semestre – 1750 DH" className="text-luxe-black bg-luxe-cream py-2">Semestre – 1750 DH</option>
                 <option value="Année – 2990 DH" className="text-luxe-black bg-luxe-cream py-2">Année – 2990 DH</option>
               </select>
             </motion.div>
@@ -836,7 +836,7 @@ const App: React.FC = () => {
               {/* Info Text */}
               <p className="text-[8px] sm:text-[9px] text-center text-luxe-charcoal/70 mt-1 pb-1 leading-tight">
                 Après le paiement, contactez-nous sur WhatsApp pour confirmer votre inscription.
-              </p>
+                </p>
               </div>
           </motion.div>
         </motion.div>
@@ -844,7 +844,7 @@ const App: React.FC = () => {
 
       {/* Why ELAN BC Section */}
       <motion.section
-          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-section-gradient overflow-hidden"
+          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -925,7 +925,7 @@ const App: React.FC = () => {
         transition={{ duration: 0.6 }}
       >
         {/* Background */}
-        <div className="absolute inset-0 bg-section-gradient" />
+        <div className="absolute inset-0" />
         
         <div className="relative z-10 max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto">
           <motion.h2
@@ -1060,7 +1060,7 @@ const App: React.FC = () => {
       {/* 3 Parcours Section */}
       <motion.section
           id="parcours-section"
-          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-section-gradient border-t border-luxe-roseGold/20 overflow-hidden"
+          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -1264,7 +1264,7 @@ const App: React.FC = () => {
 
       {/* Pricing Section */}
       <motion.section
-          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-section-gradient overflow-hidden"
+          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -1348,11 +1348,11 @@ const App: React.FC = () => {
                   className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
                 >
-                  885 DH
+                  990 DH
                 </motion.span>
                 <span className="text-sm sm:text-base font-semibold text-luxe-black ml-2">live</span>
                 <div className="mt-2 text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
-                  <span className="font-semibold">295 DH</span> / mois
+                  <span className="font-semibold">330 DH</span> / mois
               </div>
                 </div>
               <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-luxe-black">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
@@ -1388,11 +1388,11 @@ const App: React.FC = () => {
                   className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
                 >
-                  1590 DH
+                  1750 DH
                 </motion.span>
                 <span className="text-sm sm:text-base font-semibold text-luxe-black ml-2">live</span>
                 <div className="mt-2 text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
-                  <span className="font-semibold">265 DH</span> / mois
+                  <span className="font-semibold">290 DH</span> / mois
               </div>
                 </div>
               <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-luxe-black">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
@@ -1431,7 +1431,7 @@ const App: React.FC = () => {
                   2990 DH
                 </motion.span>
                 <div className="mt-2 text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
-                  <span className="font-semibold">249 DH</span> / mois
+                  <span className="font-semibold">250 DH</span> / mois
               </div>
                 </div>
               <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-luxe-black">Accès complet à la communauté et à l'Academy</p>
@@ -1452,7 +1452,7 @@ const App: React.FC = () => {
 
       {/* Community Section */}
       <motion.section
-          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-section-gradient overflow-hidden"
+          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -1544,7 +1544,7 @@ const App: React.FC = () => {
 
       {/* Testimonials from Instagram Section */}
       <motion.section
-        className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-section-gradient overflow-hidden"
+        className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -1694,7 +1694,7 @@ const App: React.FC = () => {
 
       {/* Final CTA Section */}
       <motion.section
-          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 bg-section-gradient border-t border-luxe-roseGold/20 overflow-hidden"
+          className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}

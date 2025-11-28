@@ -33,7 +33,7 @@
   --color-border-luxe: rgba(232, 180, 168, 0.3); /* Bordure rose gold subtile */
   
   /* Cards */
-  --color-card-bg: linear-gradient(145deg, #F8F1EA 0%, #F2DED3 45%, #F8F1EA 100%);
+  --color-card-bg: linear-gradient(145deg, #FFFFFF 0%, #F8F5F2 45%, #FFFFFF 100%);
   
   /* Buttons */
   --color-button-cta: linear-gradient(135deg, #95655E 0%, #95655E 50%, #95655E 100%);
@@ -58,8 +58,8 @@ html {
 
 body {
   font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background-color: var(--color-bg-main);
-  background: var(--color-bg-section-gradient);
+  background: linear-gradient(145deg, #FFFFFF 0%, #F8F5F2 15%, #F4F4F2 25%, #E8B4A8 40%, #F4F4F2 55%, #FFFFFF 70%, #F8F5F2 85%, #E8B4A8 100%);
+  background-attachment: fixed;
   color: var(--color-text-main);
   min-height: 100vh;
   height: 100%;
@@ -197,9 +197,9 @@ img {
   left: -15%;
   width: 130%;
   height: 70%;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.6);
   filter: blur(45px);
-  opacity: 0.5;
+  opacity: 0.7;
 }
 .card-luxe-panel > * {
   position: relative;
