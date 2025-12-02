@@ -211,7 +211,7 @@ const App: React.FC = () => {
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             className="absolute top-1/4 -left-1/4 w-96 h-96 rounded-full blur-3xl opacity-15"
-            style={{ background: '#E8B4A8' }}
+            style={{ background: '#998269' }}
             animate={{
               scale: [1, 1.2, 1],
               x: [0, 50, 0],
@@ -225,7 +225,7 @@ const App: React.FC = () => {
           />
           <motion.div
             className="absolute top-3/4 right-1/4 w-80 h-80 rounded-full blur-3xl opacity-12"
-            style={{ background: '#E8B4A8' }}
+            style={{ background: '#998269' }}
             animate={{
               scale: [1, 1.3, 1],
               x: [0, -40, 0],
@@ -315,7 +315,7 @@ const App: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               >
-                <span className="text-[#95655E] drop-shadow-[0_2px_4px_rgba(255,255,255,0.5)] font-bold">
+                <span className="text-[#464B51] drop-shadow-[0_2px_4px_rgba(255,255,255,0.5)] font-bold">
                 Business clair, actions concrètes, résultats assurés.
                 </span>
               </motion.p>
@@ -377,7 +377,7 @@ const App: React.FC = () => {
                 {/* Nadia Card */}
               <motion.div
                 className="bg-card-luxe card-luxe-panel border border-luxe-roseGold/30 rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 h-full transition-all duration-150"
-                whileHover={{ translateY: -4, borderColor: "#E8B4A8" }}
+                whileHover={{ translateY: -4, borderColor: "#998269" }}
                 transition={{ duration: 0.3 }}
               >
                   {/* Nadia Portrait */}
@@ -901,7 +901,7 @@ const App: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
+                whileHover={{ translateY: -8, borderColor: "#998269", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
               >
                 <div className="mb-3 flex justify-center">
                   <img src={item.icon} alt={item.text} className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain" />
@@ -949,7 +949,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#998269", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
               <motion.h3 
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
@@ -976,7 +976,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#998269", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
               <motion.h3 
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
@@ -1007,7 +1007,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#998269", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
               <motion.h3 
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
@@ -1117,7 +1117,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#998269", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
               {/* Overlay for readability */}
               <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/55 to-white/65 rounded-xl"></div>
@@ -1170,7 +1170,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#998269", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
               {/* Overlay for readability */}
               <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/55 to-white/65 rounded-xl"></div>
@@ -1223,7 +1223,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              whileHover={{ translateY: -6, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
+              whileHover={{ translateY: -6, borderColor: "#998269", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)", scale: 1.02 }}
             >
               {/* Overlay for readability */}
               <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/55 to-white/65 rounded-xl"></div>
@@ -1293,7 +1293,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
+              whileHover={{ translateY: -8, borderColor: "#998269", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
             >
               <motion.h3 
                 className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
@@ -1375,7 +1375,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
+              whileHover={{ translateY: -8, borderColor: "#998269", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
             >
               <motion.h3 
                 className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
@@ -1415,7 +1415,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
+              whileHover={{ translateY: -8, borderColor: "#998269", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
             >
               <motion.h3 
                 className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
