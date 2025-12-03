@@ -8,14 +8,13 @@ export default {
     extend: {
       colors: {
         luxe: {
-          cream: '#F5F5F0',         // HUESO - Beige très clair (os) - fond principal
-          black: '#2A2A2A',         // ONIX - Noir profond - titres principaux
-          grey: '#998269',          // ONIX - Beige brun moyen - textes secondaires
-          charcoal: '#637885',      // MOCCA - Gris brun foncé - fonds sombres
-          beigeLight: '#E8E0D6',    // ARENA - Beige sable clair - accents
-          beigeMedium: '#C4B5A0',   // Beige moyen - accents
-          beigeDark: '#998269',     // ONIX - Beige foncé - accent principal
-          roseGold: '#998269',      // Beige brun (remplace roseGold) - accent principal
+          cream: '#F4F4F2',         // Crème très clair - fond principal
+          black: '#151313',         // Noir profond - titres principaux
+          grey: '#838078',          // Gris moyen neutre - textes secondaires
+          charcoal: '#302D2C',      // Charbon foncé - fonds sombres
+          rose: '#D1A6A0',          // Rose poussiéreux - accents
+          brown: '#95655E',         // Brun rougeâtre - accents
+          roseGold: '#E8B4A8',      // Rose gold - accent principal
           white: '#FFFFFF',         // Blanc - petits éléments (badges)
         },
         // Alias pour compatibilité
@@ -44,10 +43,10 @@ export default {
         sans: ['Montserrat', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
-        'hero-gradient': 'linear-gradient(135deg, #E8E0D6 0%, #C4B5A0 25%, #998269 50%, #C4B5A0 75%, #F5F5F0 100%)',
-        'section-gradient': 'linear-gradient(145deg, #F5F5F0 0%, #E8E0D6 20%, #C4B5A0 40%, #E8E0D6 60%, #F5F5F0 80%, #E8E0D6 100%)',
-        'button-cta': 'linear-gradient(135deg, #998269 0%, #998269 50%, #998269 100%)',
-        'card-luxe': 'linear-gradient(145deg, #FFFFFF 0%, #F5F5F0 45%, #FFFFFF 100%)',
+        'hero-gradient': 'linear-gradient(135deg, #302D2C 0%, #838078 25%, #D1A6A0 50%, #E8B4A8 75%, #F4F4F2 100%)',
+        'section-gradient': 'linear-gradient(145deg, #F4F4F2 0%, #E8B4A8 20%, #D1A6A0 40%, #E8B4A8 60%, #F4F4F2 80%, #E8B4A8 100%)',
+        'button-cta': 'linear-gradient(135deg, #95655E 0%, #95655E 50%, #95655E 100%)',
+        'card-luxe': 'linear-gradient(145deg, #F8F1EA 0%, #F1DACE 45%, #F8F1EA 100%)',
       },
     },
   },
