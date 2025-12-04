@@ -227,37 +227,6 @@ select option:checked {
   color: #151313;
 }
 
-/* Join Section Layout */
-.join-section-row {
-  display: flex;
-  gap: 1.5rem;
-  align-items: stretch;
-}
-
-.join-video-block,
-.join-form-block {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-@media (min-width: 768px) {
-  .join-video-block .video-desktop-block {
-    margin-top: auto;
-  }
-}
-
-@media (max-width: 900px) {
-  .join-section-row {
-    flex-direction: column;
-  }
-
-  .join-video-block,
-  .join-form-block {
-    width: 100%;
-  }
-}
-
 /* Formulaire responsive pour laptop */
 @media (min-width: 1024px) and (max-width: 1440px) {
   .join-form-block form {

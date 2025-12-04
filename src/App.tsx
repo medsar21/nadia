@@ -13,7 +13,6 @@ const getWebPPath = (originalPath: string): string => {
   return originalPath.replace(/\.(png|jpg|jpeg|PNG|JPG|JPEG)$/i, '.webp');
 };
 
-const NADIA_HERO_IMAGE = getImagePath("MEITU_20250529_1011357914.png");
 const NEW_IMAGE_1 = getImagePath("cover.png");
 const NEW_IMAGE_2 = getImagePath("MEITU_20250501_145005910.png");
 const NEW_IMAGE_3 = getImagePath("meeting.jpg");
@@ -55,6 +54,7 @@ const App: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [showFormModal, setShowFormModal] = useState(false);
   const [selectedTestimonial, setSelectedTestimonial] = useState<string | null>(null);
   
   
@@ -180,6 +180,7 @@ const App: React.FC = () => {
         form.reset();
       }
       
+      setShowFormModal(false);
       setShowPaymentModal(true);
     } catch {
       setErrorMessage(`Une erreur est survenue lors de l'envoi. Merci de réessayer dans quelques instants.`);
@@ -189,17 +190,27 @@ const App: React.FC = () => {
     }
   };
 
-  const scrollToForm = () => {
-    const formSection = document.getElementById('contact-form');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+  const openFormModal = (plan: string) => {
+    setFormData(prev => ({
+      ...prev,
+      packChoice: plan
+    }));
+    setShowFormModal(true);
+    setSuccessMessage(null);
+    setErrorMessage(null);
   };
 
   const scrollToParcours = () => {
     const parcoursSection = document.getElementById('parcours-section');
     if (parcoursSection) {
       parcoursSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const scrollToPricing = () => {
+    const pricingSection = document.getElementById('pricing-section');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -281,10 +292,10 @@ const App: React.FC = () => {
           />
         </div>
         <div className="max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto w-full relative z-10">
-          {/* Desktop: 2 columns for text and Nadia, then video at bottom */}
-          <div className="flex flex-col md:grid md:grid-cols-2 gap-3 sm:gap-4 md:gap-4 lg:gap-6 items-start md:items-center mb-4 md:mb-6">
-            {/* Left Column - Text Content */}
-            <div className="space-y-2 sm:space-y-3 md:space-y-4 w-full order-1 h-full flex flex-col justify-center items-center text-center">
+          {/* Centered Content */}
+          <div className="flex flex-col items-center text-center space-y-4 sm:space-y-6 md:space-y-8">
+            {/* Text Content */}
+            <div className="space-y-2 sm:space-y-3 md:space-y-4 w-full">
               {/* Pill Label */}
               <motion.div
                 className="inline-block"
@@ -322,7 +333,7 @@ const App: React.FC = () => {
 
               {/* Supporting Paragraph */}
               <motion.p
-                className="text-sm sm:text-base md:text-lg text-luxe-charcoal leading-relaxed max-w-xl mb-4 sm:mb-5 font-bold"
+                className="text-sm sm:text-base md:text-lg text-luxe-charcoal leading-relaxed max-w-xl mx-auto mb-4 sm:mb-5 font-bold"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
@@ -331,86 +342,88 @@ const App: React.FC = () => {
                 <br />
                 <span className="font-bold text-luxe-charcoal">Avec ELAN BUSINESS, un chemin guidé pour créer et développer ton projet rentable.</span>
               </motion.p>
-
-              {/* Mobile: Nadia Card */}
-              <motion.div
-                className="md:hidden w-full space-y-4 mb-4"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
-              >
-                {/* Nadia Card */}
-                <div className="bg-card-luxe card-luxe-panel border border-luxe-roseGold/30 rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 transition-all duration-150">
-                  {/* Nadia Portrait */}
-                  <motion.picture className="w-full rounded-lg mb-3 bg-luxe-cream">
-                    <source srcSet={NADIA_HERO_IMAGE.replace('.png', '.webp')} type="image/webp" />
-                    <motion.img
-                      src={NADIA_HERO_IMAGE}
-                      alt="Nadia Lakzir - Coach Business : Mindset -Marketing -Vente"
-                      className="w-full rounded-lg object-contain object-center aspect-square"
-                      width="400"
-                      height="400"
-                      fetchPriority="high"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </motion.picture>
-                  {/* Nadia Info */}
-                  <div className="space-y-1 text-center">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-luxe-black">Nadia Lakzir</h3>
-                    <p className="text-sm text-luxe-charcoal mb-0 font-bold">
-                      Coach Business : Mindset -Marketing -Vente
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
             </div>
 
-            {/* Right Column - Desktop: Nadia Card */}
+            {/* Video - Mobile */}
               <motion.div
-              className="hidden md:flex md:flex-col w-full order-2 h-full items-center"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              >
-                {/* Nadia Card */}
-              <motion.div
-                className="bg-card-luxe card-luxe-panel border border-luxe-roseGold/30 rounded-lg p-3 flex flex-col gap-2 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 h-full transition-all duration-150"
-                whileHover={{ translateY: -4, borderColor: "#E8B4A8" }}
-                transition={{ duration: 0.3 }}
-              >
-                  {/* Nadia Portrait */}
-                  <motion.picture className="w-full rounded-lg mb-3 bg-section-gradient">
-                    <source srcSet={NADIA_HERO_IMAGE.replace('.png', '.webp')} type="image/webp" />
-                  <motion.img
-                    src={NADIA_HERO_IMAGE}
-                    alt="Nadia Lakzir - Fondatrice de ELAN BUSINESS COMMUNITY (ELAN BC)"
-                      className="w-full rounded-lg object-contain object-center aspect-square"
-                      width="400"
-                      height="400"
-                      fetchPriority="high"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  </motion.picture>
-                  {/* Nadia Info */}
-                  <div className="space-y-1 text-center">
-                  <h3 className="text-lg font-bold text-luxe-black">Nadia Lakzir</h3>
-                  <p className="text-sm text-luxe-charcoal mb-0 font-bold">
-                    Coach Business : Mindset -Marketing -Vente
-                    </p>
-                  </div>
+              className="md:hidden w-full max-w-2xl"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+            >
+              <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-luxe-roseGold/30 shadow-md">
+                <iframe
+                  src="https://player.vimeo.com/video/1139166666?title=0&byline=0&portrait=0"
+                  className="absolute top-0 left-0 w-full h-full"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  title="Vidéo de présentation ELAN BC"
+                  loading="lazy"
+                  width="640"
+                  height="360"
+                ></iframe>
+              </div>
               </motion.div>
-            </motion.div>
-                </div>
 
-            {/* Button centered at bottom of hero section */}
-            <motion.div
-              className="w-full flex justify-center mt-6 md:mt-8"
+            {/* Video - Desktop */}
+              <motion.div
+              className="hidden md:flex w-full max-w-4xl"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
+              <motion.div
+                className="relative w-full aspect-video rounded-lg overflow-hidden border-2 border-luxe-roseGold/30 shadow-lg hover:border-luxe-roseGold/60 hover:shadow-xl transition-all duration-150"
+                whileHover={{ scale: 1.01 }}
+                    transition={{ duration: 0.3 }}
+              >
+                <iframe
+                  src="https://player.vimeo.com/video/1139166666?title=0&byline=0&portrait=0"
+                  className="absolute top-0 left-0 w-full h-full"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  title="Vidéo de présentation ELAN BC"
+                  loading="lazy"
+                  width="1280"
+                  height="720"
+                ></iframe>
+              </motion.div>
+              </motion.div>
+
+            {/* CTA Buttons */}
+              <motion.div
+              className="flex flex-col gap-2 sm:gap-3 w-full max-w-md mx-auto"
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
+              >
+                <motion.button
+                onClick={scrollToPricing}
+                className="w-full px-6 sm:px-8 py-3 h-11 bg-button-cta btn-luxe text-white text-sm sm:text-base font-semibold rounded-full hover:shadow-xl hover:shadow-luxe-roseGold/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:ring-offset-2 focus:ring-offset-luxe-cream flex items-center justify-center gap-2"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                <img src={ICON_REJOINDRE} alt="Rejoindre" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" width="20" height="20" />
+                Rejoindre ELAN BC maintenant
+                </motion.button>
+                <motion.button
+                onClick={scrollToParcours}
+                className="w-full px-6 sm:px-8 py-3 h-11 border-2 border-luxe-black text-luxe-black bg-transparent text-sm sm:text-base font-semibold rounded-full hover:bg-luxe-black hover:text-luxe-cream transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Découvrir les parcours
+                </motion.button>
+              </motion.div>
+
+            {/* Button Découvrir mon parcours */}
+            <motion.div
+              className="w-full flex justify-center mt-4"
+              initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
             >
               <motion.a
                 href="https://nadialakzir.com/a-propos/"
@@ -427,134 +440,52 @@ const App: React.FC = () => {
                 <img src={ICON_LOUPE} alt="Loupe" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" width="20" height="20" />
                 Découvrir mon parcours
               </motion.a>
-              </motion.div>
+          </motion.div>
+          </div>
 
         </div>
       </section>
 
-      {/* Conversion Form Section */}
-      <motion.section
-        id="contact-form"
-          className="w-full py-8 sm:py-10 md:py-12 px-4 sm:px-5 overflow-hidden"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="max-w-6xl mx-auto space-y-6">
+      {/* Form Modal */}
+      <AnimatePresence>
+        {showFormModal && (
           <motion.div
-            className="text-center space-y-3"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+        initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowFormModal(false)}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-luxe-black flex items-center justify-center gap-3 flex-wrap">
-              <img src={ICON_FORMULAIRE} alt="Formulaire" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain flex-shrink-0" width="40" height="40" />
+          <motion.div
+              className="bg-card-luxe card-luxe-panel rounded-xl shadow-2xl max-w-md w-full max-h-[95vh] overflow-y-auto p-4 sm:p-6 relative backdrop-blur-sm border border-luxe-roseGold/30"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setShowFormModal(false)}
+                className="absolute top-3 right-3 text-luxe-charcoal/70 hover:text-luxe-black transition-colors z-10"
+              >
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Modal Header */}
+              <div className="text-center mb-4 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-luxe-black flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-2">
+                  <img src={ICON_FORMULAIRE} alt="Formulaire" className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 object-contain flex-shrink-0" width="32" height="32" />
               Rejoindre ELAN BUSINESS COMMUNITY (ELAN BC)
             </h2>
-            <p className="text-sm sm:text-base text-luxe-charcoal mb-0">
-              Laisse tes informations et notre équipe te contacte pour t'orienter vers le meilleur parcours et plan.
+                <p className="text-xs sm:text-sm text-luxe-charcoal">
+                  Laisse tes informations et notre équipe te contacte pour t'orienter vers le meilleur parcours et plan.
             </p>
-              </motion.div>
-
-          <div className="join-section-row">
-            <div className="join-video-block">
-              {/* Mobile: Video */}
-              <motion.div
-                className="md:hidden w-full mb-3"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
-              >
-                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-luxe-roseGold/30 shadow-md">
-                  <iframe
-                    src="https://player.vimeo.com/video/1139166666?title=0&byline=0&portrait=0"
-                    className="absolute top-0 left-0 w-full h-full"
-                    frameBorder="0"
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    allowFullScreen
-                    title="Vidéo de présentation ELAN BC"
-                    loading="lazy"
-                  ></iframe>
-                    </div>
-              </motion.div>
-
-              {/* Mobile: CTA Buttons (after video) */}
-              <motion.div
-                className="md:hidden flex flex-col gap-2 sm:gap-3 pt-2 sm:pt-3"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
-              >
-                <motion.button
-                  onClick={scrollToForm}
-                  className="w-full px-6 sm:px-8 py-3 h-11 bg-button-cta btn-luxe text-white text-sm sm:text-base font-semibold rounded-full hover:shadow-xl hover:shadow-luxe-roseGold/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:ring-offset-2 focus:ring-offset-luxe-cream flex items-center justify-center gap-2"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <img src={ICON_REJOINDRE} alt="Rejoindre" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" />
-                  Rejoindre ELAN maintenant
-                </motion.button>
-                <motion.button
-                  onClick={scrollToParcours}
-                  className="w-full px-6 sm:px-8 py-3 h-11 border-2 border-luxe-black text-luxe-black bg-transparent text-sm sm:text-base font-semibold rounded-full hover:bg-luxe-black hover:text-luxe-cream transition-all durée-150 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Découvrir les parcours
-                </motion.button>
-              </motion.div>
-
-          {/* Desktop: Video + CTA at bottom center */}
-          <motion.div
-                className="hidden md:flex md:flex-col w-full max-w-2xl mx-auto items-center justify-center video-desktop-block"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-          >
-                {/* Video - Web Style */}
-                <motion.div
-                  className="relative w-full aspect-video rounded-lg overflow-hidden border-2 border-luxe-roseGold/30 shadow-lg hover:border-luxe-roseGold/60 hover:shadow-xl transition-all duration-150"
-                  whileHover={{ scale: 1.01 }}
-              transition={{ duration: 0.3 }}
-            >
-                  <iframe
-                    src="https://player.vimeo.com/video/1139166666?title=0&byline=0&portrait=0"
-                    className="absolute top-0 left-0 w-full h-full"
-                    frameBorder="0"
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    allowFullScreen
-                    title="Vidéo de présentation ELAN BC"
-                    loading="lazy"
-                  ></iframe>
-                </motion.div>
-
-            {/* Desktop: CTA Buttons (Centered under video) */}
-            <div className="flex flex-col gap-3 w-full pt-4">
-              <motion.button
-                  onClick={scrollToForm}
-                    className="w-full px-6 py-3 h-11 bg-button-cta btn-luxe text-white text-sm font-semibold rounded-full hover:opacity-90 hover:shadow-xl hover:shadow-luxe-roseGold/50 transition-all durée-150 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:ring-offset-2 focus:ring-offset-luxe-cream flex items-center justify-center gap-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                    <img src={ICON_REJOINDRE} alt="Rejoindre" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" />
-                Rejoindre ELAN BC maintenant
-              </motion.button>
-              <motion.button
-                    onClick={scrollToParcours}
-                    className="w-full px-6 py-3 h-11 border-2 border-luxe-black text-luxe-black bg-transparent text-sm font-semibold rounded-full hover:bg-button-cta hover:text-luxe-cream transition-all durée-150 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                  Découvrir les parcours
-              </motion.button>
               </div>
-          </motion.div>
-        </div>
 
-            <div className="join-form-block">
-          <form onSubmit={handleSubmit} className="space-y-3 max-h-[85vh] overflow-y-auto pr-2">
+              {/* Form */}
+              <form onSubmit={handleSubmit} className="space-y-3">
             {/* Full Name */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -708,9 +639,16 @@ const App: React.FC = () => {
               </motion.p>
             )}
           </form>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Conversion Form Section - Hidden (kept for scrollToForm compatibility) */}
+      <motion.section
+        id="contact-form"
+        className="hidden"
+      >
       </motion.section>
 
       {/* Payment Modal */}
@@ -1264,6 +1202,7 @@ const App: React.FC = () => {
 
       {/* Pricing Section */}
       <motion.section
+        id="pricing-section"
           className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -1287,7 +1226,6 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {/* Mensuel */}
             <motion.div
-              onClick={scrollToForm}
               className="group bg-card-luxe card-luxe-panel rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 w-full cursor-pointer flex flex-col transition-all duration-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1299,7 +1237,7 @@ const App: React.FC = () => {
                 className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Mensuel
+                Plan Mensuel
               </motion.h3>
               <div className="mb-4 sm:mb-6">
                 <motion.span 
@@ -1310,9 +1248,37 @@ const App: React.FC = () => {
                 </motion.span>
                 <span className="text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black"> / mois</span>
               </div>
+              <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
+                Avance à ton rythme avec un accès mensuel aux cours + coaching et masterclass.
+              </p>
+              <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-black">
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>L'accès au cours de l'académie progressif</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Live coaching hebdo</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Masterclass & Workshops</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Communauté bienveillante</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Ressources & Outils pour exécuter</span>
+                </li>
+              </ul>
               <div className="flex-1"></div>
               <motion.button
-                onClick={scrollToForm}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openFormModal('Mensuel – 390 DH / mois');
+                }}
                 className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta btn-luxe text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150"
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
                 whileTap={{ scale: 0.98 }}
@@ -1323,7 +1289,6 @@ const App: React.FC = () => {
 
             {/* Trimestre - Highlighted */}
             <motion.div
-              onClick={scrollToForm}
               className="group bg-card-luxe card-luxe-panel rounded-lg p-5 sm:p-6 md:p-8 border-2 border-luxe-roseGold/40 shadow-lg shadow-luxe-roseGold/20 relative w-full cursor-pointer flex flex-col transition-all duration-150 hover:border-luxe-roseGold/70"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1341,7 +1306,7 @@ const App: React.FC = () => {
                 className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Trimestre
+                Plan Trimestriel
               </motion.h3>
               <div className="mb-4 sm:mb-6">
                 <motion.span 
@@ -1355,10 +1320,37 @@ const App: React.FC = () => {
                   <span className="font-semibold">330 DH</span> / mois
               </div>
                 </div>
-              <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-luxe-black">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
+              <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
+                Accélère ta progression immédiatement avec
+              </p>
+              <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-black">
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Accès instantané au trimestre complet</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Live coaching hebdo</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Masterclass & Workshops</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Communauté bienveillante</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Ressources & Outils pour exécuter</span>
+                </li>
+              </ul>
               <div className="flex-1"></div>
               <motion.button
-                onClick={scrollToForm}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openFormModal('Trimestre – 990 DH');
+                }}
                 className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta btn-luxe text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150"
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
                 whileTap={{ scale: 0.98 }}
@@ -1369,7 +1361,6 @@ const App: React.FC = () => {
 
             {/* Semestre */}
             <motion.div
-              onClick={scrollToForm}
               className="group bg-card-luxe card-luxe-panel rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 w-full cursor-pointer flex flex-col transition-all duration-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1381,7 +1372,7 @@ const App: React.FC = () => {
                 className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Semestre
+                Plan Semestriel
               </motion.h3>
               <div className="mb-4 sm:mb-6">
                 <motion.span 
@@ -1395,10 +1386,37 @@ const App: React.FC = () => {
                   <span className="font-semibold">290 DH</span> / mois
               </div>
                 </div>
-              <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-luxe-black">Accès aux 2 workshops : Vente 360° et préparer son année 2026</p>
+              <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
+                Construis une stratégie complète marketing & vente en 6 mois.
+              </p>
+              <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-black">
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Accès immédiat à l'académie</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Live coaching hebdo</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Masterclass & Workshops</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Communauté bienveillante</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Ressources & Outils pour exécuter</span>
+                </li>
+              </ul>
               <div className="flex-1"></div>
               <motion.button
-                onClick={scrollToForm}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openFormModal('Semestre – 1750 DH');
+                }}
                 className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta btn-luxe text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150"
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
                 whileTap={{ scale: 0.98 }}
@@ -1409,7 +1427,6 @@ const App: React.FC = () => {
 
             {/* Année */}
             <motion.div
-              onClick={scrollToForm}
               className="group bg-card-luxe card-luxe-panel rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 w-full cursor-pointer flex flex-col transition-all duration-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1421,9 +1438,9 @@ const App: React.FC = () => {
                 className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Année
+                Plan Annuel – Full Access
               </motion.h3>
-              <div className="mb-4 sm:mb-6">
+              <div className="mb-3 sm:mb-4">
                 <motion.span 
                   className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
@@ -1434,11 +1451,42 @@ const App: React.FC = () => {
                   <span className="font-semibold">250 DH</span> / mois
               </div>
                 </div>
-              <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 min-h-[3rem] transition-colors duration-150 group-hover:text-luxe-black">Accès complet à la communauté et à l'Academy</p>
-              <p className="text-sm sm:text-base text-luxe-black font-semibold mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal">45 min de coaching individuel (Pour diagnostic de ton projet)</p>
+              <div className="mb-3 sm:mb-4 px-2 py-1.5 bg-luxe-roseGold/10 border border-luxe-roseGold/30 rounded-lg">
+                <p className="text-xs sm:text-sm text-luxe-black font-semibold text-center">
+                  Offre Promo : Session 1:1 de 45 min jusqu'au 25/12
+                </p>
+              </div>
+              <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
+                Transformation totale : construire, vendre et scaler ton business.
+              </p>
+              <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-black">
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Accès à tous les modules de l'année</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Live coaching hebdo</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Masterclass & Workshops</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Communauté bienveillante</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-luxe-roseGold mt-1">•</span>
+                  <span>Ressources & Outils pour exécuter</span>
+                </li>
+              </ul>
               <div className="flex-1"></div>
               <motion.button
-                onClick={scrollToForm}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openFormModal('Année – 2990 DH');
+                }}
                 className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta btn-luxe text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150"
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
                 whileTap={{ scale: 0.98 }}
@@ -1714,7 +1762,11 @@ const App: React.FC = () => {
             </span>
           </motion.h2>
           <motion.button
-            onClick={scrollToForm}
+            onClick={() => {
+              setShowFormModal(true);
+              setSuccessMessage(null);
+              setErrorMessage(null);
+            }}
             className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 h-12 sm:h-auto bg-button-cta btn-luxe text-white text-base sm:text-lg font-semibold rounded-full hover:opacity-90 hover:shadow-xl hover:shadow-luxe-roseGold/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:ring-offset-2 focus:ring-offset-luxe-cream flex items-center justify-center gap-2 mx-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
