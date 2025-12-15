@@ -1266,20 +1266,20 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
             {/* Mensuel */}
             <motion.div
-              className="group bg-card-luxe card-luxe-panel rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 w-full cursor-pointer flex flex-col transition-all durée-150"
+              className="group bg-card-luxe card-luxe-panel rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 w-full cursor-pointer flex flex-col transition-all duration-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ durée: 0.5, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
             >
               <motion.h3 
-                className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors durée-150 group-hover:text-luxe-charcoal"
+                className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
                 Plan Mensuel
               </motion.h3>
-              <p className="text-sm sm:text-base text-luxe-charcoal mb-2 sm:mb-2.5 transition-colors durée-150 group-hover:text-luxe-black">
+              <p className="text-sm sm:text-base text-luxe-charcoal mb-2 sm:mb-2.5 transition-colors duration-150 group-hover:text-luxe-black">
                 🔄 Flexibilité mois par mois
               </p>
               <div className="mb-1 sm:mb-1.5">
@@ -1289,19 +1289,19 @@ const App: React.FC = () => {
               </div>
               <div className="mb-3 sm:mb-4 flex items-baseline gap-2">
                 <motion.span 
-                  className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all durée-150"
+                  className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
                 >
                   455 DH
                 </motion.span>
-                <span className="text-sm sm:text-base text-luxe-charcoal transition-colors durée-150 group-hover:text-luxe-black">
+                <span className="text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
                   / mois
                 </span>
               </div>
-              <p className="text-[11px] sm:text-xs text-luxe-charcoal mb-3 sm:mb-4 transition-colors durée-150 group-hover:text-luxe-black">
+              <p className="text-[11px] sm:text-xs text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
                 Idéal pour commencer
               </p>
-              <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors durée-150 group-hover:text-luxe-black">
+              <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-black">
                 <li className="flex items-start gap-2">
                   <span className="text-luxe-roseGold mt-1">•</span>
                   <span>Avance à ton rythme</span>
@@ -1321,7 +1321,7 @@ const App: React.FC = () => {
                   e.stopPropagation();
                   openFormModal('Mensuel – 455 DH/mois (au lieu de 650 DH/mois)');
                 }}
-                className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta btn-luxe text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all durée-150"
+                className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta btn-luxe text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150"
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
                 whileTap={{ scale: 0.98 }}
               >
