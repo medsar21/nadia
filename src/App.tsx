@@ -15,7 +15,6 @@ const getWebPPath = (originalPath: string): string => {
 
 const NEW_IMAGE_1 = getImagePath("cover.png");
 const NEW_IMAGE_2 = getImagePath("MEITU_20250501_145005910.png");
-const NEW_IMAGE_3 = getImagePath("meeting.jpg");
 const STARTER_BG = getImagePath("star.png");
 const BUILDER_BG = getImagePath("bui.png");
 const SCALER_BG = getImagePath("sca.png");
