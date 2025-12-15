@@ -298,13 +298,13 @@ const App: React.FC = () => {
             <div className="space-y-2 sm:space-y-3 md:space-y-4 w-full">
               {/* Pill Label */}
               <motion.div
-                className="inline-block"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              >
+              className="inline-block"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
                 <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-luxe-white/90 text-luxe-black text-[10px] sm:text-xs uppercase tracking-wider rounded-full border border-luxe-charcoal/40 shadow-sm font-bold">
-                  Communauté Business • Academy • Coaching
+                  Système stratégique • Décision • Exécution
                 </span>
               </motion.div>
 
@@ -315,8 +315,7 @@ const App: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
               >
-                <span className="font-bold">ELAN BC</span>{' '}
-                <span className="font-bold">BUSINESS COMMUNITY</span>
+                <span className="font-bold">ELAN BUSINESS SYSTEM (EBS)</span>
               </motion.h1>
 
               {/* Subheadline - Mise en évidence */}
@@ -327,7 +326,7 @@ const App: React.FC = () => {
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               >
                 <span className="text-[#95655E] drop-shadow-[0_2px_4px_rgba(255,255,255,0.5)] font-bold">
-                Business clair, actions concrètes, résultats assurés.
+                Décide plus vite. Agis juste. Ajuste en continu.
                 </span>
               </motion.p>
 
@@ -338,17 +337,19 @@ const App: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
               >
-                <span className="font-bold text-luxe-black">Passe de l'incertitude à la clarté… et de la clarté à la croissance.</span>
+                <span className="font-bold text-luxe-black">Tu n’as pas besoin de plus d’informations.</span>
                 <br />
-                <span className="font-bold text-luxe-charcoal">Avec ELAN BUSINESS, un chemin guidé pour créer et développer ton projet rentable.</span>
+                <span className="font-bold text-luxe-charcoal">Tu as besoin d’un cadre clair, de décisions assumées et d’un rythme d’exécution.</span>
+                <br />
+                <span className="font-bold text-luxe-charcoal">ELAN BUSINESS SYSTEM est un système d’orientation, de décision et d’exécution pour entrepreneurs dans un marché incertain.</span>
               </motion.p>
             </div>
 
             {/* Video - Mobile */}
               <motion.div
               className="md:hidden w-full max-w-2xl"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
             >
               <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-luxe-roseGold/30 shadow-md">
@@ -358,7 +359,7 @@ const App: React.FC = () => {
                   frameBorder="0"
                   allow="autoplay; fullscreen; picture-in-picture"
                   allowFullScreen
-                  title="Vidéo de présentation ELAN BC"
+                  title="Vidéo de présentation EBS"
                   loading="lazy"
                   width="640"
                   height="360"
@@ -384,7 +385,7 @@ const App: React.FC = () => {
                   frameBorder="0"
                   allow="autoplay; fullscreen; picture-in-picture"
                   allowFullScreen
-                  title="Vidéo de présentation ELAN BC"
+                  title="Vidéo de présentation EBS"
                   loading="lazy"
                   width="1280"
                   height="720"
@@ -406,7 +407,7 @@ const App: React.FC = () => {
                   whileTap={{ scale: 0.98 }}
                 >
                 <img src={ICON_REJOINDRE} alt="Rejoindre" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" width="20" height="20" />
-                Rejoindre ELAN BC maintenant
+                Intégrer ELAN BUSINESS SYSTEM
                 </motion.button>
                 <motion.button
                 onClick={scrollToParcours}
@@ -414,7 +415,7 @@ const App: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Découvrir les parcours
+                  Comprendre le système
                 </motion.button>
               </motion.div>
 
@@ -438,7 +439,7 @@ const App: React.FC = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <img src={ICON_LOUPE} alt="Loupe" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" width="20" height="20" />
-                Découvrir mon parcours
+                Découvrir mon rôle & mon parcours
               </motion.a>
           </motion.div>
           </div>
@@ -477,7 +478,7 @@ const App: React.FC = () => {
               <div className="text-center mb-4 sm:mb-6">
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-luxe-black flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-2">
                   <img src={ICON_FORMULAIRE} alt="Formulaire" className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 object-contain flex-shrink-0" width="32" height="32" />
-              Rejoindre ELAN BUSINESS COMMUNITY (ELAN BC)
+              Rejoindre ELAN BUSINESS SYSTEM (EBS)
             </h2>
                 <p className="text-xs sm:text-sm text-luxe-charcoal">
                   Laisse tes informations et notre équipe te contacte pour t'orienter vers le meilleur parcours et plan.
@@ -597,10 +598,18 @@ const App: React.FC = () => {
                 }}
               >
                 <option value="" className="text-luxe-charcoal/70">Sélectionne un plan</option>
-                <option value="Mensuel – 390 DH / mois" className="text-luxe-black bg-luxe-cream py-2">Mensuel – 390 DH / mois</option>
-                <option value="Trimestre – 990 DH" className="text-luxe-black bg-luxe-cream py-2">Trimestre – 990 DH</option>
-                <option value="Semestre – 1750 DH" className="text-luxe-black bg-luxe-cream py-2">Semestre – 1750 DH</option>
-                <option value="Année – 2990 DH" className="text-luxe-black bg-luxe-cream py-2">Année – 2990 DH</option>
+                <option
+                  value="Mensuel – 455 DH / mois (au lieu de 650 DH)"
+                  className="text-luxe-black bg-luxe-cream py-2"
+                >
+                  Mensuel – 455 DH / mois (au lieu de 650 DH)
+                </option>
+                <option
+                  value="Semestriel – 2 450 DH (au lieu de 3 500 DH)"
+                  className="text-luxe-black bg-luxe-cream py-2"
+                >
+                  Semestriel – 2 450 DH (au lieu de 3 500 DH)
+                </option>
               </select>
             </motion.div>
 
@@ -826,7 +835,7 @@ const App: React.FC = () => {
         </motion.div>
       )}
 
-      {/* Why ELAN BC Section */}
+      {/* Why EBS Section */}
       <motion.section
           className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 overflow-hidden"
         initial={{ opacity: 0 }}
@@ -844,7 +853,7 @@ const App: React.FC = () => {
           >
             <span className="flex items-center justify-center gap-3 flex-wrap">
               <img src={ICON_CARRIERE} alt="Carrière" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain flex-shrink-0" />
-            Pourquoi choisir ELAN BUSINESS COMMUNITY (ELAN BC) ?
+            Pourquoi ELAN BUSINESS SYSTEM et pas une autre formation ?
             </span>
           </motion.h2>
           
@@ -857,26 +866,17 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              ⏰ Arrête de <span className="font-bold text-luxe-black">perdre ton temps</span> à chercher partout. Tout ce dont tu as besoin pour <span className="font-bold text-luxe-black">lancer</span>, <span className="font-bold text-luxe-black">développer</span> et <span className="font-bold text-luxe-black">scaler</span> ton business est réuni ici.
-            </motion.p>
-            <motion.p
-              className="text-sm sm:text-base md:text-lg lg:text-xl text-luxe-charcoal leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              🎯 Avec ELAN BC, une méthode claire et structurée qui t'oriente à chaque étape. Apprends efficacement et applique immédiatement.
+              Parce que la réalité est simple — et rarement dite :
             </motion.p>
           </div>
 
           {/* Cards Grid - 2 per row, 4 cards total */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
               {[
-                { icon: ICON_FLUX_TRAVAIL, text: "Méthode structurée et progressive" },
-                { icon: ICON_RESSOURCES_HUMAINES, text: "Ressources centralisées en un seul endroit" },
-                { icon: ICON_INSTANTANE, text: "Application immédiate des concepts" },
-                { icon: ICON_ORIENTATION, text: "Guidance à chaque étape" },
+                { icon: ICON_FLUX_TRAVAIL, text: "Les formations longues sont rarement terminées" },
+                { icon: ICON_RESSOURCES_HUMAINES, text: "Les communautés créent peu d’actions concrètes" },
+                { icon: ICON_INSTANTANE, text: "L’information seule ne produit pas de résultats" },
+                { icon: ICON_ORIENTATION, text: "Le manque de clarté bloque la progression" },
               ].map((item, index) => (
                   <motion.div
                     key={index}
@@ -895,6 +895,19 @@ const App: React.FC = () => {
                 </p>
                   </motion.div>
               ))}
+          </div>
+          <div className="max-w-3xl mx-auto mt-8 sm:mt-10 md:mt-12 text-center">
+            <motion.p
+              className="text-sm sm:text-base md:text-lg lg:text-xl text-luxe-charcoal leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              Avec EBS, tu n’es jamais livré(e) à toi-même.
+              <br />
+              Tu es orienté(e), encadré(e) et accompagné(e) dans chaque décision clé.
+            </motion.p>
           </div>
         </div>
       </motion.section>
@@ -921,7 +934,7 @@ const App: React.FC = () => {
           >
             <span className="flex items-center justify-center gap-3 flex-wrap">
               <img src={ICON_GAGNER} alt="Gagner de l'argent" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain flex-shrink-0" />
-            Ce que tu obtiens en rejoignant ELAN BC
+            Ce que tu obtiens avec ELAN BUSINESS SYSTEM
             </span>
           </motion.h2>
 
@@ -939,16 +952,12 @@ const App: React.FC = () => {
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Une plateforme complète d'Academy
+                Un système de décision clair
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Plus de 30 cours sur le marketing, la vente et le leadership</span>
-                </li>
-                <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Ressources & contenus pratiques, applicables immédiatement</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Analyser, choisir et agir sans hésitation inutile.</span>
                 </li>
               </ul>
             </motion.div>
@@ -966,20 +975,12 @@ const App: React.FC = () => {
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Un accompagnement et suivi au quotidien
+                Un accompagnement stratégique réel
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Guidance personnalisée pour ne jamais te sentir perdu</span>
-                </li>
-                <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Support continu via la communauté et les sessions live</span>
-                </li>
-                <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Coaching pour appliquer la méthode pas à pas</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Des décisions guidées, pas du contenu à consommer passivement.</span>
                 </li>
               </ul>
             </motion.div>
@@ -997,20 +998,12 @@ const App: React.FC = () => {
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Des résultats concrets
+                Des résultats concrets sur le terrain
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Plus de ventes et de clients</span>
-                </li>
-                <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Gain de temps : fini la dispersion</span>
-                </li>
-                <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Motivation et growth mindset grâce à la communauté</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Stratégie, exécution, ajustement — en continu.</span>
                 </li>
               </ul>
             </motion.div>
@@ -1027,8 +1020,8 @@ const App: React.FC = () => {
             <motion.picture className="w-full rounded-2xl mb-4">
               <source srcSet={getWebPPath(NEW_IMAGE_1)} type="image/webp" />
             <motion.img
-              src={NEW_IMAGE_1}
-              alt="Résultats concrets obtenus par les membres de ELAN BC"
+            src={NEW_IMAGE_1}
+              alt="Résultats concrets obtenus par les membres de EBS"
                 className="w-full rounded-2xl object-cover"
                 width="1200"
                 height="675"
@@ -1060,7 +1053,7 @@ const App: React.FC = () => {
           >
             <span className="flex items-center justify-center gap-3 flex-wrap">
               <img src={ICON_PARCOURS} alt="Parcours professionnel" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain flex-shrink-0" />
-              Les 3 parcours de l'Academy ELAN BC
+              Le programme ELAN BUSINESS SYSTEM – 6 mois
             </span>
           </motion.h2>
 
@@ -1076,7 +1069,7 @@ const App: React.FC = () => {
               <source srcSet={getWebPPath(NEW_IMAGE_2)} type="image/webp" />
             <motion.img
               src={NEW_IMAGE_2}
-                alt="Parcours de l'Academy en ligne ELAN BC"
+                alt="Parcours de l'Academy en ligne EBS"
                 className="w-full rounded-2xl object-cover"
                 width="1200"
                 height="675"
@@ -1111,31 +1104,30 @@ const App: React.FC = () => {
                   className="px-3 py-1.5 sm:px-4 sm:py-2 bg-section-gradient text-luxe-black text-xs sm:text-sm uppercase tracking-wider rounded-full border border-luxe-roseGold/30 transition-all duration-150 group-hover:bg-button-cta group-hover:text-white group-hover:border-luxe-roseGold/60 inline-block"
                   whileHover={{ scale: 1.05 }}
                 >
-                  Starter
+                  Mois 1–2
                 </motion.span>
               </div>
               <motion.h3 
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Ceux qui démarrent
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Trouve et clarifie ton idée de projet</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Clarté stratégique & posture du leader</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Bases solides pour structurer ton projet</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Positionnement & client idéal</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Idée claire et détaillée prête à se lancer</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Clarté stratégique & posture du leader</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Pose les fondations pour démarrer vite et en confiance</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Positionnement & client idéal</span>
                 </li>
               </ul>
               </div>
@@ -1164,31 +1156,30 @@ const App: React.FC = () => {
                   className="px-3 py-1.5 sm:px-4 sm:py-2 bg-section-gradient text-luxe-black text-xs sm:text-sm uppercase tracking-wider rounded-full border border-luxe-roseGold/30 transition-all duration-150 group-hover:bg-button-cta group-hover:text-white group-hover:border-luxe-roseGold/60 inline-block"
                   whileHover={{ scale: 1.05 }}
                 >
-                  Builder
+                  Mois 3–4
                 </motion.span>
               </div>
               <motion.h3 
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Entrepreneurs déjà lancés
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Développe ta stratégie marketing et vente</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Offres & tarification intelligente</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Organisation et process business optimisés</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Stratégie d’acquisition client</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Apprends à vendre efficacement tes produits/services</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Offres & tarification intelligente</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Transforme ton projet en business rentable et structuré</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Stratégie d’acquisition client</span>
                 </li>
               </ul>
               </div>
@@ -1217,27 +1208,30 @@ const App: React.FC = () => {
                   className="px-3 py-1.5 sm:px-4 sm:py-2 bg-section-gradient text-luxe-black text-xs sm:text-sm uppercase tracking-wider rounded-full border border-luxe-roseGold/30 transition-all duration-150 group-hover:bg-button-cta group-hover:text-white group-hover:border-luxe-roseGold/60 inline-block"
                   whileHover={{ scale: 1.05 }}
                 >
-                  Scaler
+                  Mois 5–6
                 </motion.span>
               </div>
               <motion.h3 
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Entrepreneurs établis
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Mise en place de l'écosystème complet</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Vente & closing</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Optimisation pour scaler sans friction</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Optimisation & montée en puissance</span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
                   <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Passe d'un business qui fonctionne à un business qui croît durablement</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Vente & closing</span>
+                </li>
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <span className="text-luxe-black mt-0.5 sm:mt-1 text-sm sm:text-base">•</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Optimisation & montée en puissance</span>
                 </li>
               </ul>
               </div>
@@ -1265,146 +1259,75 @@ const App: React.FC = () => {
           >
             <span className="flex items-center justify-center gap-3 flex-wrap">
               <img src={ICON_MAIN} alt="Plans tarifaires" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain flex-shrink-0" />
-            Plans tarifaires ELAN BUSINESS COMMUNITY (ELAN BC)
+            Plans tarifaires ELAN BUSINESS SYSTEM (EBS)
             </span>
           </motion.h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
             {/* Mensuel */}
             <motion.div
-              className="group bg-card-luxe card-luxe-panel rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 w-full cursor-pointer flex flex-col transition-all duration-150"
+              className="group bg-card-luxe card-luxe-panel rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 w-full cursor-pointer flex flex-col transition-all durée-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              transition={{ durée: 0.5, delay: 0.3 }}
               whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
             >
               <motion.h3 
-                className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
+                className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors durée-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
                 Plan Mensuel
               </motion.h3>
-              <div className="mb-4 sm:mb-6">
+              <p className="text-sm sm:text-base text-luxe-charcoal mb-2 sm:mb-2.5 transition-colors durée-150 group-hover:text-luxe-black">
+                🔄 Flexibilité mois par mois
+              </p>
+              <div className="mb-1 sm:mb-1.5">
+                <span className="text-sm sm:text-base text-luxe-charcoal line-through mr-2">
+                  650 DH / mois
+                </span>
+              </div>
+              <div className="mb-3 sm:mb-4 flex items-baseline gap-2">
                 <motion.span 
-                  className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
+                  className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all durée-150"
                   whileHover={{ scale: 1.1 }}
                 >
-                  390 DH
+                  455 DH
                 </motion.span>
-                <span className="text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black"> / mois</span>
+                <span className="text-sm sm:text-base text-luxe-charcoal transition-colors durée-150 group-hover:text-luxe-black">
+                  / mois
+                </span>
               </div>
-              <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
-                Avance à ton rythme avec un accès mensuel aux cours + coaching et masterclass.
+              <p className="text-[11px] sm:text-xs text-luxe-charcoal mb-3 sm:mb-4 transition-colors durée-150 group-hover:text-luxe-black">
+                Idéal pour commencer
               </p>
-              <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-black">
+              <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors durée-150 group-hover:text-luxe-black">
                 <li className="flex items-start gap-2">
                   <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>L'accès au cours de l'académie progressif</span>
+                  <span>Avance à ton rythme</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Live coaching hebdo</span>
+                  <span>Découverte progressive</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Masterclass & Workshops</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Communauté bienveillante</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Ressources & Outils pour exécuter</span>
+                  <span>Accès possible en cours de route</span>
                 </li>
               </ul>
               <div className="flex-1"></div>
               <motion.button
                 onClick={(e) => {
                   e.stopPropagation();
-                  openFormModal('Mensuel – 390 DH / mois');
+                  openFormModal('Mensuel – 455 DH/mois (au lieu de 650 DH/mois)');
                 }}
-                className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta btn-luxe text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150"
+                className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta btn-luxe text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all durée-150"
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
                 whileTap={{ scale: 0.98 }}
               >
                 Choisir ce plan
               </motion.button>
             </motion.div>
-
-            {/* Trimestre - Highlighted */}
-            <motion.div
-              className="group bg-card-luxe card-luxe-panel rounded-lg p-5 sm:p-6 md:p-8 border-2 border-luxe-roseGold/40 shadow-lg shadow-luxe-roseGold/20 relative w-full cursor-pointer flex flex-col transition-all duration-150 hover:border-luxe-roseGold/70"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              whileHover={{ translateY: -8, boxShadow: "0 25px 50px -12px rgba(232, 180, 168, 0.3)", scale: 1.02 }}
-            >
-              <motion.div 
-                className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2"
-                whileHover={{ scale: 1.1 }}
-              >
-                <span className="px-3 sm:px-4 py-1 bg-button-cta btn-luxe text-luxe-cream text-[10px] sm:text-xs uppercase rounded-full transition-all duration-150 group-hover:opacity-90 group-hover:shadow-lg">Populaire</span>
-              </motion.div>
-              <motion.h3 
-                className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
-                whileHover={{ scale: 1.05 }}
-              >
-                Plan Trimestriel
-              </motion.h3>
-              <div className="mb-4 sm:mb-6">
-                <motion.span 
-                  className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  990 DH
-                </motion.span>
-                <span className="text-sm sm:text-base font-semibold text-luxe-black ml-2">live</span>
-                <div className="mt-2 text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
-                  <span className="font-semibold">330 DH</span> / mois
-              </div>
-                </div>
-              <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
-                Accélère ta progression immédiatement avec
-              </p>
-              <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-black">
-                <li className="flex items-start gap-2">
-                  <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Accès instantané au trimestre complet</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Live coaching hebdo</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Masterclass & Workshops</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Communauté bienveillante</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Ressources & Outils pour exécuter</span>
-                </li>
-              </ul>
-              <div className="flex-1"></div>
-              <motion.button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  openFormModal('Trimestre – 990 DH');
-                }}
-                className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta btn-luxe text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150"
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Choisir ce plan
-              </motion.button>
-            </motion.div>
-
             {/* Semestre */}
             <motion.div
               className="group bg-card-luxe card-luxe-panel rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 w-full cursor-pointer flex flex-col transition-all duration-150"
@@ -1420,118 +1343,49 @@ const App: React.FC = () => {
               >
                 Plan Semestriel
               </motion.h3>
-              <div className="mb-4 sm:mb-6">
+              <div className="mb-2 sm:mb-2.5">
+                <span className="inline-flex items-center px-2 py-1 rounded-full bg-luxe-roseGold/10 border border-luxe-roseGold/40 text-[10px] sm:text-xs font-semibold text-luxe-black">
+                  Le + avantageux
+                </span>
+              </div>
+              <p className="text-sm sm:text-base text-luxe-charcoal mb-2 sm:mb-2.5 transition-colors duration-150 group-hover:text-luxe-black">
+                💎 Engagement & vision sur 6 mois
+              </p>
+              <div className="mb-1 sm:mb-1.5">
+                <span className="text-sm sm:text-base text-luxe-charcoal line-through mr-2">
+                  3 500 DH
+                </span>
+              </div>
+              <div className="mb-2 sm:mb-3 flex items-baseline gap-2">
                 <motion.span 
                   className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
                 >
-                  1750 DH
+                  2 450 DH
                 </motion.span>
-                <span className="text-sm sm:text-base font-semibold text-luxe-black ml-2">live</span>
-                <div className="mt-2 text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
-                  <span className="font-semibold">290 DH</span> / mois
               </div>
-                </div>
-              <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
-                Construis une stratégie complète marketing & vente en 6 mois.
+              <p className="text-[11px] sm:text-xs text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
+                ⭐ Le meilleur rapport valeur / prix
               </p>
               <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-black">
                 <li className="flex items-start gap-2">
                   <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Accès immédiat à l'académie</span>
+                  <span>🚀 Avance plus vite avec une dynamique de groupe</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Live coaching hebdo</span>
+                  <span>🎯 Meilleure transformation & résultats</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Masterclass & Workshops</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Communauté bienveillante</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Ressources & Outils pour exécuter</span>
+                  <span>Accompagnement stratégique sur 6 mois</span>
                 </li>
               </ul>
               <div className="flex-1"></div>
               <motion.button
                 onClick={(e) => {
                   e.stopPropagation();
-                  openFormModal('Semestre – 1750 DH');
-                }}
-                className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta btn-luxe text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150"
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Choisir ce plan
-              </motion.button>
-            </motion.div>
-
-            {/* Année */}
-            <motion.div
-              className="group bg-card-luxe card-luxe-panel rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 w-full cursor-pointer flex flex-col transition-all duration-150"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
-            >
-              <motion.h3 
-                className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
-                whileHover={{ scale: 1.05 }}
-              >
-                Plan Annuel – Full Access
-              </motion.h3>
-              <div className="mb-3 sm:mb-4">
-                <motion.span 
-                  className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  2990 DH
-                </motion.span>
-                <div className="mt-2 text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
-                  <span className="font-semibold">250 DH</span> / mois
-              </div>
-                </div>
-              <div className="mb-3 sm:mb-4 px-2 py-1.5 bg-luxe-roseGold/10 border border-luxe-roseGold/30 rounded-lg">
-                <p className="text-xs sm:text-sm text-luxe-black font-semibold text-center">
-                  Offre Promo : Session 1:1 de 45 min jusqu'au 25/12
-                </p>
-              </div>
-              <p className="text-sm sm:text-base text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
-                Transformation totale : construire, vendre et scaler ton business.
-              </p>
-              <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-black">
-                <li className="flex items-start gap-2">
-                  <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Accès à tous les modules de l'année</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Live coaching hebdo</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Masterclass & Workshops</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Communauté bienveillante</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-luxe-roseGold mt-1">•</span>
-                  <span>Ressources & Outils pour exécuter</span>
-                </li>
-              </ul>
-              <div className="flex-1"></div>
-              <motion.button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  openFormModal('Année – 2990 DH');
+                  openFormModal('Semestriel – 2 450 DH (au lieu de 3 500 DH)');
                 }}
                 className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta btn-luxe text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150"
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
@@ -1562,11 +1416,11 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <motion.picture className="w-full rounded-lg bg-luxe-cream">
-                <source srcSet={getWebPPath(NEW_IMAGE_3)} type="image/webp" />
-              <motion.img
+            <motion.picture className="w-full rounded-lg bg-luxe-cream">
+              <source srcSet={getWebPPath(NEW_IMAGE_3)} type="image/webp" />
+            <motion.img
                 src={NEW_IMAGE_3}
-                alt="Communauté d'entrepreneurs ELAN BC en atelier"
+                alt="Communauté d'entrepreneurs EBS en atelier"
                   className="w-full rounded-lg object-contain object-center"
                   width="1200"
                   height="675"
@@ -1587,10 +1441,10 @@ const App: React.FC = () => {
             >
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 text-luxe-black leading-tight flex items-center justify-center md:justify-start gap-3">
             <span role="img" aria-label="communauté" className="text-2xl sm:text-3xl">👥</span>
-            Une communauté d'entrepreneurs engagés
+            Un cadre d’exécution structuré
           </h2>
               <p className="text-sm sm:text-base md:text-lg text-luxe-charcoal leading-relaxed mb-6 sm:mb-8 px-2 md:px-0">
-                Rejoins une communauté dynamique d'entrepreneurs. Entraide, motivation, sessions live et échanges enrichissants pour t'accompagner dans ta croissance avec ELAN BC.
+                Tu avances dans un environnement structuré où chaque entrepreneur exécute, ajuste et progresse à partir de situations réelles. Ici, le collectif sert à clarifier les décisions, confronter les stratégies et maintenir un rythme d’action constant.
           </p>
 
           {/* Community Members Profiles */}
@@ -1696,7 +1550,7 @@ const App: React.FC = () => {
                   {/* Testimonial Image */}
             <motion.img
                     src={testimonialImage}
-                    alt={`Témoignage ${index + 1} - ELAN BC`}
+                    alt={`Témoignage ${index + 1} - EBS`}
                     className="w-full h-full object-cover"
                     width="400"
                     height="400"
@@ -1772,8 +1626,8 @@ const App: React.FC = () => {
               
               {/* Image */}
               <motion.img
-                src={selectedTestimonial}
-                alt="Témoignage ELAN BC"
+              src={selectedTestimonial}
+                alt="Témoignage EBS"
                 className="w-full h-auto rounded-lg shadow-2xl object-contain max-h-[90vh]"
                 width="800"
                 height="800"
@@ -1822,7 +1676,7 @@ const App: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <img src={ICON_REJOINDRE} alt="Rejoindre" className="w-5 h-5 sm:w-6 sm:h-6 object-contain flex-shrink-0" />
-            Je rejoins ELAN BC maintenant
+            Je rejoins EBS maintenant
           </motion.button>
         </div>
       </motion.section>
@@ -1842,7 +1696,7 @@ const App: React.FC = () => {
             </a>
           </div>
           <div className="mt-6 sm:mt-8 text-center text-xs sm:text-sm text-luxe-cream/70">
-            © 2024 ELAN BUSINESS COMMUNITY (ELAN BC). Tous droits réservés.
+            © 2025 ELAN BUSINESS SYSTEM (EBS). Tous droits réservés.
           </div>
         </div>
       </footer>
