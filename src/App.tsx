@@ -358,7 +358,10 @@ const App: React.FC = () => {
                   </li>
                 </ul>
                 <p className="mt-4 text-base md:text-lg leading-relaxed text-[inherit]">
-                  ELAN BUSINESS SYSTEM est un{" "}
+                  <span className="text-[#95655E] font-semibold sm:font-bold">
+                    ELAN BUSINESS SYSTEM
+                  </span>{" "}
+                  est un{" "}
                   <span className="font-semibold">système d’orientation</span>, de{" "}
                   <span className="font-semibold">décision</span> et{" "}
                   <span className="font-semibold">d’exécution</span> pour entrepreneurs dans un marché{" "}
@@ -1279,13 +1282,91 @@ const App: React.FC = () => {
           </motion.h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
-            {/* Mensuel */}
+            {/* Semestre */}
             <motion.div
               className="group bg-card-luxe card-luxe-panel rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 w-full cursor-pointer flex flex-col transition-all duration-150"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
+            >
+              <motion.h3 
+                className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
+                whileHover={{ scale: 1.05 }}
+              >
+                Plan Semestriel
+              </motion.h3>
+              <div className="mb-2 sm:mb-2.5">
+                <span className="inline-flex items-center px-2 py-1 rounded-full bg-luxe-roseGold/10 border border-luxe-roseGold/40 text-[10px] sm:text-xs font-semibold text-luxe-black">
+                  Le + avantageux
+                </span>
+              </div>
+              <p className="text-sm sm:text-base text-luxe-charcoal mb-2 sm:mb-2.5 transition-colors duration-150 group-hover:text-luxe-black">
+                💎 Engagement & vision sur 6 mois
+              </p>
+              <div className="mb-1 sm:mb-1.5">
+                <span className="text-sm sm:text-base text-luxe-charcoal line-through mr-2">
+                  3 500 DH
+                </span>
+                </div>
+              <div className="mb-2 sm:mb-3 flex items-baseline gap-2">
+                <motion.span 
+                  className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  2 450 DH
+                </motion.span>
+                <span className="text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
+                  / 6 mois
+                </span>
+              </div>
+              <p className="text-[11px] sm:text-xs text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
+                ⭐ Le meilleur rapport valeur / prix
+              </p>
+              <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-black">
+                <li className="flex items-start gap-2">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-luxe-roseGold mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  <span>Avance plus vite avec une dynamique de groupe</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-luxe-roseGold mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  </svg>
+                  <span>Meilleure transformation & résultats</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-luxe-roseGold mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                  <span>Accompagnement stratégique sur 6 mois</span>
+                </li>
+              </ul>
+              <div className="flex-1"></div>
+              <motion.button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openFormModal('Semestriel – 2 450 DH (au lieu de 3 500 DH)');
+                }}
+                className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta btn-luxe text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150 flex items-center justify-center gap-2"
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Choisir ce plan</span>
+              </motion.button>
+            </motion.div>
+            {/* Mensuel */}
+            <motion.div
+              className="group bg-card-luxe card-luxe-panel rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 w-full cursor-pointer flex flex-col transition-all duration-150"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
               whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
             >
               <motion.h3 
@@ -1341,81 +1422,6 @@ const App: React.FC = () => {
                 onClick={(e) => {
                   e.stopPropagation();
                   openFormModal('Mensuel – 455 DH/mois (au lieu de 650 DH/mois)');
-                }}
-                className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta btn-luxe text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150 flex items-center justify-center gap-2"
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>Choisir ce plan</span>
-              </motion.button>
-            </motion.div>
-            {/* Semestre */}
-            <motion.div
-              className="group bg-card-luxe card-luxe-panel rounded-lg p-5 sm:p-6 md:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 w-full cursor-pointer flex flex-col transition-all duration-150"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              whileHover={{ translateY: -8, borderColor: "#E8B4A8", boxShadow: "0 25px 50px -12px rgba(48, 45, 44, 0.25)" }}
-            >
-              <motion.h3 
-                className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
-                whileHover={{ scale: 1.05 }}
-              >
-                Plan Semestriel
-              </motion.h3>
-              <div className="mb-2 sm:mb-2.5">
-                <span className="inline-flex items-center px-2 py-1 rounded-full bg-luxe-roseGold/10 border border-luxe-roseGold/40 text-[10px] sm:text-xs font-semibold text-luxe-black">
-                  Le + avantageux
-                </span>
-              </div>
-              <p className="text-sm sm:text-base text-luxe-charcoal mb-2 sm:mb-2.5 transition-colors duration-150 group-hover:text-luxe-black">
-                💎 Engagement & vision sur 6 mois
-              </p>
-              <div className="mb-1 sm:mb-1.5">
-                <span className="text-sm sm:text-base text-luxe-charcoal line-through mr-2">
-                  3 500 DH
-                </span>
-                </div>
-              <div className="mb-2 sm:mb-3 flex items-baseline gap-2">
-                <motion.span 
-                  className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  2 450 DH
-                </motion.span>
-              </div>
-              <p className="text-[11px] sm:text-xs text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
-                ⭐ Le meilleur rapport valeur / prix
-              </p>
-              <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-black">
-                <li className="flex items-start gap-2">
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-luxe-roseGold mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                  <span>Avance plus vite avec une dynamique de groupe</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-luxe-roseGold mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                  </svg>
-                  <span>Meilleure transformation & résultats</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-luxe-roseGold mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                  <span>Accompagnement stratégique sur 6 mois</span>
-                </li>
-              </ul>
-              <div className="flex-1"></div>
-              <motion.button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  openFormModal('Semestriel – 2 450 DH (au lieu de 3 500 DH)');
                 }}
                 className="w-full px-4 sm:px-6 py-3 h-11 bg-button-cta btn-luxe text-luxe-cream text-sm sm:text-base font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-luxe-black/50 transition-all duration-150 flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)" }}
