@@ -263,7 +263,7 @@ const App: React.FC = () => {
           />
           <motion.div
             className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full blur-3xl opacity-10"
-            style={{ background: '#151313' }}
+            style={{ background: '#E8B4A8' }}
             animate={{
               scale: [1, 1.15, 1],
               x: [0, -30, 0],
@@ -277,7 +277,7 @@ const App: React.FC = () => {
           />
           <motion.div
             className="absolute bottom-1/3 right-1/4 w-56 h-56 rounded-full blur-3xl opacity-8"
-            style={{ background: '#302D2C' }}
+            style={{ background: '#E8B4A8' }}
             animate={{
               scale: [1, 1.2, 1],
               x: [0, 20, 0],
@@ -358,7 +358,7 @@ const App: React.FC = () => {
                   </li>
                 </ul>
                 <p className="mt-4 text-base md:text-lg leading-relaxed text-[inherit]">
-                  <span className="text-[#95655E] font-semibold sm:font-bold">
+                  <span className="text-[#95655E] font-bold">
                     ELAN BUSINESS SYSTEM
                   </span>{" "}
                   est un{" "}
@@ -375,8 +375,8 @@ const App: React.FC = () => {
               className="md:hidden w-full max-w-2xl"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
-            >
+                transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+              >
               <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-luxe-roseGold/30 shadow-md">
                 <iframe
                   src="https://player.vimeo.com/video/1139166666?title=0&byline=0&portrait=0"
@@ -389,7 +389,7 @@ const App: React.FC = () => {
                   width="640"
                   height="360"
                 ></iframe>
-              </div>
+                </div>
               </motion.div>
 
             {/* Video - Desktop */}
@@ -447,7 +447,7 @@ const App: React.FC = () => {
                 </motion.button>
               </motion.div>
 
-            {/* Button Découvrir mon parcours */}
+            {/* Button Qui suis-je */}
             <motion.div
               className="w-full flex justify-center mt-4"
               initial={{ opacity: 0, y: 20 }}
@@ -467,7 +467,7 @@ const App: React.FC = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <img src={ICON_LOUPE} alt="Loupe" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" width="20" height="20" />
-                Découvrir mon rôle & mon parcours
+                Qui suis-je ?
               </motion.a>
           </motion.div>
           </div>
@@ -1305,11 +1305,14 @@ const App: React.FC = () => {
               <p className="text-sm sm:text-base text-luxe-charcoal mb-2 sm:mb-2.5 transition-colors duration-150 group-hover:text-luxe-black">
                 💎 Engagement & vision sur 6 mois
               </p>
-              <div className="mb-1 sm:mb-1.5">
-                <span className="text-sm sm:text-base text-luxe-charcoal line-through mr-2">
+              <div className="mb-1 sm:mb-1.5 flex items-baseline gap-2">
+                <span className="text-sm sm:text-base text-luxe-charcoal line-through">
                   3 500 DH
                 </span>
-                </div>
+                <span className="text-[10px] sm:text-xs text-red-700">
+                  Promo jusqu'au 28/12/2025
+                </span>
+              </div>
               <div className="mb-2 sm:mb-3 flex items-baseline gap-2">
                 <motion.span 
                   className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
@@ -1320,7 +1323,7 @@ const App: React.FC = () => {
                 <span className="text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
                   / 6 mois
                 </span>
-              </div>
+                </div>
               <p className="text-[11px] sm:text-xs text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
                 ⭐ Le meilleur rapport valeur / prix
               </p>
@@ -1378,9 +1381,12 @@ const App: React.FC = () => {
               <p className="text-sm sm:text-base text-luxe-charcoal mb-2 sm:mb-2.5 transition-colors duration-150 group-hover:text-luxe-black">
                 🔄 Flexibilité mois par mois
               </p>
-              <div className="mb-1 sm:mb-1.5">
-                <span className="text-sm sm:text-base text-luxe-charcoal line-through mr-2">
+              <div className="mb-1 sm:mb-1.5 flex items-baseline gap-2">
+                <span className="text-sm sm:text-base text-luxe-charcoal line-through">
                   650 DH / mois
+                </span>
+                <span className="text-[10px] sm:text-xs text-red-700">
+                  Promo jusqu'au 28/12/2025
                 </span>
               </div>
               <div className="mb-3 sm:mb-4 flex items-baseline gap-2">
@@ -1482,7 +1488,7 @@ const App: React.FC = () => {
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-center mb-6 sm:mb-8 md:mb-10 text-luxe-black leading-tight flex items-center justify-center gap-3"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+              viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             <svg className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-luxe-roseGold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1519,12 +1525,12 @@ const App: React.FC = () => {
               const gradientClass = gradientVariants[index % 3];
               
               return (
-                <motion.div
+                    <motion.div
                   key={index}
                   className="group relative bg-luxe-cream rounded-lg sm:rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border-2 border-luxe-roseGold/40 hover:border-luxe-roseGold/70 cursor-pointer aspect-square"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                      viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ translateY: -4, scale: 1.02 }}
                   onClick={() => setSelectedTestimonial(testimonialImage)}
@@ -1550,12 +1556,12 @@ const App: React.FC = () => {
                       <svg className="w-6 h-6 text-luxe-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                       </svg>
-                    </div>
-                  </div>
-          </motion.div>
+            </div>
+          </div>
+            </motion.div>
               );
             })}
-          </div>
+        </div>
           
           <motion.div 
             className="mt-10 sm:mt-12 text-center"
@@ -1587,12 +1593,12 @@ const App: React.FC = () => {
         {selectedTestimonial && (
           <motion.div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-            initial={{ opacity: 0 }}
+        initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedTestimonial(null)}
           >
-            <motion.div
+          <motion.div
               className="relative max-w-4xl w-full max-h-[90vh]"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -1610,7 +1616,7 @@ const App: React.FC = () => {
               </button>
               
               {/* Image */}
-              <motion.img
+            <motion.img
               src={selectedTestimonial}
                 alt="Témoignage EBS"
                 className="w-full h-auto rounded-lg shadow-2xl object-contain max-h-[90vh]"
@@ -1619,8 +1625,8 @@ const App: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.1 }}
-              />
-            </motion.div>
+            />
+          </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
