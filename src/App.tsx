@@ -330,18 +330,41 @@ const App: React.FC = () => {
               </motion.p>
 
               {/* Supporting Paragraph */}
-              <motion.p
-                className="text-sm sm:text-base md:text-lg text-luxe-charcoal leading-relaxed max-w-xl mx-auto mb-4 sm:mb-5 font-bold"
+              <motion.div
+                className="mx-auto max-w-[640px] text-center text-sm sm:text-base md:text-lg text-luxe-charcoal leading-relaxed mb-4 sm:mb-5"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
               >
-                <span className="font-bold text-luxe-black">Tu n’as pas besoin de plus d’informations.</span>
-                <br />
-                <span className="font-bold text-luxe-charcoal">Tu as besoin d’un cadre clair, de décisions assumées et d’un rythme d’exécution.</span>
-                <br />
-                <span className="font-bold text-luxe-charcoal">ELAN BUSINESS SYSTEM est un système d’orientation, de décision et d’exécution pour entrepreneurs dans un marché incertain.</span>
-              </motion.p>
+                <ul className="mt-4 space-y-4">
+                  <li className="flex items-start justify-center gap-3">
+                    <span className="mt-[2px] shrink-0 text-red-600 text-lg">
+                      ❌
+                    </span>
+                    <p className="text-base md:text-lg leading-relaxed text-[inherit]">
+                      Tu n’as pas besoin de plus d’informations.
+                    </p>
+                  </li>
+                  <li className="flex items-start justify-center gap-3">
+                    <span className="mt-[2px] shrink-0 text-green-600 text-lg">
+                      ✅
+                    </span>
+                    <p className="text-base md:text-lg leading-relaxed text-[inherit]">
+                      Tu as besoin d’un{" "}
+                      <span className="font-semibold">cadre clair</span>, de{" "}
+                      <span className="font-semibold">décisions assumées</span> et d’un{" "}
+                      <span className="font-semibold">rythme d’exécution</span>.
+                    </p>
+                  </li>
+                </ul>
+                <p className="mt-4 text-base md:text-lg leading-relaxed text-[inherit]">
+                  ELAN BUSINESS SYSTEM est un{" "}
+                  <span className="font-semibold">système d’orientation</span>, de{" "}
+                  <span className="font-semibold">décision</span> et{" "}
+                  <span className="font-semibold">d’exécution</span> pour entrepreneurs dans un marché{" "}
+                  <span className="font-semibold">incertain</span>.
+                </p>
+              </motion.div>
             </div>
 
             {/* Video - Mobile */}
