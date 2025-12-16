@@ -1305,15 +1305,12 @@ const App: React.FC = () => {
               <p className="text-sm sm:text-base text-luxe-charcoal mb-2 sm:mb-2.5 transition-colors duration-150 group-hover:text-luxe-black">
                 💎 Engagement & vision sur 6 mois
               </p>
-              <div className="mb-1 sm:mb-1.5 flex items-baseline gap-2">
+              <div className="mb-1 sm:mb-1.5">
                 <span className="text-sm sm:text-base text-luxe-charcoal line-through">
                   3 500 DH
                 </span>
-                <span className="text-[10px] sm:text-xs text-red-700">
-                  Promo jusqu'au 28/12/2025
-                </span>
               </div>
-              <div className="mb-2 sm:mb-3 flex items-baseline gap-2">
+              <div className="mb-2 sm:mb-3 flex flex-wrap items-baseline gap-x-2 gap-y-1">
                 <motion.span 
                   className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
@@ -1323,7 +1320,10 @@ const App: React.FC = () => {
                 <span className="text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
                   / 6 mois
                 </span>
-                </div>
+                <span className="text-[10px] sm:text-xs text-red-700">
+                  Promo jusqu'au 28/12/2025
+                </span>
+              </div>
               <p className="text-[11px] sm:text-xs text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
                 ⭐ Le meilleur rapport valeur / prix
               </p>
@@ -1381,15 +1381,12 @@ const App: React.FC = () => {
               <p className="text-sm sm:text-base text-luxe-charcoal mb-2 sm:mb-2.5 transition-colors duration-150 group-hover:text-luxe-black">
                 🔄 Flexibilité mois par mois
               </p>
-              <div className="mb-1 sm:mb-1.5 flex items-baseline gap-2">
+              <div className="mb-1 sm:mb-1.5">
                 <span className="text-sm sm:text-base text-luxe-charcoal line-through">
                   650 DH / mois
                 </span>
-                <span className="text-[10px] sm:text-xs text-red-700">
-                  Promo jusqu'au 28/12/2025
-                </span>
               </div>
-              <div className="mb-3 sm:mb-4 flex items-baseline gap-2">
+              <div className="mb-3 sm:mb-4 flex flex-wrap items-baseline gap-x-2 gap-y-1">
                 <motion.span 
                   className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
@@ -1398,6 +1395,9 @@ const App: React.FC = () => {
                 </motion.span>
                 <span className="text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
                   / mois
+                </span>
+                <span className="text-[10px] sm:text-xs text-red-700">
+                  Promo jusqu'au 28/12/2025
                 </span>
               </div>
               <p className="text-[11px] sm:text-xs text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
