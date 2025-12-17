@@ -379,7 +379,7 @@ const App: React.FC = () => {
               >
               <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-luxe-roseGold/30 shadow-md">
                 <iframe
-                  src="https://player.vimeo.com/video/1139166666?title=0&byline=0&portrait=0"
+                  src="https://player.vimeo.com/video/1147278589?title=0&byline=0&portrait=0"
                   className="absolute top-0 left-0 w-full h-full"
                   frameBorder="0"
                   allow="autoplay; fullscreen; picture-in-picture"
@@ -405,7 +405,7 @@ const App: React.FC = () => {
                     transition={{ duration: 0.3 }}
               >
                 <iframe
-                  src="https://player.vimeo.com/video/1139166666?title=0&byline=0&portrait=0"
+                  src="https://player.vimeo.com/video/1147278589?title=0&byline=0&portrait=0"
                   className="absolute top-0 left-0 w-full h-full"
                   frameBorder="0"
                   allow="autoplay; fullscreen; picture-in-picture"
