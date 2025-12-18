@@ -785,10 +785,9 @@ const App: React.FC = () => {
                   Méthodes de paiement
                 </h4>
                 
-                {/* Payment Methods Grid */}
-                <div className="grid grid-cols-3 gap-2">
-                  {/* QR Code Bank */}
-                  <div className="flex flex-col items-center">
+                {/* QR Code Payment */}
+                <div className="flex justify-center">
+                  <div className="flex flex-col items-center w-24 sm:w-28">
                     <div className="w-full aspect-square bg-luxe-cream rounded-lg border border-luxe-roseGold/30 shadow-md flex items-center justify-center p-1.5 hover:border-luxe-roseGold/60 transition-all duration-150">
                       <img 
                         src={getImagePath("rib.png")} 
@@ -798,40 +797,6 @@ const App: React.FC = () => {
                     </div>
                     <p className="mt-1 text-[8px] sm:text-[9px] font-medium text-luxe-black text-center leading-tight">QR compte bancaire</p>
                   </div>
-
-                  {/* YouCanPay */}
-                  <motion.button
-                    onClick={() => {
-                      // TODO: Add YouCanPay payment integration
-                      // window.open('https://youcanpay.com', '_blank', 'noopener,noreferrer');
-                    }}
-                    className="flex flex-col items-center justify-center w-full aspect-square bg-gradient-to-br from-[#0066FF] to-[#0052CC] rounded-lg border border-blue-400/30 shadow-md hover:shadow-lg transition-all duration-150 group relative overflow-hidden"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
-                    <svg className="w-7 h-7 sm:w-9 sm:h-9 text-white mb-0.5 relative z-10" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                    <p className="text-[7px] sm:text-[8px] font-semibold text-white text-center leading-tight relative z-10">YouCanPay</p>
-                  </motion.button>
-
-                  {/* Stripe - Card Payment */}
-                  <motion.button
-                    onClick={() => {
-                      // TODO: Add Stripe payment integration
-                      // window.open('https://stripe.com', '_blank', 'noopener,noreferrer');
-                    }}
-                    className="flex flex-col items-center justify-center w-full aspect-square bg-gradient-to-br from-[#635BFF] to-[#5A52FF] rounded-lg border border-indigo-400/30 shadow-md hover:shadow-lg transition-all duration-150 group relative overflow-hidden"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
-                    <svg className="w-7 h-7 sm:w-9 sm:h-9 text-white mb-0.5 relative z-10" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 3.523.85 4.13 1.458l1.658-2.046c-.976-.936-2.471-1.617-4.788-1.617-2.758 0-4.76 1.533-4.76 3.752 0 2.219 1.558 3.12 3.712 4.019 2.153.899 2.935 1.458 2.935 2.409 0 .98-.84 1.545-2.354 1.545-1.875 0-3.803-.927-4.738-2.01l-1.658 2.046c1.152 1.333 2.976 2.11 5.14 2.11 2.88 0 4.97-1.533 4.97-3.752 0-2.219-1.558-3.12-3.712-4.019zm-5.95 8.376v-3.752h-2.22v3.752H2.35V6.6h3.456v3.752h2.22V6.6h3.456v10.926H7.976z"/>
-                    </svg>
-                    <p className="text-[7px] sm:text-[8px] font-semibold text-white text-center leading-tight relative z-10">Carte bancaire</p>
-                  </motion.button>
                 </div>
               </div>
 
