@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxnYR0UAhVsakqLvvENMjOXvYNK9n1mAhUM-qL2cmfVc3FkQtUtG5ILGjR4kPKouLA9zQ/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxwUbQ-LZ3BQyGtWY80pF9iQFU83U5WtcHjoXuxwDt-x7RvQa8LxaK3Y14qE0-2VVW2ZQ/exec";
 
 const getImagePath = (filename: string): string => {
   const cleanFilename = filename.startsWith('/') ? filename.slice(1) : filename;
