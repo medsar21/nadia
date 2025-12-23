@@ -1,310 +1,124 @@
 /**
  * Google Apps Script pour recevoir les données du formulaire ELAN BC
- * 
- * INSTRUCTIONS:
- * 1. Ouvrir votre Google Sheet: https://docs.google.com/spreadsheets/d/1qoB9iVUOnD45OBlWjJxhQ5s6L4IZKK1B6GmyJxgqoag
- * 2. Aller dans Extensions > Apps Script
- * 3. Supprimer tout le code existant
- * 4. Coller ce script complet
- * 5. Cliquer sur Sauvegarder (icône disquette)
- * 6. Cliquer sur Déployer > Nouveau déploiement (ou Modifier le déploiement si déjà déployé)
- * 7. Cliquer sur l'icône de paramètres (engrenage) > Sélectionner le type
- * 8. Choisir "Application Web"
- * 9. Paramètres:
- *    - Description: "Formulaire ELAN BC"
- *    - Exécuter en tant que: Moi
- *    - Qui a accès: N'importe qui (TRÈS IMPORTANT!)
- * 10. Cliquer sur "Déployer"
- * 11. Autoriser les permissions si demandé
- * 12. Copier l'URL du service Web et me l'envoyer
+ * Déployer en tant que "Application Web" (Exécuter en tant que: Moi, Qui a accès: N'importe qui)
+ *
+ * Après déploiement : copier l'URL du Web App et coller dans src/App.tsx -> GOOGLE_SCRIPT_URL
  */
 
-// Nom de la feuille où écrire les données
+const SHEET_ID = '1qoB9iVUOnD45OBlWjJxhQ5s6L4IZKK1B6GmyJxgqoag';
 const SHEET_NAME = 'nadia';
 
 /**
- * Fonction principale qui reçoit les requêtes POST du formulaire
- * Supporte à la fois FormData et JSON
+ * Handles POST from form (application/x-www-form-urlencoded or multipart/form-data)
+ * or JSON (application/json). Returns JSON via ContentService (no custom headers).
  */
 function doPost(e) {
+  if (!e) {
+    Logger.log('doPost called with undefined event');
+    return jsonResponse({ status: 'error', message: 'No event object received' });
+  }
+
   try {
-    // LOGS DÉTAILLÉS POUR DEBUG
-    Logger.log('=== DÉBUT doPost ===');
-    Logger.log('Timestamp: ' + new Date().toString());
-    
-    // Vérifier que e existe
-    if (!e) {
-      Logger.log('ERREUR: e est undefined');
-      return ContentService.createTextOutput(
-        JSON.stringify({
-          status: 'error',
-          message: 'Aucune requête reçue'
-        })
-      )
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeaders({
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type'
-      });
-    }
-    
-    Logger.log('Type de e: ' + typeof e);
-    Logger.log('Clés de e: ' + JSON.stringify(Object.keys(e || {})));
-    Logger.log('e.parameter existe? ' + (e.parameter ? 'OUI' : 'NON'));
-    Logger.log('e.postData existe? ' + (e.postData ? 'OUI' : 'NON'));
-    
     let data = {};
-    
-    // PRIORITÉ 1: Vérifier e.parameter (formulaire HTML standard)
-    if (e.parameter && typeof e.parameter === 'object') {
-      Logger.log('✓ Données reçues en FormData (e.parameter)');
-      Logger.log('e.parameter complet: ' + JSON.stringify(e.parameter));
-      
-      // Extraire toutes les propriétés de e.parameter
+
+    // Form POST: e.parameter may contain string values or arrays
+    if (e.parameter && Object.keys(e.parameter).length) {
       data = {
-        fullName: String(e.parameter.fullName || '').trim(),
-        phone: String(e.parameter.phone || '').trim(),
-        email: String(e.parameter.email || '').trim(),
-        address: String(e.parameter.address || '').trim(),
-        packChoice: String(e.parameter.packChoice || '').trim()
+        fullName: firstString(e.parameter.fullName),
+        phone: firstString(e.parameter.phone),
+        email: firstString(e.parameter.email),
+        address: firstString(e.parameter.address),
+        packChoice: firstString(e.parameter.packChoice)
       };
-      
-      Logger.log('Données extraites: ' + JSON.stringify(data));
-    } 
-    // PRIORITÉ 2: Vérifier e.postData.contents (JSON)
-    else if (e.postData && e.postData.contents) {
-      Logger.log('✓ Données reçues en JSON (e.postData.contents)');
-      Logger.log('e.postData.contents: ' + e.postData.contents);
+    } else if (e.postData && e.postData.contents) {
+      // JSON body
       try {
         data = JSON.parse(e.postData.contents);
-        Logger.log('Données parsées: ' + JSON.stringify(data));
-      } catch (parseError) {
-        Logger.log('✗ Erreur de parsing JSON: ' + parseError.toString());
-        return ContentService.createTextOutput(
-          JSON.stringify({
-            status: 'error',
-            message: 'Format de données invalide: ' + parseError.toString()
-          })
-        ).setMimeType(ContentService.MimeType.JSON);
+      } catch (err) {
+        return jsonResponse({ status: 'error', message: 'Invalid JSON: ' + err.toString() });
       }
-    } 
-    // PRIORITÉ 3: Essayer de lire directement depuis e
-    else {
-      Logger.log('⚠ Tentative de lecture directe depuis e');
-      Logger.log('e complet: ' + JSON.stringify(e));
-      
-      // Parfois les données arrivent directement dans e
-      if (e.fullName) {
-        Logger.log('✓ Données trouvées directement dans e');
-        data = {
-          fullName: String(e.fullName || '').trim(),
-          phone: String(e.phone || '').trim(),
-          email: String(e.email || '').trim(),
-          address: String(e.address || '').trim(),
-          packChoice: String(e.packChoice || '').trim()
-        };
-      } else {
-        Logger.log('✗ Aucune donnée trouvée dans e');
-        return ContentService.createTextOutput(
-          JSON.stringify({
-            status: 'error',
-            message: 'Aucune donnée reçue dans la requête. e.parameter: ' + (e.parameter ? 'existe' : 'undefined') + ', e.postData: ' + (e.postData ? 'existe' : 'undefined')
-          })
-        ).setMimeType(ContentService.MimeType.JSON);
-      }
+    } else {
+      return jsonResponse({ status: 'error', message: 'No data received' });
     }
-    
-    // Validation finale
-    Logger.log('=== VALIDATION ===');
-    Logger.log('fullName: "' + data.fullName + '" (vide? ' + (!data.fullName) + ')');
-    Logger.log('phone: "' + data.phone + '" (vide? ' + (!data.phone) + ')');
-    Logger.log('email: "' + data.email + '" (vide? ' + (!data.email) + ')');
-    Logger.log('packChoice: "' + data.packChoice + '" (vide? ' + (!data.packChoice) + ')');
-    
+
+    // Minimal validation
     if (!data.fullName || !data.phone || !data.email || !data.packChoice) {
-      Logger.log('✗ ERREUR: Champs requis manquants');
-      return ContentService.createTextOutput(
-        JSON.stringify({
-          status: 'error',
-          message: 'Champs requis manquants. fullName: ' + (data.fullName ? 'OK' : 'MANQUANT') + ', phone: ' + (data.phone ? 'OK' : 'MANQUANT') + ', email: ' + (data.email ? 'OK' : 'MANQUANT') + ', packChoice: ' + (data.packChoice ? 'OK' : 'MANQUANT')
-        })
-      ).setMimeType(ContentService.MimeType.JSON);
+      return jsonResponse({ status: 'error', message: 'Missing required fields: fullName, phone, email, packChoice' });
     }
-    
-    // Obtenir le spreadsheet
-    Logger.log('=== ACCÈS AU SPREADSHEET ===');
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    Logger.log('Spreadsheet ID: ' + ss.getId());
-    Logger.log('Spreadsheet Name: ' + ss.getName());
-    
+
+    const ss = SpreadsheetApp.openById(SHEET_ID);
     let sheet = ss.getSheetByName(SHEET_NAME);
-    Logger.log('Feuille "' + SHEET_NAME + '" existe? ' + (sheet ? 'OUI' : 'NON'));
-    
-    // Si la feuille n'existe pas, la créer
     if (!sheet) {
-      Logger.log('→ Création de la feuille: ' + SHEET_NAME);
       sheet = createSheet(ss);
-      Logger.log('✓ Feuille créée');
     }
-    
-    // Vérifier si les en-têtes existent
-    const lastRow = sheet.getLastRow();
-    Logger.log('Dernière ligne de la feuille: ' + lastRow);
-    
-    if (lastRow === 0) {
-      Logger.log('→ Ajout des en-têtes');
+
+    // If sheet is new or empty, ensure headers exist
+    if (sheet.getLastRow() === 0) {
       addHeaders(sheet);
-      Logger.log('✓ En-têtes ajoutés');
     }
-    
-    // Préparer la ligne à ajouter
+
     const timestamp = new Date();
     const row = [
-      timestamp,                    // Colonne A: Date/Heure
-      data.fullName,                // Colonne B: Nom complet
-      data.phone,                   // Colonne C: Téléphone
-      data.email,                   // Colonne D: Email
-      data.address || '',           // Colonne E: Adresse (optionnel)
-      data.packChoice               // Colonne F: Pack choisi
+      timestamp,
+      data.fullName,
+      data.phone,
+      data.email,
+      data.address || '',
+      data.packChoice
     ];
-    
-    Logger.log('=== AJOUT DE LA LIGNE ===');
-    Logger.log('Ligne à ajouter: ' + JSON.stringify(row));
-    
-    // Ajouter la ligne à la feuille
+
     sheet.appendRow(row);
-    
-    Logger.log('✓ Ligne ajoutée avec succès à la ligne ' + sheet.getLastRow());
-    Logger.log('=== FIN doPost (SUCCÈS) ===');
-    
-    // Retourner une réponse de succès
-    return ContentService.createTextOutput(
-      JSON.stringify({
-        status: 'success',
-        message: 'Données enregistrées avec succès. Ligne: ' + sheet.getLastRow()
-      })
-    )
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type'
-    });
-    
-  } catch (error) {
-    Logger.log('✗✗✗ ERREUR DANS doPost ✗✗✗');
-    Logger.log('Message: ' + error.toString());
-    Logger.log('Stack trace: ' + error.stack);
-    Logger.log('=== FIN doPost (ERREUR) ===');
-    
-    return ContentService.createTextOutput(
-      JSON.stringify({
-        status: 'error',
-        message: 'Erreur lors de l\'enregistrement: ' + error.toString()
-      })
-    )
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type'
-    });
+    Logger.log('Row appended. Last row: ' + sheet.getLastRow());
+
+    return jsonResponse({ status: 'success', message: 'Saved', row: sheet.getLastRow() });
+  } catch (err) {
+    Logger.log('doPost error: ' + err.toString());
+    return jsonResponse({ status: 'error', message: err.toString() });
   }
 }
 
-/**
- * Fonction pour gérer les requêtes OPTIONS (preflight CORS)
- */
-function doOptions(e) {
-  return ContentService.createTextOutput('')
-    .setMimeType(ContentService.MimeType.TEXT)
-    .setHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type'
-    });
+function doGet(e) {
+  return jsonResponse({ status: 'ok', message: 'Web App running' });
 }
 
-/**
- * Fonction pour créer la feuille avec les en-têtes si elle n'existe pas
- */
+function doOptions(e) {
+  // Keep simple: ContentService does not support setting custom response headers.
+  return ContentService.createTextOutput('').setMimeType(ContentService.MimeType.TEXT);
+}
+
+/* Helpers */
+
+function jsonResponse(obj) {
+  return ContentService
+    .createTextOutput(JSON.stringify(obj))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function firstString(val) {
+  if (Array.isArray(val)) return String(val[0] || '').trim();
+  return String(val || '').trim();
+}
+
 function createSheet(ss) {
   const sheet = ss.insertSheet(SHEET_NAME);
   addHeaders(sheet);
   return sheet;
 }
 
-/**
- * Fonction pour ajouter les en-têtes à la feuille
- */
 function addHeaders(sheet) {
-  // Ajouter les en-têtes
-  const headers = [
-    'Date/Heure',
-    'Nom complet',
-    'Téléphone',
-    'Email',
-    'Adresse',
-    'Pack choisi'
-  ];
-  
+  const headers = ['Date/Heure', 'Nom complet', 'Téléphone', 'Email', 'Adresse', 'Pack choisi'];
   sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
-  
-  // Formater la première ligne (en-têtes)
   const headerRange = sheet.getRange(1, 1, 1, headers.length);
   headerRange.setFontWeight('bold');
   headerRange.setBackground('#6B8FA3');
   headerRange.setFontColor('#FFFFFF');
   headerRange.setHorizontalAlignment('center');
-  
-  // Ajuster la largeur des colonnes
-  sheet.setColumnWidth(1, 180); // Date/Heure
-  sheet.setColumnWidth(2, 200); // Nom complet
-  sheet.setColumnWidth(3, 150); // Téléphone
-  sheet.setColumnWidth(4, 250); // Email
-  sheet.setColumnWidth(5, 200); // Adresse
-  sheet.setColumnWidth(6, 200); // Pack choisi
-  
-  // Geler la première ligne
-  sheet.setFrozenRows(1);
-}
 
-/**
- * Fonction pour tester le script (optionnel)
- * Exécuter cette fonction depuis l'éditeur pour tester
- * Cette fonction simule exactement ce que le formulaire HTML envoie
- */
-function testDoPost() {
-  Logger.log('=== TEST doPost ===');
-  
-  const testData = {
-    fullName: 'Test User',
-    phone: '0660112233',
-    email: 'test@example.com',
-    address: 'Casablanca, Maroc',
-    packChoice: 'Mensuel – 390 DH / mois'
-  };
-  
-  // Test 1: Avec FormData (comme un formulaire HTML standard)
-  Logger.log('\n--- TEST 1: FormData (e.parameter) ---');
-  const mockEventFormData = {
-    parameter: testData
-  };
-  
-  const resultFormData = doPost(mockEventFormData);
-  Logger.log('Résultat: ' + resultFormData.getContent());
-  
-  // Test 2: Avec JSON (pour compatibilité)
-  Logger.log('\n--- TEST 2: JSON (e.postData.contents) ---');
-  const mockEventJSON = {
-    postData: {
-      contents: JSON.stringify(testData)
-    }
-  };
-  
-  const resultJSON = doPost(mockEventJSON);
-  Logger.log('Résultat: ' + resultJSON.getContent());
-  
-  Logger.log('\n=== FIN TEST ===');
+  sheet.setColumnWidth(1, 180);
+  sheet.setColumnWidth(2, 200);
+  sheet.setColumnWidth(3, 150);
+  sheet.setColumnWidth(4, 250);
+  sheet.setColumnWidth(5, 200);
+  sheet.setColumnWidth(6, 200);
+  sheet.setFrozenRows(1);
 }

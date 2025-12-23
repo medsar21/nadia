@@ -60,15 +60,8 @@ const App: React.FC = () => {
   const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=212606212122&text&type=phone_number&app_absent=0";
   const PAYMENT_RIB = {
     bankName: "Bank Atijari",
-    branch: "CASA LES EPERVIERS",
     accountName: "VENTEF CONSULTING SARL AU",
-    accountNumber: "007 780 0001175000000650 95",
-    bankCode: "007",
-    cityCode: "780",
-    accountNum: "0001175000000650",
-    ribKey: "95",
-    iban: "MAXXXXXXXXXXXXXX",
-    swift: "BCMAMAMC"
+    ribComplete: "007780 0001175000000650 95"
   };
 
   // Handle input changes
@@ -426,7 +419,11 @@ const App: React.FC = () => {
                 transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
               >
                 <motion.button
-                onClick={scrollToPricing}
+                onClick={() => {
+                  setShowFormModal(true);
+                  setSuccessMessage(null);
+                  setErrorMessage(null);
+                }}
                 className="w-full px-6 sm:px-8 py-3 h-11 bg-button-cta btn-luxe text-white text-sm sm:text-base font-semibold rounded-full hover:shadow-xl hover:shadow-luxe-roseGold/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:ring-offset-2 focus:ring-offset-luxe-cream flex items-center justify-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
@@ -734,48 +731,26 @@ const App: React.FC = () => {
 
               {/* Payment Information */}
               <div className="bg-card-luxe card-luxe-panel rounded-lg p-2 sm:p-2.5 border border-luxe-roseGold/30 shadow-md">
-                <h4 className="text-xs sm:text-sm font-semibold text-luxe-black mb-1.5 flex items-center gap-1">
+                <h4 className="text-xs sm:text-sm font-semibold text-luxe-black mb-2 flex items-center gap-1">
                   <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-luxe-black" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
                     <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
                   </svg>
                   Coordonnées bancaires (RIB)
                 </h4>
-                <div className="space-y-1 text-[9px] sm:text-[10px]">
-                  <div className="flex justify-between items-start gap-2">
-                    <span className="text-luxe-charcoal font-medium flex-shrink-0">Banque :</span>
-                    <span className="text-luxe-black font-semibold text-right break-words">{PAYMENT_RIB.bankName}</span>
+                <div className="space-y-2 text-[9px] sm:text-[10px]">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-luxe-charcoal font-medium">RIB :</span>
+                    <span className="text-luxe-black font-bold font-mono text-sm sm:text-base break-all">{PAYMENT_RIB.ribComplete}</span>
                   </div>
-                  <div className="flex justify-between items-start gap-2">
-                    <span className="text-luxe-charcoal font-medium flex-shrink-0">Agence :</span>
-                    <span className="text-luxe-black font-semibold text-right break-words">{PAYMENT_RIB.branch}</span>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-luxe-charcoal font-medium">Banque :</span>
+                    <span className="text-luxe-black font-semibold break-words">{PAYMENT_RIB.bankName}</span>
                   </div>
-                  <div className="flex justify-between items-start gap-2">
-                    <span className="text-luxe-charcoal font-medium flex-shrink-0">Titulaire :</span>
-                    <span className="text-luxe-black font-semibold text-right break-words">{PAYMENT_RIB.accountName}</span>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-luxe-charcoal font-medium">Titulaire du compte :</span>
+                    <span className="text-luxe-black font-semibold break-words">{PAYMENT_RIB.accountName}</span>
                   </div>
-                  <div className="flex justify-between items-center gap-2">
-                    <span className="text-luxe-charcoal font-medium flex-shrink-0">Code banque :</span>
-                    <span className="text-luxe-black font-semibold font-mono">{PAYMENT_RIB.bankCode}</span>
-                  </div>
-                  <div className="flex justify-between items-center gap-2">
-                    <span className="text-luxe-charcoal font-medium flex-shrink-0">Code ville :</span>
-                    <span className="text-luxe-black font-semibold font-mono">{PAYMENT_RIB.cityCode}</span>
-                  </div>
-                  <div className="flex justify-between items-start gap-2">
-                    <span className="text-luxe-charcoal font-medium flex-shrink-0">N° Compte :</span>
-                    <span className="text-luxe-black font-semibold font-mono text-right break-all">{PAYMENT_RIB.accountNum}</span>
-                  </div>
-                  <div className="flex justify-between items-center gap-2">
-                    <span className="text-luxe-charcoal font-medium flex-shrink-0">Clé RIB :</span>
-                    <span className="text-luxe-black font-semibold font-mono">{PAYMENT_RIB.ribKey}</span>
-                  </div>
-                  {PAYMENT_RIB.swift && (
-                    <div className="flex justify-between items-center gap-2">
-                      <span className="text-luxe-charcoal font-medium flex-shrink-0">Code SWIFT :</span>
-                      <span className="text-luxe-black font-semibold font-mono">{PAYMENT_RIB.swift}</span>
-              </div>
-            )}
                 </div>
               </div>
 
