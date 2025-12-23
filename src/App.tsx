@@ -28,7 +28,6 @@ const TESTIMONIAL_7 = getImagePath("Temoi/9.png");
 const TESTIMONIAL_8 = getImagePath("Temoi/25.png");
 const TESTIMONIAL_9 = getImagePath("Temoi/27.png");
 
-const ICON_LOUPE = getImagePath("icones/loupe.png");
 const ICON_FORMULAIRE = getImagePath("icones/remplir-le-formulaire.png");
 const ICON_REJOINDRE = getImagePath("icones/rejoindre.png");
 const ICON_CARRIERE = getImagePath("icones/carriere.png");
@@ -190,13 +189,6 @@ const App: React.FC = () => {
     setShowFormModal(true);
     setSuccessMessage(null);
     setErrorMessage(null);
-  };
-
-  const scrollToParcours = () => {
-    const parcoursSection = document.getElementById('parcours-section');
-    if (parcoursSection) {
-      parcoursSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
   };
 
   return (
@@ -424,42 +416,7 @@ const App: React.FC = () => {
                 <img src={ICON_REJOINDRE} alt="Rejoindre" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" width="20" height="20" />
                 Intégrer ELAN BUSINESS SYSTEM
                 </motion.button>
-                <motion.button
-                onClick={scrollToParcours}
-                className="w-full px-6 sm:px-8 py-3 h-11 border-2 border-luxe-black text-luxe-black bg-transparent text-sm sm:text-base font-semibold rounded-full hover:bg-luxe-black hover:text-luxe-cream transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-black focus:ring-offset-2 focus:ring-offset-luxe-cream flex items-center justify-center gap-2"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  Comprendre le système
-                </motion.button>
               </motion.div>
-
-            {/* Button Qui suis-je */}
-            <motion.div
-              className="w-full flex justify-center mt-4"
-              initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
-            >
-              <motion.a
-                href="https://nadialakzir.com/a-propos/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.open('https://nadialakzir.com/a-propos/', '_blank', 'noopener,noreferrer');
-                }}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-button-cta btn-luxe text-luxe-cream text-sm font-semibold rounded-full hover:opacity-90 hover:shadow-xl hover:shadow-luxe-roseGold/50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:ring-offset-2 focus:ring-offset-luxe-cream"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <img src={ICON_LOUPE} alt="Loupe" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" width="20" height="20" />
-                Qui suis-je ?
-              </motion.a>
-          </motion.div>
           </div>
 
         </div>
@@ -791,6 +748,201 @@ const App: React.FC = () => {
           </motion.div>
         </motion.div>
       )}
+
+      {/* Qui je suis Section */}
+      <motion.section
+        className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 overflow-hidden bg-luxe-cream"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto w-full">
+          <motion.h2
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-center mb-6 sm:mb-8 text-luxe-black leading-tight"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="flex items-center justify-center gap-3 flex-wrap">
+              <img src={ICON_CARRIERE} alt="Parcours" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain flex-shrink-0" />
+              Mon parcours
+            </span>
+          </motion.h2>
+
+          <motion.p
+            className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-8 sm:mb-10 md:mb-12 text-luxe-black"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            25 ans d'expérience, du salariat à l'entrepreneuriat
+          </motion.p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+            {/* Expérience en entreprise */}
+            <motion.div
+              className="bg-card-luxe card-luxe-panel rounded-lg p-6 sm:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 transition-all duration-150"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              whileHover={{ translateY: -5 }}
+            >
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-luxe-roseGold/20 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 text-luxe-roseGold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-luxe-black mb-2">14 ans dans les rouages des entreprises</h3>
+                  <p className="text-sm sm:text-base text-luxe-charcoal leading-relaxed">
+                    Achats, ventes, marketing, négociation
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Expérience entrepreneuriale */}
+            <motion.div
+              className="bg-card-luxe card-luxe-panel rounded-lg p-6 sm:p-8 border border-luxe-roseGold/30 shadow-md hover:shadow-xl hover:border-luxe-roseGold/60 transition-all duration-150"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              whileHover={{ translateY: -5 }}
+            >
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-luxe-roseGold/20 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 text-luxe-roseGold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-luxe-black mb-2">13 ans à entreprendre</h3>
+                  <p className="text-sm sm:text-base text-luxe-charcoal leading-relaxed">
+                    Tester, réussir… et échouer aussi (et c'est formateur !)
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Informations complémentaires */}
+          <div className="mt-8 sm:mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
+            <motion.div
+              className="bg-luxe-roseGold/10 rounded-lg p-4 sm:p-5 border border-luxe-roseGold/30 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <p className="text-2xl sm:text-3xl font-black text-luxe-roseGold mb-1">Originaire de Marrakech</p>
+              <p className="text-sm sm:text-base text-luxe-charcoal">Rigueur française et énergie marocaine</p>
+            </motion.div>
+
+            <motion.div
+              className="bg-luxe-roseGold/10 rounded-lg p-4 sm:p-5 border border-luxe-roseGold/30 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <p className="text-2xl sm:text-3xl font-black text-luxe-roseGold mb-1">13 projets lancés</p>
+              <p className="text-sm sm:text-base text-luxe-charcoal">Expérience terrain variée</p>
+            </motion.div>
+
+            <motion.div
+              className="bg-luxe-roseGold/10 rounded-lg p-4 sm:p-5 border border-luxe-roseGold/30 text-center sm:col-span-2 lg:col-span-1"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+            >
+              <p className="text-2xl sm:text-3xl font-black text-luxe-roseGold mb-1">5 succès éclatants</p>
+              <p className="text-sm sm:text-base text-luxe-charcoal">Résultats concrets et mesurables</p>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Le business autrement Section */}
+      <motion.section
+        className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 overflow-hidden bg-section-gradient"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="max-w-screen-sm sm:max-w-screen-md md:max-w-7xl mx-auto w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
+            {/* Image */}
+            <motion.div
+              className="order-2 lg:order-1"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-luxe-roseGold/40">
+                <img 
+                  src={getImagePath("MEITU_20250501_144143479.jpg")} 
+                  alt="Nadia Lakzir" 
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </motion.div>
+
+            {/* Content */}
+            <motion.div
+              className="order-1 lg:order-2 space-y-8 sm:space-y-10"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-luxe-black leading-tight tracking-tight">
+                Le business autrement
+              </h2>
+
+              <div className="space-y-6 sm:space-y-7">
+                <p className="text-lg sm:text-xl md:text-2xl text-luxe-charcoal leading-relaxed font-light">
+                  Oui, l'argent résout des problèmes.
+                </p>
+                <p className="text-lg sm:text-xl md:text-2xl text-luxe-charcoal leading-relaxed font-light">
+                  Mais il ne remplace jamais le plaisir de créer, de construire, d'échanger.
+                </p>
+                <p className="text-xl sm:text-2xl md:text-3xl font-bold text-luxe-black leading-relaxed pt-2">
+                  Je vous aide à avoir les deux.
+                </p>
+              </div>
+
+              <div className="pt-6 sm:pt-8 space-y-6 sm:space-y-7 border-t-2 border-luxe-roseGold/40">
+                <div className="bg-luxe-cream/50 rounded-xl p-5 sm:p-6 border border-luxe-roseGold/20">
+                  <p className="text-sm sm:text-base font-bold text-luxe-roseGold mb-3 uppercase tracking-wider">
+                    Ma devise
+                  </p>
+                  <p className="text-base sm:text-lg md:text-xl text-luxe-black leading-relaxed font-medium">
+                    Objectifs clairs + actions ciblées = résultat garanti. Le reste ? Du bruit.
+                  </p>
+                </div>
+                
+                <div className="bg-luxe-cream/50 rounded-xl p-5 sm:p-6 border border-luxe-roseGold/20">
+                  <p className="text-sm sm:text-base font-bold text-luxe-roseGold mb-3 uppercase tracking-wider">
+                    Mon carburant
+                  </p>
+                  <p className="text-base sm:text-lg md:text-xl text-luxe-black leading-relaxed font-medium">
+                    La bonne humeur, les rires en équipe et un thé à la menthe bien serré.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
 
       {/* Why EBS Section */}
       <motion.section
