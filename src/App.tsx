@@ -881,7 +881,7 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
             {/* Image */}
             <motion.div
-              className="order-2 lg:order-1"
+              className="order-1 lg:order-1"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -898,7 +898,7 @@ const App: React.FC = () => {
 
             {/* Content */}
             <motion.div
-              className="order-1 lg:order-2 space-y-8 sm:space-y-10"
+              className="order-2 lg:order-2 space-y-8 sm:space-y-10"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
