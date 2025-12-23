@@ -199,13 +199,6 @@ const App: React.FC = () => {
     }
   };
 
-  const scrollToPricing = () => {
-    const pricingSection = document.getElementById('pricing-section');
-    if (pricingSection) {
-      pricingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
       {/* Hero Section */}
