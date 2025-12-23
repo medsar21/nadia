@@ -1383,7 +1383,7 @@ const App: React.FC = () => {
           </div>
       </motion.section>
 
-      {/* Community Section */}
+      {/* System Section */}
       <motion.section
           className="w-full py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-5 overflow-hidden"
         initial={{ opacity: 0 }}

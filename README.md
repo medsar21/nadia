@@ -1,4 +1,4 @@
-# ELAN BUSINESS COMMUNITY - Landing Page
+# ELAN SYSTEM - Landing Page
 
 ## 📋 Table des matières
 
@@ -16,7 +16,7 @@
 
 ## 🎯 Vue d'ensemble
 
-Landing page moderne et responsive pour **ELAN BUSINESS COMMUNITY (ELAN BC)**, une plateforme complète pour créer et développer des projets rentables. La page comprend :
+Landing page moderne et responsive pour **ELAN BUSINESS SYSTEM (EBS)**, une plateforme complète pour créer et développer des projets rentables. La page comprend :
 
 - **Hero Section** : Présentation principale avec vidéo et formulaire
 - **Section Parcours** : 3 parcours (Starter, Builder, Scaler)
@@ -314,7 +314,7 @@ Déjà configuré dans `vite.config.ts` :
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "ELAN BUSINESS COMMUNITY",
+  "name": "ELAN BUSINESS SYSTEM",
   "url": "https://votre-domaine.com",
   "logo": "https://votre-domaine.com/logo.png",
   "description": "Plateforme complète pour créer et développer votre projet rentable",
