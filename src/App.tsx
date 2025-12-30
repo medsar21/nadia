@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { translations, Language } from './translations';
 
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxwUbQ-LZ3BQyGtWY80pF9iQFU83U5WtcHjoXuxwDt-x7RvQa8LxaK3Y14qE0-2VVW2ZQ/exec";
 
@@ -40,6 +41,11 @@ const ICON_RESSOURCES_HUMAINES = getImagePath("icones/ressources-humaines.png");
 const ICON_INSTANTANE = getImagePath("icones/instantane.png");
 
 const App: React.FC = () => {
+  // Language state - Arabic by default
+  const [language, setLanguage] = useState<Language>('ar');
+  const t = translations[language];
+  const isRTL = language === 'ar';
+  
   // Form state
   const [formData, setFormData] = useState({
     fullName: '',
@@ -192,7 +198,22 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden">
+    <div className={`min-h-screen w-full overflow-x-hidden ${isRTL ? 'rtl' : 'ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
+      {/* Language Toggle Button */}
+      <motion.button
+        onClick={() => setLanguage(language === 'ar' ? 'fr' : 'ar')}
+        className={`fixed z-50 bg-luxe-roseGold text-white px-4 py-2 rounded-full font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-150 flex items-center gap-2 ${isRTL ? 'top-4 left-4 sm:top-6 sm:left-6' : 'top-4 right-4 sm:top-6 sm:right-6'}`}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <span>{language === 'ar' ? 'FR' : 'AR'}</span>
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+        </svg>
+      </motion.button>
       {/* Hero Section */}
       <section className="relative min-h-screen w-full flex items-center justify-center px-4 sm:px-5 py-4 sm:py-6 md:py-8 overflow-hidden">
         {/* Gradient Blobs Background */}
@@ -281,7 +302,7 @@ const App: React.FC = () => {
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
                 <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-luxe-white/90 text-luxe-black text-[10px] sm:text-xs uppercase tracking-wider rounded-full border border-luxe-charcoal/40 shadow-sm font-bold">
-                  Système stratégique • Décision • Exécution
+                  {t.heroPill}
                 </span>
               </motion.div>
 
@@ -303,7 +324,7 @@ const App: React.FC = () => {
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               >
                 <span className="text-[#95655E] drop-shadow-[0_2px_4px_rgba(255,255,255,0.5)] font-bold">
-                  Décide plus vite. Agis juste. Ajuste en continu.
+                  {t.heroSubtitle}
                 </span>
               </motion.p>
 
@@ -320,7 +341,7 @@ const App: React.FC = () => {
                       ❌
                     </span>
                     <p className="text-base md:text-lg leading-relaxed text-[inherit]">
-                      Tu n’as pas besoin de plus d’informations.
+                      {t.heroBullet1}
                     </p>
                   </li>
                   <li className="flex items-start justify-center gap-3">
@@ -328,22 +349,12 @@ const App: React.FC = () => {
                       ✅
                     </span>
                     <p className="text-base md:text-lg leading-relaxed text-[inherit]">
-                      Tu as besoin d’un{" "}
-                      <span className="font-semibold">cadre clair</span>, de{" "}
-                      <span className="font-semibold">décisions assumées</span> et d’un{" "}
-                      <span className="font-semibold">rythme d’exécution</span>.
+                      {t.heroBullet2}
                     </p>
                   </li>
                 </ul>
                 <p className="mt-4 text-base md:text-lg leading-relaxed text-[inherit]">
-                  <span className="text-[#95655E] font-bold">
-                    ELAN BUSINESS SYSTEM
-                  </span>{" "}
-                  est un{" "}
-                  <span className="font-semibold">système d’orientation</span>, de{" "}
-                  <span className="font-semibold">décision</span> et{" "}
-                  <span className="font-semibold">d’exécution</span> pour entrepreneurs dans un marché{" "}
-                  <span className="font-semibold">incertain</span>.
+                  {t.heroDescription}
                 </p>
               </motion.div>
             </div>
@@ -396,145 +407,6 @@ const App: React.FC = () => {
               </motion.div>
             </motion.div>
 
-            {/* Inline Form Section */}
-            <motion.div
-              className="w-full max-w-md mx-auto mt-8 bg-card-luxe card-luxe-panel rounded-xl shadow-xl p-6 border border-luxe-roseGold/30"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.5 }}
-            >
-              <div className="text-center mb-6">
-                <h2 className="text-xl sm:text-2xl font-black text-luxe-black flex items-center justify-center gap-3 mb-2">
-                  <img src={ICON_FORMULAIRE} alt="Formulaire" className="w-5 h-5 sm:w-6 sm:h-6 object-contain" width="32" height="32" />
-                  Rejoindre EBS
-                </h2>
-                <p className="text-xs sm:text-sm text-luxe-charcoal">
-                  Laisse tes informations et notre équipe te contacte pour t'orienter.
-                </p>
-              </div>
-
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                >
-                  <label htmlFor="fullName-inline" className="block text-sm font-medium text-luxe-black">
-                    Nom complet
-                  </label>
-                  <input
-                    type="text"
-                    id="fullName-inline"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    required
-                    className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-roseGold/30 px-2.5 py-1.5 text-sm text-luxe-black placeholder-luxe-grey/60 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all"
-                    placeholder="Nom complet"
-                  />
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  <label htmlFor="phone-inline" className="block text-sm font-medium text-luxe-black">
-                    Numéro de téléphone
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone-inline"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-roseGold/30 px-2.5 py-1.5 text-sm text-luxe-black placeholder-luxe-grey/60 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all"
-                    placeholder="0660112233"
-                  />
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                >
-                  <label htmlFor="email-inline" className="block text-sm font-medium text-luxe-black">
-                    Adresse email
-                  </label>
-                  <input
-                    type="email"
-                    id="email-inline"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-roseGold/30 px-2.5 py-1.5 text-sm text-luxe-black placeholder-luxe-grey/60 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all"
-                    placeholder="email@email.com"
-                  />
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                >
-                  <label htmlFor="packChoice-inline" className="flex items-center gap-2 text-sm font-medium text-luxe-black">
-                    <img src={ICON_MAIN} alt="Plan" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" />
-                    Plan choisi
-                  </label>
-                  <select
-                    id="packChoice-inline"
-                    name="packChoice"
-                    value={formData.packChoice}
-                    onChange={handleChange}
-                    required
-                    className="w-full mt-1 rounded-lg bg-luxe-cream border-2 border-luxe-roseGold/40 px-2.5 py-1.5 text-sm font-medium text-luxe-black focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all shadow-sm hover:shadow-md hover:border-luxe-roseGold/60 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%234C1F1A%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E')] bg-no-repeat bg-right pr-8"
-                    style={{
-                      backgroundPosition: 'right 0.75rem center',
-                      backgroundSize: '1.25em 1.25em'
-                    }}
-                  >
-                    <option value="">Sélectionne un plan</option>
-                    <option value="Mensuel – 455 DH / mois (au lieu de 650 DH)">Mensuel – 455 DH / mois (au lieu de 650 DH)</option>
-                    <option value="Semestriel – 2 450 DH (au lieu de 3 500 DH)">Semestriel – 2 450 DH (au lieu de 3 500 DH)</option>
-                  </select>
-                </motion.div>
-
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full mt-3 rounded-full bg-button-cta btn-luxe py-2 text-sm font-semibold text-luxe-cream shadow-md hover:opacity-90 hover:shadow-lg transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                  whileHover={isSubmitting ? {} : { scale: 1.02 }}
-                  whileTap={isSubmitting ? {} : { scale: 0.98 }}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Envoi en cours...
-                    </>
-                  ) : (
-                    <>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                      </svg>
-                      Envoyer ma demande
-                    </>
-                  )}
-                </motion.button>
-
-                {successMessage && <p className="mt-3 text-sm text-luxe-black font-semibold text-center">{successMessage}</p>}
-                {errorMessage && <p className="mt-3 text-sm text-luxe-black/80 text-center">{errorMessage}</p>}
-              </form>
-            </motion.div>
-
             {/* CTA Buttons */}
             <motion.div
               className="flex flex-col gap-2 sm:gap-3 w-full max-w-md mx-auto"
@@ -553,7 +425,7 @@ const App: React.FC = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <img src={ICON_REJOINDRE} alt="Rejoindre" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" width="20" height="20" />
-                Intégrer ELAN BUSINESS SYSTEM
+                {t.heroButton}
               </motion.button>
             </motion.div>
           </div>
@@ -609,7 +481,7 @@ const App: React.FC = () => {
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
                   <label htmlFor="fullName" className="block text-sm font-medium text-luxe-black">
-                    Nom complet
+                    {t.formName}
                   </label>
                   <input
                     type="text"
@@ -619,7 +491,7 @@ const App: React.FC = () => {
                     onChange={handleChange}
                     required
                     className="w-full mt-1 rounded-lg bg-luxe-cream border border-luxe-roseGold/30 px-2.5 py-1.5 text-sm text-luxe-black placeholder-luxe-grey/60 focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all"
-                    placeholder="Nom complet"
+                    placeholder={t.formName}
                   />
                 </motion.div>
 
@@ -653,7 +525,7 @@ const App: React.FC = () => {
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
                   <label htmlFor="email" className="block text-sm font-medium text-luxe-black">
-                    Adresse email
+                    {t.formEmail}
                   </label>
                   <input
                     type="email"
@@ -678,7 +550,7 @@ const App: React.FC = () => {
                 >
                   <label htmlFor="packChoice" className="flex items-center gap-2 text-sm font-medium text-luxe-black">
                     <img src={ICON_MAIN} alt="Plan" className="w-4 h-4 sm:w-5 sm:h-5 object-contain flex-shrink-0" />
-                    Plan choisi
+                    {t.formPackLabel}
                   </label>
                   <select
                     id="packChoice"
@@ -688,11 +560,11 @@ const App: React.FC = () => {
                     required
                     className="w-full mt-1 rounded-lg bg-luxe-cream border-2 border-luxe-roseGold/40 px-2.5 py-1.5 text-sm font-medium text-luxe-black focus:outline-none focus:ring-2 focus:ring-luxe-roseGold focus:border-luxe-roseGold transition-all shadow-sm hover:shadow-md hover:border-luxe-roseGold/60 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%234C1F1A%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E')] bg-no-repeat bg-right pr-8"
                     style={{
-                      backgroundPosition: 'right 0.75rem center',
+                      backgroundPosition: isRTL ? 'left 0.75rem center' : 'right 0.75rem center',
                       backgroundSize: '1.25em 1.25em'
                     }}
                   >
-                    <option value="" className="text-luxe-charcoal/70">Sélectionne un plan</option>
+                    <option value="" className="text-luxe-charcoal/70">{t.formPackSelect}</option>
                     <option
                       value="Mensuel – 455 DH / mois (au lieu de 650 DH)"
                       className="text-luxe-black bg-luxe-cream py-2"
@@ -722,14 +594,14 @@ const App: React.FC = () => {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      Envoi en cours...
+                      {t.formSubmitting}
                     </>
                   ) : (
                     <>
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                       </svg>
-                      Envoyer ma demande
+                      {t.formSubmit}
                     </>
                   )}
                 </motion.button>
@@ -811,10 +683,10 @@ const App: React.FC = () => {
                   </svg>
                 </motion.div>
                 <h3 className="text-sm sm:text-base font-bold text-luxe-black mb-0.5">
-                  Formulaire envoyé avec succès !
+                  {t.formSuccess}
                 </h3>
                 <p className="text-[9px] sm:text-[10px] text-luxe-charcoal">
-                  Merci ! Voici les informations de paiement pour finaliser votre inscription.
+                  {t.formSuccessText}
                 </p>
               </div>
 
@@ -825,19 +697,19 @@ const App: React.FC = () => {
                     <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
                     <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
                   </svg>
-                  Coordonnées bancaires (RIB)
+                  {t.paymentTitle}
                 </h4>
                 <div className="space-y-2 text-[9px] sm:text-[10px]">
                   <div className="flex flex-col gap-1">
-                    <span className="text-luxe-charcoal font-medium">RIB :</span>
+                    <span className="text-luxe-charcoal font-medium">{t.paymentRIB} :</span>
                     <span className="text-luxe-black font-bold font-mono text-sm sm:text-base break-all">{PAYMENT_RIB.ribComplete}</span>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span className="text-luxe-charcoal font-medium">Banque :</span>
+                    <span className="text-luxe-charcoal font-medium">{t.paymentBank} :</span>
                     <span className="text-luxe-black font-semibold break-words">{PAYMENT_RIB.bankName}</span>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span className="text-luxe-charcoal font-medium">Titulaire du compte :</span>
+                    <span className="text-luxe-charcoal font-medium">{t.paymentAccountHolder} :</span>
                     <span className="text-luxe-black font-semibold break-words">{PAYMENT_RIB.accountName}</span>
                   </div>
                 </div>
@@ -846,7 +718,7 @@ const App: React.FC = () => {
               {/* Payment Methods Section */}
               <div className="space-y-2 mt-2">
                 <h4 className="text-xs sm:text-sm font-semibold text-luxe-black text-center mb-1.5">
-                  Méthodes de paiement
+                  {t.paymentMethods}
                 </h4>
 
                 {/* QR Code Payment */}
@@ -859,7 +731,7 @@ const App: React.FC = () => {
                         className="w-full h-full object-contain"
                       />
                     </div>
-                    <p className="mt-1 text-[8px] sm:text-[9px] font-medium text-luxe-black text-center leading-tight">QR compte bancaire</p>
+                    <p className="mt-1 text-[8px] sm:text-[9px] font-medium text-luxe-black text-center leading-tight">{t.paymentQR}</p>
                   </div>
                 </div>
               </div>
@@ -876,12 +748,12 @@ const App: React.FC = () => {
                 <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
                 </svg>
-                <span>Contacter via WhatsApp</span>
+                <span>{t.paymentWhatsApp}</span>
               </motion.a>
 
               {/* Info Text */}
               <p className="text-[8px] sm:text-[9px] text-center text-luxe-charcoal/70 mt-1 pb-1 leading-tight">
-                Après le paiement, contactez-nous sur WhatsApp pour confirmer votre inscription.
+                {t.paymentInfo}
               </p>
             </div>
           </motion.div>
@@ -906,7 +778,7 @@ const App: React.FC = () => {
           >
             <span className="flex items-center justify-center gap-3 flex-wrap">
               <img src={ICON_CARRIERE} alt="Parcours" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain flex-shrink-0" />
-              Mon parcours
+              {t.parcoursTitle}
             </span>
           </motion.h2>
 
@@ -917,7 +789,7 @@ const App: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            25 ans d'expérience, du salariat à l'entrepreneuriat
+            {t.parcoursSubtitle}
           </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
@@ -937,9 +809,9 @@ const App: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-luxe-black mb-2">14 ans dans les rouages des entreprises</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-luxe-black mb-2">{t.parcoursCard1Title}</h3>
                   <p className="text-sm sm:text-base text-luxe-charcoal leading-relaxed">
-                    Achats, ventes, marketing, négociation
+                    {t.parcoursCard1Text}
                   </p>
                 </div>
               </div>
@@ -961,9 +833,9 @@ const App: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-luxe-black mb-2">13 ans à entreprendre</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-luxe-black mb-2">{t.parcoursCard2Title}</h3>
                   <p className="text-sm sm:text-base text-luxe-charcoal leading-relaxed">
-                    Tester, réussir… et échouer aussi (et c'est formateur !)
+                    {t.parcoursCard2Text}
                   </p>
                 </div>
               </div>
@@ -979,8 +851,8 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <p className="text-2xl sm:text-3xl font-black text-luxe-roseGold mb-1">Originaire de Marrakech</p>
-              <p className="text-sm sm:text-base text-luxe-charcoal">Rigueur française et énergie marocaine</p>
+              <p className="text-2xl sm:text-3xl font-black text-luxe-roseGold mb-1">{t.parcoursInfo1}</p>
+              <p className="text-sm sm:text-base text-luxe-charcoal">{t.parcoursInfo1Sub}</p>
             </motion.div>
 
             <motion.div
@@ -990,8 +862,8 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <p className="text-2xl sm:text-3xl font-black text-luxe-roseGold mb-1">13 projets lancés</p>
-              <p className="text-sm sm:text-base text-luxe-charcoal">Expérience terrain variée</p>
+              <p className="text-2xl sm:text-3xl font-black text-luxe-roseGold mb-1">{t.parcoursInfo2}</p>
+              <p className="text-sm sm:text-base text-luxe-charcoal">{t.parcoursInfo2Sub}</p>
             </motion.div>
 
             <motion.div
@@ -1001,8 +873,8 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              <p className="text-2xl sm:text-3xl font-black text-luxe-roseGold mb-1">5 succès éclatants</p>
-              <p className="text-sm sm:text-base text-luxe-charcoal">Résultats concrets et mesurables</p>
+              <p className="text-2xl sm:text-3xl font-black text-luxe-roseGold mb-1">{t.parcoursInfo3}</p>
+              <p className="text-sm sm:text-base text-luxe-charcoal">{t.parcoursInfo3Sub}</p>
             </motion.div>
           </div>
         </div>
@@ -1044,37 +916,37 @@ const App: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-luxe-black leading-tight tracking-tight">
-                Le business autrement
+                {t.businessTitle}
               </h2>
 
               <div className="space-y-6 sm:space-y-7">
                 <p className="text-lg sm:text-xl md:text-2xl text-luxe-charcoal leading-relaxed font-light">
-                  Oui, l'argent résout des problèmes.
+                  {t.businessText1}
                 </p>
                 <p className="text-lg sm:text-xl md:text-2xl text-luxe-charcoal leading-relaxed font-light">
-                  Mais il ne remplace jamais le plaisir de créer, de construire, d'échanger.
+                  {t.businessText2}
                 </p>
                 <p className="text-xl sm:text-2xl md:text-3xl font-bold text-luxe-black leading-relaxed pt-2">
-                  Je vous aide à avoir les deux.
+                  {t.businessText3}
                 </p>
               </div>
 
               <div className="pt-6 sm:pt-8 space-y-6 sm:space-y-7 border-t-2 border-luxe-roseGold/40">
                 <div className="bg-luxe-cream/50 rounded-xl p-5 sm:p-6 border border-luxe-roseGold/20">
                   <p className="text-sm sm:text-base font-bold text-luxe-roseGold mb-3 uppercase tracking-wider">
-                    Ma devise
+                    {t.businessDevise}
                   </p>
                   <p className="text-base sm:text-lg md:text-xl text-luxe-black leading-relaxed font-medium">
-                    Objectifs clairs + actions ciblées = résultat garanti. Le reste ? Du bruit.
+                    {t.businessDeviseText}
                   </p>
                 </div>
-
+                
                 <div className="bg-luxe-cream/50 rounded-xl p-5 sm:p-6 border border-luxe-roseGold/20">
                   <p className="text-sm sm:text-base font-bold text-luxe-roseGold mb-3 uppercase tracking-wider">
-                    Mon carburant
+                    {t.businessCarburant}
                   </p>
                   <p className="text-base sm:text-lg md:text-xl text-luxe-black leading-relaxed font-medium">
-                    La bonne humeur, les rires en équipe et un thé à la menthe bien serré.
+                    {t.businessCarburantText}
                   </p>
                 </div>
               </div>
@@ -1101,7 +973,7 @@ const App: React.FC = () => {
           >
             <span className="flex items-center justify-center gap-3 flex-wrap">
               <img src={ICON_CARRIERE} alt="Carrière" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain flex-shrink-0" />
-              Pourquoi ELAN BUSINESS SYSTEM et pas une autre formation ?
+              {t.whyTitle}
             </span>
           </motion.h2>
 
@@ -1114,17 +986,17 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Parce que la réalité est simple — et rarement dite :
+              {t.whyIntro}
             </motion.p>
           </div>
 
           {/* Cards Grid - 2 per row, 4 cards total */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
             {[
-              { icon: ICON_FLUX_TRAVAIL, text: "Les formations longues sont rarement terminées" },
-              { icon: ICON_RESSOURCES_HUMAINES, text: "Les communautés créent peu d’actions concrètes" },
-              { icon: ICON_INSTANTANE, text: "L’information seule ne produit pas de résultats" },
-              { icon: ICON_ORIENTATION, text: "Le manque de clarté bloque la progression" },
+              { icon: ICON_FLUX_TRAVAIL, text: t.whyCard1 },
+              { icon: ICON_RESSOURCES_HUMAINES, text: t.whyCard2 },
+              { icon: ICON_INSTANTANE, text: t.whyCard3 },
+              { icon: ICON_ORIENTATION, text: t.whyCard4 },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -1152,9 +1024,7 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Avec EBS, tu n’es jamais livré(e) à toi-même.
-              <br />
-              Tu es orienté(e), encadré(e) et accompagné(e) dans chaque décision clé.
+              {t.whyConclusionText}
             </motion.p>
           </div>
         </div>
@@ -1182,7 +1052,7 @@ const App: React.FC = () => {
           >
             <span className="flex items-center justify-center gap-3 flex-wrap">
               <img src={ICON_GAGNER} alt="Gagner de l'argent" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain flex-shrink-0" />
-              Ce que tu obtiens avec ELAN BUSINESS SYSTEM
+              {t.whatTitle}
             </span>
           </motion.h2>
 
@@ -1200,14 +1070,14 @@ const App: React.FC = () => {
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Un système de décision clair
+                {t.whatCard1Title}
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxe-roseGold mt-0.5 sm:mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Analyser, choisir et agir sans hésitation inutile.</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">{t.whatCard1Text}</span>
                 </li>
               </ul>
             </motion.div>
@@ -1225,14 +1095,14 @@ const App: React.FC = () => {
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Un accompagnement stratégique réel
+                {t.whatCard2Title}
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxe-roseGold mt-0.5 sm:mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Des décisions guidées, pas du contenu à consommer passivement.</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">{t.whatCard2Text}</span>
                 </li>
               </ul>
             </motion.div>
@@ -1250,14 +1120,14 @@ const App: React.FC = () => {
                 className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Des résultats concrets sur le terrain
+                {t.whatCard3Title}
               </motion.h3>
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                 <li className="flex items-start gap-2 sm:gap-3">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxe-roseGold mt-0.5 sm:mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Stratégie, exécution, ajustement — en continu.</span>
+                  <span className="text-sm sm:text-base text-luxe-charcoal flex-1">{t.whatCard3Text}</span>
                 </li>
               </ul>
             </motion.div>
@@ -1275,7 +1145,7 @@ const App: React.FC = () => {
               <source srcSet={getWebPPath(NEW_IMAGE_1)} type="image/webp" />
               <motion.img
                 src={NEW_IMAGE_1}
-                alt="Résultats concrets obtenus par les membres de EBS"
+                alt={t.whatImageAlt}
                 className="w-full rounded-2xl object-cover"
                 width="1200"
                 height="675"
@@ -1307,7 +1177,7 @@ const App: React.FC = () => {
           >
             <span className="flex items-center justify-center gap-3 flex-wrap">
               <img src={ICON_PARCOURS} alt="Parcours professionnel" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain flex-shrink-0" />
-              Le programme ELAN BUSINESS SYSTEM – 6 mois
+              {t.programTitle}
             </span>
           </motion.h2>
 
@@ -1323,7 +1193,7 @@ const App: React.FC = () => {
               <source srcSet={getWebPPath(NEW_IMAGE_2)} type="image/webp" />
               <motion.img
                 src={NEW_IMAGE_2}
-                alt="Parcours de l'Academy en ligne EBS"
+                alt={t.programImageAlt}
                 className="w-full rounded-2xl object-cover"
                 width="1200"
                 height="675"
@@ -1358,26 +1228,27 @@ const App: React.FC = () => {
                     className="px-3 py-1.5 sm:px-4 sm:py-2 bg-section-gradient text-luxe-black text-xs sm:text-sm uppercase tracking-wider rounded-full border border-luxe-roseGold/30 transition-all duration-150 group-hover:bg-button-cta group-hover:text-white group-hover:border-luxe-roseGold/60 inline-block"
                     whileHover={{ scale: 1.05 }}
                   >
-                    Mois 1–2
+                    {t.programMonth12}
                   </motion.span>
                 </div>
                 <motion.h3
                   className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                   whileHover={{ scale: 1.05 }}
                 >
+                  {t.programStarter}
                 </motion.h3>
                 <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                   <li className="flex items-start gap-2 sm:gap-3">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxe-roseGold mt-0.5 sm:mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Clarté stratégique & posture du leader</span>
+                    <span className="text-sm sm:text-base text-luxe-charcoal flex-1">{t.programStarterItem1}</span>
                   </li>
                   <li className="flex items-start gap-2 sm:gap-3">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxe-roseGold mt-0.5 sm:mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Positionnement & client idéal</span>
+                    <span className="text-sm sm:text-base text-luxe-charcoal flex-1">{t.programStarterItem2}</span>
                   </li>
                 </ul>
               </div>
@@ -1406,26 +1277,27 @@ const App: React.FC = () => {
                     className="px-3 py-1.5 sm:px-4 sm:py-2 bg-section-gradient text-luxe-black text-xs sm:text-sm uppercase tracking-wider rounded-full border border-luxe-roseGold/30 transition-all duration-150 group-hover:bg-button-cta group-hover:text-white group-hover:border-luxe-roseGold/60 inline-block"
                     whileHover={{ scale: 1.05 }}
                   >
-                    Mois 3–4
+                    {t.programMonth34}
                   </motion.span>
                 </div>
                 <motion.h3
                   className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                   whileHover={{ scale: 1.05 }}
                 >
+                  {t.programBuilder}
                 </motion.h3>
                 <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                   <li className="flex items-start gap-2 sm:gap-3">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxe-roseGold mt-0.5 sm:mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Offres & tarification intelligente</span>
+                    <span className="text-sm sm:text-base text-luxe-charcoal flex-1">{t.programBuilderItem1}</span>
                   </li>
                   <li className="flex items-start gap-2 sm:gap-3">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxe-roseGold mt-0.5 sm:mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Stratégie d'acquisition client</span>
+                    <span className="text-sm sm:text-base text-luxe-charcoal flex-1">{t.programBuilderItem2}</span>
                   </li>
                 </ul>
               </div>
@@ -1454,26 +1326,27 @@ const App: React.FC = () => {
                     className="px-3 py-1.5 sm:px-4 sm:py-2 bg-section-gradient text-luxe-black text-xs sm:text-sm uppercase tracking-wider rounded-full border border-luxe-roseGold/30 transition-all duration-150 group-hover:bg-button-cta group-hover:text-white group-hover:border-luxe-roseGold/60 inline-block"
                     whileHover={{ scale: 1.05 }}
                   >
-                    Mois 5–6
+                    {t.programMonth56}
                   </motion.span>
                 </div>
                 <motion.h3
                   className="text-lg sm:text-xl md:text-2xl font-semibold text-luxe-black mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-charcoal"
                   whileHover={{ scale: 1.05 }}
                 >
+                  {t.programScaler}
                 </motion.h3>
                 <ul className="space-y-1.5 sm:space-y-2 md:space-y-4">
                   <li className="flex items-start gap-2 sm:gap-3">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxe-roseGold mt-0.5 sm:mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Vente & closing</span>
+                    <span className="text-sm sm:text-base text-luxe-charcoal flex-1">{t.programScalerItem1}</span>
                   </li>
                   <li className="flex items-start gap-2 sm:gap-3">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxe-roseGold mt-0.5 sm:mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm sm:text-base text-luxe-charcoal flex-1">Optimisation & montée en puissance</span>
+                    <span className="text-sm sm:text-base text-luxe-charcoal flex-1">{t.programScalerItem2}</span>
                   </li>
                 </ul>
               </div>
@@ -1501,7 +1374,7 @@ const App: React.FC = () => {
           >
             <span className="flex items-center justify-center gap-3 flex-wrap">
               <img src={ICON_MAIN} alt="Plans tarifaires" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain flex-shrink-0" />
-              Plans tarifaires ELAN BUSINESS SYSTEM (EBS)
+              {t.pricingTitle}
             </span>
           </motion.h2>
 
@@ -1519,19 +1392,19 @@ const App: React.FC = () => {
                 className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Plan Semestriel
+                {t.pricingSemesterTitle}
               </motion.h3>
               <div className="mb-2 sm:mb-2.5">
                 <span className="inline-flex items-center px-2 py-1 rounded-full bg-luxe-roseGold/10 border border-luxe-roseGold/40 text-[10px] sm:text-xs font-semibold text-luxe-black">
-                  Le + avantageux
+                  {t.pricingSemesterBadge}
                 </span>
               </div>
               <p className="text-sm sm:text-base text-luxe-charcoal mb-2 sm:mb-2.5 transition-colors duration-150 group-hover:text-luxe-black">
-                💎 Engagement & vision sur 6 mois
+                {t.pricingSemesterDesc}
               </p>
               <div className="mb-1 sm:mb-1.5">
                 <span className="text-sm sm:text-base text-luxe-charcoal line-through">
-                  3 500 DH
+                  {t.pricingSemesterOldPrice}
                 </span>
               </div>
               <div className="mb-2 sm:mb-3 flex flex-wrap items-baseline gap-x-2 gap-y-1">
@@ -1539,36 +1412,36 @@ const App: React.FC = () => {
                   className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
                 >
-                  2 450 DH
+                  {t.pricingSemesterPrice}
                 </motion.span>
                 <span className="text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
-                  / 6 mois
+                  {t.pricingSemesterPeriod}
                 </span>
                 <span className="text-[10px] sm:text-xs text-red-700">
-                  Promo jusqu'au 28/12/2025
+                  {t.pricingSemesterPromo}
                 </span>
               </div>
               <p className="text-[11px] sm:text-xs text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
-                ⭐ Le meilleur rapport valeur / prix
+                {t.pricingSemesterBest}
               </p>
               <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-black">
                 <li className="flex items-start gap-2">
                   <svg className="w-3 h-3 sm:w-4 sm:h-4 text-luxe-roseGold mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
-                  <span>Avance plus vite avec une dynamique de groupe</span>
+                  <span>{t.pricingSemesterItem1}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <svg className="w-3 h-3 sm:w-4 sm:h-4 text-luxe-roseGold mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
-                  <span>Meilleure transformation & résultats</span>
+                  <span>{t.pricingSemesterItem2}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <svg className="w-3 h-3 sm:w-4 sm:h-4 text-luxe-roseGold mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
-                  <span>Accompagnement stratégique sur 6 mois</span>
+                  <span>{t.pricingSemesterItem3}</span>
                 </li>
               </ul>
               <div className="flex-1"></div>
@@ -1584,7 +1457,7 @@ const App: React.FC = () => {
                 <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>Choisir ce plan</span>
+                <span>{t.pricingButton}</span>
               </motion.button>
             </motion.div>
             {/* Mensuel */}
@@ -1600,14 +1473,14 @@ const App: React.FC = () => {
                 className="text-xl sm:text-2xl font-semibold text-luxe-black mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-charcoal"
                 whileHover={{ scale: 1.05 }}
               >
-                Plan Mensuel
+                {t.pricingMonthlyTitle}
               </motion.h3>
               <p className="text-sm sm:text-base text-luxe-charcoal mb-2 sm:mb-2.5 transition-colors duration-150 group-hover:text-luxe-black">
-                🔄 Flexibilité mois par mois
+                {t.pricingMonthlyDesc}
               </p>
               <div className="mb-1 sm:mb-1.5">
                 <span className="text-sm sm:text-base text-luxe-charcoal line-through">
-                  650 DH / mois
+                  {t.pricingMonthlyOldPrice}
                 </span>
               </div>
               <div className="mb-3 sm:mb-4 flex flex-wrap items-baseline gap-x-2 gap-y-1">
@@ -1615,36 +1488,36 @@ const App: React.FC = () => {
                   className="text-3xl sm:text-4xl font-bold text-luxe-black inline-block transition-all duration-150"
                   whileHover={{ scale: 1.1 }}
                 >
-                  455 DH
+                  {t.pricingMonthlyPrice}
                 </motion.span>
                 <span className="text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
-                  / mois
+                  {t.pricingMonthlyPeriod}
                 </span>
                 <span className="text-[10px] sm:text-xs text-red-700">
-                  Promo jusqu'au 28/12/2025
+                  {t.pricingMonthlyPromo}
                 </span>
               </div>
               <p className="text-[11px] sm:text-xs text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
-                Idéal pour commencer
+                ⭐ {t.pricingMonthlyBest}
               </p>
               <ul className="text-xs sm:text-sm text-luxe-charcoal space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 transition-colors duration-150 group-hover:text-luxe-black">
                 <li className="flex items-start gap-2">
                   <svg className="w-3 h-3 sm:w-4 sm:h-4 text-luxe-roseGold mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span>Avance à ton rythme</span>
+                  <span>{t.pricingMonthlyItem1}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <svg className="w-3 h-3 sm:w-4 sm:h-4 text-luxe-roseGold mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                   </svg>
-                  <span>Découverte progressive</span>
+                  <span>{t.pricingMonthlyItem2}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <svg className="w-3 h-3 sm:w-4 sm:h-4 text-luxe-roseGold mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                   </svg>
-                  <span>Accès possible en cours de route</span>
+                  <span>{t.pricingMonthlyItem3}</span>
                 </li>
               </ul>
               <div className="flex-1"></div>
@@ -1660,7 +1533,7 @@ const App: React.FC = () => {
                 <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>Choisir ce plan</span>
+                <span>{t.pricingButton}</span>
               </motion.button>
             </motion.div>
           </div>
@@ -1689,10 +1562,10 @@ const App: React.FC = () => {
                 <svg className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-luxe-roseGold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
-                Un cadre d'exécution structuré
+                {t.systemTitle}
               </h2>
               <p className="text-sm sm:text-base md:text-lg text-luxe-charcoal leading-relaxed mb-6 sm:mb-8 px-2">
-                Tu avances dans un environnement structuré où chaque entrepreneur exécute, ajuste et progresse à partir de situations réelles. Ici, le collectif sert à clarifier les décisions, confronter les stratégies et maintenir un rythme d'action constant.
+                {t.systemText}
               </p>
             </motion.div>
           </div>
@@ -1718,14 +1591,14 @@ const App: React.FC = () => {
             <svg className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-luxe-roseGold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
             </svg>
-            Témoignages Instagram
+            {t.testimonialsTitle}
           </motion.h2>
 
           <p className="text-center text-base sm:text-lg text-luxe-charcoal mb-8 sm:mb-10 max-w-2xl mx-auto flex items-center justify-center gap-2">
             <svg className="w-5 h-5 text-luxe-roseGold flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
-            Découvre les témoignages authentiques de notre communauté sur Instagram
+            {t.testimonialsSubtitle}
           </p>
 
           {/* Testimonials Grid - 3 columns */}
@@ -1873,7 +1746,7 @@ const App: React.FC = () => {
           >
             <span className="flex items-center justify-center gap-3 flex-wrap">
               <img src={ICON_REJOINDRE} alt="Rejoindre" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain flex-shrink-0" />
-              Prêt(e) à passer de l'incertitude à la clarté… puis à la croissance ?
+              {t.ctaTitle}
             </span>
           </motion.h2>
           <motion.button
@@ -1916,11 +1789,11 @@ const App: React.FC = () => {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              Contact
+              {t.footerContact}
             </a>
           </div>
           <div className="mt-6 sm:mt-8 text-center text-xs sm:text-sm text-luxe-cream/70">
-            © 2025 ELAN BUSINESS SYSTEM (EBS). Tous droits réservés.
+            {t.footerRights}
           </div>
         </div>
       </footer>

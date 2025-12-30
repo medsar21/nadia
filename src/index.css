@@ -69,6 +69,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* RTL Support for Arabic */
+.rtl {
+  direction: rtl;
+}
+
+.rtl input,
+.rtl textarea,
+.rtl select {
+  text-align: right;
+  direction: rtl;
+}
+
 #root {
   min-height: 100vh;
   height: 100%;
