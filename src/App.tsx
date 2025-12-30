@@ -1417,9 +1417,6 @@ const App: React.FC = () => {
                 <span className="text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
                   {t.pricingSemesterPeriod}
                 </span>
-                <span className="text-[10px] sm:text-xs text-red-700">
-                  {t.pricingSemesterPromo}
-                </span>
               </div>
               <p className="text-[11px] sm:text-xs text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
                 {t.pricingSemesterBest}
@@ -1492,9 +1489,6 @@ const App: React.FC = () => {
                 </motion.span>
                 <span className="text-sm sm:text-base text-luxe-charcoal transition-colors duration-150 group-hover:text-luxe-black">
                   {t.pricingMonthlyPeriod}
-                </span>
-                <span className="text-[10px] sm:text-xs text-red-700">
-                  {t.pricingMonthlyPromo}
                 </span>
               </div>
               <p className="text-[11px] sm:text-xs text-luxe-charcoal mb-3 sm:mb-4 transition-colors duration-150 group-hover:text-luxe-black">
